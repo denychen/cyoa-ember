@@ -1,8 +1,12 @@
 {{#each model as |story|}}
   <div>
     Title: 
-    {{#link-to 'pages' story.firstPageId}}
-      {{story.title}}
-    {{/link-to}}
+    {{#if story.firstPageId}}
+      {{#link-to 'pages' story.firstPageId}}
+        {{story.title}}
+      {{/link-to}}
+    {{else}}
+      {{story.title}} - Coming soon
+    {{/if}}
   </div>
 {{/each}}
