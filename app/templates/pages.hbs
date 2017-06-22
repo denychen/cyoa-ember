@@ -1,12 +1,12 @@
 <div>
   <div>
-    {{model.content}}
+    {{pages.content}}
   </div>
 
-  {{#each model.destinations as |destination index|}}
+  {{#each sortedDestinations as |destination index|}}
     <div>
       {{#link-to 'pages' destination.id}}
-        Option {{index}}
+        {{destination.option}}
       {{/link-to}}
     </div>
   {{/each}}
