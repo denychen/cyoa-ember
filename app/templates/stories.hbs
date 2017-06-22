@@ -1,0 +1,8 @@
+{{#each model as |story|}}
+  <div>
+    Title: 
+    {{#link-to 'pages' story.firstPageId}}
+      {{story.title}}
+    {{/link-to}}
+  </div>
+{{/each}}
