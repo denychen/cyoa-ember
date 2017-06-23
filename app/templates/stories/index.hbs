@@ -1,8 +1,12 @@
-{{#each sortedStories as |story|}}
-  <div>
-    Title: 
-    {{#link-to 'stories.story' story.id}}
-      {{story.title}}
-    {{/link-to}}
+<div class='box column'>
+  <div class='latest-stories__header horizontally-align'>
+    Latest Stories
   </div>
-{{/each}}
+  <div class='box row'>
+    {{#each sortedStories as |story|}}
+      <div class='story__card horizontally-align'>
+        {{story-card id=story.id title=story.title}}
+      </div>
+    {{/each}}
+  </div>
+</div>

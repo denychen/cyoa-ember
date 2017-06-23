@@ -1,4 +1,6 @@
+@import 'card';
 @import 'positioning';
+@import 'stories';
 @import 'utilities';
 
 html {
@@ -34,4 +36,5 @@ body > .ember-view {
 .background {
   background-color: #0074C0;
   flex: 1 1 auto;
+  padding: 15px 10px;
 }
