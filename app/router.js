@@ -7,7 +7,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('stories');
+  this.route('stories', function() {
+    this.route('story', { path: '/:storyId' });
+  });
   this.route('pages', { path: 'pages/:pageId' });
 });
 

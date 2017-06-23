@@ -1,0 +1,13 @@
+{{#if firstPageId}}
+  <div>
+    Start 
+    {{#link-to 'pages' firstPageId}}
+      {{title}}
+    {{/link-to}}
+  </div>
+  <div>
+    {{formattedGenres}}
+  </div>
+{{else}}
+  {{title}} coming soon
+{{/if}}

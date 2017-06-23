@@ -1,0 +1,8 @@
+{{#each model as |story|}}
+  <div>
+    Title: 
+    {{#link-to 'stories.story' story.id}}
+      {{story.title}}
+    {{/link-to}}
+  </div>
+{{/each}}
