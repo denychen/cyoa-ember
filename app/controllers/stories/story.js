@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
   title: Ember.computed.readOnly('story.title'),
   firstPageId: Ember.computed.readOnly('story.firstPageId'),
   genres: Ember.computed.readOnly('story.genres'),
-  formattedGenres: Ember.computed('story.genres', function() {
+  formattedGenres: Ember.computed('genres', function() {
     return this.get('genres').sortBy('genres').join(', ');
   })
 });
