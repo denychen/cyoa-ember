@@ -1,3 +1,37 @@
+@import 'positioning';
+@import 'utilities';
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0px;
+}
+
+body > .ember-view {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
 .toolbar {
-  background: #1E0073
+  background: #003A65;
+  padding: 10px;
+}
+
+.toolbar__logo {
+  height: 48px;
+  width: 48px;
+}
+
+.toolbar__name a {
+  color: #5DBCD2;
+  text-decoration: none;
+}
+
+.background {
+  background-color: #0074C0;
+  flex: 1 1 auto;
 }

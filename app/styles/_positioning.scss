@@ -1,0 +1,23 @@
+main {
+  flex: 1;
+}
+
+.box {
+  display: flex;
+}
+
+.box.row {
+  flex-direction: row;
+}
+
+.box.column {
+  flex-direction: column;
+}
+
+.box.column.o__vertical-align {
+  justify-content: center;
+}
+
+.o__horizontally-align {
+  margin: 0 auto;
+}
