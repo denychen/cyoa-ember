@@ -1,0 +1,8 @@
+{
+  "name": "cyoa-ember",
+  "dependencies": {
+    "polymer": "1.9.1",
+    "webcomponentsjs": "0.7.24",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7"
+  }
+}
