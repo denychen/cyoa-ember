@@ -1,6 +1,17 @@
-<div>
-  {{link-to 'Go home' 'stories'}}
+<div class='toolbar'>
+  <div class='box row'>
+    <div>
+    {{#link-to 'stories'}}
+      <img class='toolbar__logo' src='/assets/icons/logo.png'>
+    {{/link-to}}
+    </div>
+    <div class='box column o__vertical-align u__ml__15'>
+      <div class='toolbar__name'>
+        {{link-to 'Who Am I?' 'stories'}}
+      </div>
+    </div>
+  </div>
 </div>
-<div>
+<div class='background'>
   {{outlet}}
 </div>
