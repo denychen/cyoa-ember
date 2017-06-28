@@ -10,10 +10,23 @@
   text-decoration: none;
 }
 
-.story-title__first-letter__card {
+.story-card__hero {
   font-size: 150px;
+  margin-right: 36px;
 }
 
-.story-title__card {
+.story-card__details {
+  margin: 30px 0px;
+}
 
+.story-card__details .o__title {
+  font-size: 32px;
+}
+
+.story-card__details .o__author {
+  color: #c0c0c0;
+}
+
+.story-card__details .o__description {
+  
 }

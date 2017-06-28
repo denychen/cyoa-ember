@@ -1,10 +1,21 @@
-{{#link-to 'stories.story' id}}
-  <div class='box column card'>
-    <div class='story-title__first-letter__card horizontally-align'>
+{{#link-to 'stories.story' storyId}}
+  <div class='box row card'>
+    <div class='story-card__hero'>
       {{titleFirstLetter}}
     </div>
-    <div class='horizontally-align'>
-      {{title}} by Deny Chen
+    <div class='box column story-card__details'>
+      <div class='o__title'>
+        {{title}}
+      </div>      
+      <div class='o__author'>
+        Deny Chen
+      </div>
+
+      <div class='u__mt__10'></div>
+
+      <div class='o__description'>
+      {{description}}
+      </div>
     </div>
   </div>
 {{/link-to}}
