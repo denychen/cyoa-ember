@@ -2,30 +2,58 @@
   
   <div class='u__sp__7'></div>
 
-  <div class='horizontally-align'>
-    {{title}}
-  </div>
+  {{#if page}}
+    <div class='horizontally-align'>
+      {{page.content}}
+    </div>
 
-  <div class='u__sp__3'></div>
+    {{#if page.destinations}}
+      
+      <div class='u__sp__3'></div>
 
-  <div class='horizontally-align'>
-    A {{formattedGenres}} story
-  </div>
-  <div class='horizontally-align'>
-    by Deny Chen
-  </div>
+      <div class='box column horizontally-align'>
+        {{#each sortedDestinations as |destination|}}
+          
+          <div class='u__sp__3'></div>
 
-<div class='u__sp__7'></div>
-
-  <div class='horizontally-align'>
-    {{#if firstPageId}}
-      {{#link-to 'pages' firstPageId}}
-        Begin
-      {{/link-to}}
-    {{else}}
-      Coming soon
+          <button {{action 'loadNextPage' destination.id}}>
+            {{destination.option}}
+          </button>
+        {{/each}}
+      </div>
     {{/if}}
+  {{else}}
+    <div class='horizontally-align'>
+      {{title}}
+    </div>
+
+    <div class='u__sp__3'></div>
+
+    <div class='horizontally-align'>
+      A {{formattedGenres}} story
+    </div>
+    <div class='horizontally-align'>
+      by Deny Chen
+    </div>
+
+  <div class='u__sp__7'></div>
+
+  <div class='horizontally-align'>
+    {{description}}
   </div>
+
+  <div class='u__sp__7'></div>
+
+    <div class='horizontally-align'>
+      {{#if firstPageId}}
+        <button {{action 'loadNextPage' firstPageId}}>
+          Begin
+        </button>
+      {{else}}
+        Coming soon
+      {{/if}}
+    </div>
+  {{/if}}
 
   <div class='u__sp__7'></div>
 
