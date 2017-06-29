@@ -1,0 +1,19 @@
+<div class='horizontally-align'>
+  {{page.content}}
+</div>
+
+{{#if page.destinations}}
+  
+  <div class='u__sp__3'></div>
+
+  <div class='box column horizontally-align'>
+    {{#each sortedDestinations as |destination|}}
+      
+      <div class='u__sp__3'></div>
+
+      <button {{action 'loadNextPage' destination.id}}>
+        {{destination.option}}
+      </button>
+    {{/each}}
+  </div>
+{{/if}}

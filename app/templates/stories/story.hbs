@@ -2,58 +2,11 @@
   
   <div class='u__sp__7'></div>
 
-  {{#if page}}
-    <div class='horizontally-align'>
-      {{page.content}}
-    </div>
-
-    {{#if page.destinations}}
-      
-      <div class='u__sp__3'></div>
-
-      <div class='box column horizontally-align'>
-        {{#each sortedDestinations as |destination|}}
-          
-          <div class='u__sp__3'></div>
-
-          <button {{action 'loadNextPage' destination.id}}>
-            {{destination.option}}
-          </button>
-        {{/each}}
-      </div>
-    {{/if}}
+  {{#unless page}}
+    {{title-page story=story loadNextPage=(action 'loadNextPage')}}
   {{else}}
-    <div class='horizontally-align'>
-      {{title}}
-    </div>
-
-    <div class='u__sp__3'></div>
-
-    <div class='horizontally-align'>
-      A {{formattedGenres}} story
-    </div>
-    <div class='horizontally-align'>
-      by Deny Chen
-    </div>
-
-  <div class='u__sp__7'></div>
-
-  <div class='horizontally-align'>
-    {{description}}
-  </div>
-
-  <div class='u__sp__7'></div>
-
-    <div class='horizontally-align'>
-      {{#if firstPageId}}
-        <button {{action 'loadNextPage' firstPageId}}>
-          Begin
-        </button>
-      {{else}}
-        Coming soon
-      {{/if}}
-    </div>
-  {{/if}}
+    {{content-page page=page loadNextPage=(action 'loadNextPage')}}
+  {{/unless}}
 
   <div class='u__sp__7'></div>
 
