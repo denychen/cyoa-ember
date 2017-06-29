@@ -7,6 +7,9 @@ export default Ember.Controller.extend({
   firstPageId: Ember.computed.readOnly('story.firstPageId'),
   genres: Ember.computed.readOnly('story.genres'),
   formattedGenres: Ember.computed('genres', function() {
-    return this.get('genres').sortBy('genres').join(', ');
+    let genres = this.get('genres').sortBy('genres').join(' ');
+    return genres.replace(/\w\S*/g, function(txt) {
+      return txt.charAt(0).toLowerCase() + txt.substr(1);
+    });
   })
 });

@@ -1,13 +1,32 @@
-{{#if firstPageId}}
-  <div>
-    Start 
-    {{#link-to 'pages' firstPageId}}
-      {{title}}
-    {{/link-to}}
+<div class='box column card horizontally-align'>
+  
+  <div class='u__sp__7'></div>
+
+  <div class='horizontally-align'>
+    {{title}}
   </div>
-{{else}}
-  {{title}} coming soon
-{{/if}}
-<div>
-  {{formattedGenres}}
+
+  <div class='u__sp__3'></div>
+
+  <div class='horizontally-align'>
+    A {{formattedGenres}} story
+  </div>
+  <div class='horizontally-align'>
+    by Deny Chen
+  </div>
+
+<div class='u__sp__7'></div>
+
+  <div class='horizontally-align'>
+    {{#if firstPageId}}
+      {{#link-to 'pages' firstPageId}}
+        Begin
+      {{/link-to}}
+    {{else}}
+      Coming soon
+    {{/if}}
+  </div>
+
+  <div class='u__sp__7'></div>
+
 </div>
