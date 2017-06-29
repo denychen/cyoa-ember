@@ -2,14 +2,14 @@
 @import 'positioning';
 @import 'stories';
 @import 'utilities';
-@import 'ember-roboto-fontface/roboto/sass/roboto-fontface';
+@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono');
 
 html {
   height: 100%;
 }
 
 body {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   height: 100%;
   margin: 0px;
 }
