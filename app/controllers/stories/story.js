@@ -9,6 +9,10 @@ export default Ember.Controller.extend({
       this.store.find('page', id).then(page => {
         this.set('page', page);
       });
+    },
+
+    goToTitle() {
+      this.set('page', null);
     }
   }
 });
