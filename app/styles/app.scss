@@ -1,4 +1,5 @@
-@import 'card';
+@import 'buttons';
+@import 'cards';
 @import 'positioning';
 @import 'stories';
 @import 'utilities';
@@ -6,12 +7,14 @@
 
 html {
   height: 100%;
+  overflow: hidden;
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   height: 100%;
   margin: 0px;
+  overflow: auto;
 }
 
 body > .ember-view {
@@ -22,7 +25,13 @@ body > .ember-view {
 
 .toolbar {
   background: #fcfcfc;
+  height: 50px;
   padding: 10px;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0px 5px 5px 0px rgba(186,186,186,1);
+  -webkit-box-shadow: 0px 5px 5px 0px rgba(186,186,186,1);
+  -moz-box-shadow: 0px 5px 5px 0px rgba(186,186,186,1);
 }
 
 .toolbar__logo {
@@ -31,12 +40,12 @@ body > .ember-view {
 }
 
 .toolbar__name a {
-  color: #5DBCD2;
+  color: #5dbcd2;
   text-decoration: none;
 }
 
 .background {
   background-color: #f0f0f0;
   flex: 1 1 auto;
-  padding: 15px 10px;
+  padding: 75px 10px 15px 10px;
 }

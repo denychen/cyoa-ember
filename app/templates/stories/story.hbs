@@ -1,3 +1,5 @@
+<div class='u__sp__5'></div>
+
 <div class='box column card horizontally-align'>
   
   <div class='u__sp__7'></div>
@@ -8,6 +10,10 @@
     {{content-page page=page loadNextPage=(action 'loadNextPage')}}
   {{/unless}}
 
-  <div class='u__sp__7'></div>
+  {{#if hasDestinations}}
+    <div class='u__sp__3'></div>
+  {{else}}
+    <div class='u__sp__7'></div>
+  {{/if}}
 
 </div>

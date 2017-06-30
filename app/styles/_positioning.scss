@@ -14,6 +14,10 @@ main {
   flex-direction: column;
 }
 
+.box.column.o__right-align {
+  align-items: flex-end;
+}
+
 .box.column.o__vertical-align {
   justify-content: center;
 }
