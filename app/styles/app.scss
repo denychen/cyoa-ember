@@ -52,7 +52,11 @@ body > .ember-view {
 }
 
 .toolbar__name {
-  width: 100%;
+  width: 10%;
+}
+
+.toolbar__spacer {
+  width: 80%;
 }
 
 .toolbar__signup {
