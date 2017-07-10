@@ -1,14 +1,17 @@
 <div class='toolbar'>
   <div class='box row'>
     <div>
-    {{#link-to 'stories'}}
-      <img class='toolbar__logo' src='/assets/icons/logo.png'>
-    {{/link-to}}
+      {{#link-to 'stories'}}
+        <img class='toolbar__logo' src='/assets/icons/logo.png'>
+      {{/link-to}}
     </div>
-    <div class='box column o__vertical-align u__ml__15'>
-      <div class='toolbar__name'>
-        {{link-to 'Who Am I?' 'stories'}}
-      </div>
+
+    <div class='box column o__vertical-align toolbar__name u__ml__15'>
+      {{link-to 'Who Am I?' 'stories'}}
+    </div>
+
+    <div class='box column o__vertical-align toolbar__signup'>
+      {{link-to 'Sign Up' 'signup'}}
     </div>
   </div>
 </div>

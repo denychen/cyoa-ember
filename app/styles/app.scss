@@ -1,6 +1,7 @@
 @import 'buttons';
 @import 'cards';
 @import 'positioning';
+@import 'signup';
 @import 'stories';
 @import 'utilities';
 @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono');
@@ -34,14 +35,23 @@ body > .ember-view {
   -moz-box-shadow: 0px 5px 5px 0px rgba(186,186,186,1);
 }
 
+.toolbar a {
+  color: #5dbcd2;
+  text-decoration: none;
+}
+
 .toolbar__logo {
   height: 48px;
   width: 48px;
 }
 
-.toolbar__name a {
+.toolbar__name {
+  width: 100%;
+}
+
+.toolbar__signup {
   color: #5dbcd2;
-  text-decoration: none;
+  width: 10%;
 }
 
 .background {

@@ -11,6 +11,7 @@ Router.map(function() {
     this.route('story', { path: '/:storyId' });
   });
   this.route('pages', { path: 'pages/:pageId' });
+  this.route('signup');
 });
 
 export default Router;
