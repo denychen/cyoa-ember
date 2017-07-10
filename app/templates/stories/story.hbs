@@ -1,28 +1,9 @@
 <div class='u__sp__5'></div>
 
-<div class='box column card horizontally-align'>
-  <div class='u__sp__7'></div>
-
+<div class='box column card horizontally-align {{unless page 'o__title' 'o__content'}}'>
   {{#unless page}}
     {{title-page story=story loadNextPage=(action 'loadNextPage')}}
   {{else}}
     {{content-page page=page loadNextPage=(action 'loadNextPage')}}
   {{/unless}}
-
-  {{#if hasDestinations}}
-    <div class='u__sp__3'></div>
-  {{else if page}}
-    <div class='u__sp__3'></div>
-
-    <div class='box column o__right-align'>
-      <div class='button destination' {{action 'goToTitle'}}>
-        Return to beginning
-      </div>
-    </div>
-
-    <div class='u__sp__3'></div>
-  {{else}}
-    <div class='u__sp__3'></div>
-  {{/if}}
-
 </div>

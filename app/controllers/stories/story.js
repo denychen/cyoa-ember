@@ -6,13 +6,13 @@ export default Ember.Controller.extend({
   hasDestinations: Ember.computed.notEmpty('page.destinations'),
   actions: {
     loadNextPage(id) {
-      this.store.find('page', id).then(page => {
-        this.set('page', page);
-      });
-    },
-
-    goToTitle() {
-      this.set('page', null);
+      if (id) {
+        this.store.find('page', id).then(page => {
+          this.set('page', page);
+        });
+      } else {
+        this.set('page', null);
+      }
     }
   }
 });

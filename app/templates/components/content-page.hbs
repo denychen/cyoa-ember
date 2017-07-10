@@ -1,4 +1,6 @@
 <div class='horizontally-align'>
+  <div class='u__sp__1'></div>
+
   {{page.content}}
 </div>
 
@@ -14,5 +16,13 @@
         {{destination.option}}
       </div>
     {{/each}}
+  </div>
+{{else}}
+  <div class='u__sp__3'></div>
+    
+  <div class='box column o__right-align'>
+    <div class='button destination' {{action 'loadNextPage'}}>
+      Return to beginning
+    </div>
   </div>
 {{/if}}
