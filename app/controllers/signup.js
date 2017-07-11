@@ -7,14 +7,12 @@ export default Ember.Controller.extend({
         email: this.get('email'),
         password: this.get('password'),
         username: this.get('username')
-      }).save().then(user => {
+      }).save().then(() => {
         this.set('email', null);
         this.set('password', null);
         this.set('username', null);
 
         return this.transitionToRoute('stories');
-      }).catch(error => {
-        console.log(error);
       });
     }
   }
