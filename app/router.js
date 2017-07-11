@@ -10,7 +10,6 @@ Router.map(function() {
   this.route('stories', function() {
     this.route('story', { path: '/:storyId' });
   });
-  this.route('pages', { path: 'pages/:pageId' });
   this.route('signup');
 });
 
