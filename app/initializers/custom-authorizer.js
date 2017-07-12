@@ -5,7 +5,7 @@ export function initialize(container, application) {
 }
  
 export default {
-  name:       'custom-authorizer',
-  before:     'ember-simple-auth',
-  initialize: initialize
+  before: 'ember-simple-auth',
+  name: 'custom-authorizer',
+  initialize
 };
