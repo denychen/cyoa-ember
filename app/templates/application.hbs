@@ -1,18 +1,18 @@
-<div class='toolbar'>
+<div class='toolbar box row'>
   <div class='box row'>
-    <div>
+    <div class='u__mr__15'>
       {{#link-to 'stories'}}
         <img class='toolbar__logo' src='/assets/icons/logo.png'>
       {{/link-to}}
     </div>
 
-    <div class='box column o__vertical-align toolbar__name u__ml__15'>
+    <div class='box column o__vertical-align toolbar__name'>
       {{link-to 'Who Am I?' 'stories'}}
     </div>
+  </div>
 
-    <div class='toolbar__spacer'></div>
-
-    <div class='box column o__vertical-align toolbar__create'>
+  <div class='box row toolbar__items'>
+    <div class='box column o__vertical-align u__mr__15'>
       {{#if session.isAuthenticated}}
         {{link-to 'Create story' 'stories.create'}}
       {{else}}
@@ -20,7 +20,7 @@
       {{/if}}
     </div>
 
-    <div class='box column o__vertical-align toolbar__signup'>
+    <div class='box column o__vertical-align'>
       {{#if session.isAuthenticated}}
         <a href='/' {{action 'signout'}}>Sign out</a>
       {{else}}

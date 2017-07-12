@@ -44,9 +44,9 @@ export default Base.extend({
           "userId": data.userId, 
         })
       }).then(function (response) {
-        resolve();
+        resolve(data);
       }, function (xhr, status, error) {
-        resolve();
+        resolve(data);
       });
     });
   }
