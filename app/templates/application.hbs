@@ -12,11 +12,13 @@
 
     <div class='toolbar__spacer'></div>
 
-    {{#if session.isAuthenticated}}
-      <div class='box column o__vertical-align toolbar__create'>
-        {{link-to 'Create story' 'stories.create'}}
-      </div>
-    {{/if}}
+    <div class='box column o__vertical-align toolbar__create'>
+      {{#if session.isAuthenticated}}
+          {{link-to 'Create story' 'stories.create'}}
+      {{else}}
+        {{link-to 'Sign in' 'signin'}}
+      {{/if}}
+    </div>
 
     <div class='box column o__vertical-align toolbar__signup'>
       {{#if session.isAuthenticated}}
