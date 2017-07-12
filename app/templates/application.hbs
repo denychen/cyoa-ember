@@ -14,7 +14,7 @@
 
     <div class='box column o__vertical-align toolbar__create'>
       {{#if session.isAuthenticated}}
-          {{link-to 'Create story' 'stories.create'}}
+        {{link-to 'Create story' 'stories.create'}}
       {{else}}
         {{link-to 'Sign in' 'signin'}}
       {{/if}}
@@ -22,7 +22,7 @@
 
     <div class='box column o__vertical-align toolbar__signup'>
       {{#if session.isAuthenticated}}
-        <a {{action 'signout'}}>Sign out</a>
+        <a href='/' {{action 'signout'}}>Sign out</a>
       {{else}}
         {{link-to 'Sign up' 'signup'}}
       {{/if}}

@@ -31,7 +31,23 @@ export default Base.extend({
       });
     });
   },
+
   invalidate(data) {
-    
+    return new Ember.RSVP.Promise(function (resolve, reject) {
+      Ember.$.ajax({
+        url: 'http://localhost:3000/api/users/signout',
+        type: 'DELETE',
+        contentType: 'application/json',
+        dataType : 'json',
+        data: JSON.stringify(
+        {
+          "userId": data.userId, 
+        })
+      }).then(function (response) {
+        resolve();
+      }, function (xhr, status, error) {
+        resolve();
+      });
+    });
   }
 });
