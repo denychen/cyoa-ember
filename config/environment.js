@@ -49,5 +49,9 @@ module.exports = function(environment) {
 
   }
 
+  ENV['ember-simple-auth'] = {
+    authenticationRoute: 'signin'
+  }
+
   return ENV;
 };
