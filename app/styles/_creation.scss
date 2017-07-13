@@ -1,4 +1,13 @@
+textarea {
+  box-sizing: border-box
+}
+
+input {
+  box-sizing: border-box
+} 
+
 .creation__premise {
-  width: 100%;
+  border: 1px solid #cccccc;
   resize: vertical;
+  width: 100%;
 }
