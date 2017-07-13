@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   
   story: null,
   title: Ember.computed.readOnly('story.title'),
+  authors: Ember.computed.readOnly('story.authors'),
   description: Ember.computed.readOnly('story.description'),
   firstPageId: Ember.computed.readOnly('story.firstPageId'),
   genres: Ember.computed.readOnly('story.genres'),

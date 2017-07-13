@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   classNames: ['u__remove-style', 'horizontally-align'],
   storyId: Ember.computed.readOnly('story.id'),
   title: Ember.computed.readOnly('story.title'),
+  authors: Ember.computed.readOnly('story.authors'),
   description: Ember.computed.readOnly('story.description'),
   titleFirstLetter: Ember.computed('title', function() {
     return this.get('title').charAt(0);
