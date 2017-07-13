@@ -6,10 +6,12 @@
     <div class='box column story__details'>
       <div class='story__title'>
         {{title}}
-      </div>      
-      <div class='story__author'>
-        by {{authors}}
       </div>
+      {{#if authors}}
+        <div class='story__author'>
+          by {{authors}}
+        </div>
+      {{/if}}
 
       <div class='u__sp__1'></div>
 
