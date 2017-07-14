@@ -27,14 +27,14 @@ export default Base.extend({
       }).then(function (response) {
         let user = response.user;
         resolve({ token: user.token, userId: user.id });
-      }, function (xhr, status, error) {
+      }, function (xhr/*, status, error*/) {
         reject(xhr.responseText);
       });
     });
   },
 
   invalidate(data) {
-    return new Ember.RSVP.Promise(function (resolve, reject) {
+    return new Ember.RSVP.Promise(function (resolve/*, reject*/) {
       Ember.$.ajax({
         url: 'http://localhost:3000/api/users/signout',
         type: 'DELETE',
@@ -44,9 +44,9 @@ export default Base.extend({
         {
           "userId": data.userId, 
         })
-      }).then(function (response) {
+      }).then(function (/*response*/) {
         resolve(data);
-      }, function (xhr, status, error) {
+      }, function (/*xhr, status, error*/) {
         resolve(data);
       });
     });

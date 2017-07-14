@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 
   actions: {
     signin() {
-      new Ember.RSVP.Promise((resolve, reject) => {
+      new Ember.RSVP.Promise((resolve/*, reject*/) => {
         return (this.get('session.isAuthenticated')) ? this.get('session').invalidate() : resolve(true);
       }).then (() => {
         let credentials = { email: this.get('email'), password: this.get('password') };
