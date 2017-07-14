@@ -25,7 +25,8 @@ export default Base.extend({
           "password": options.password
         })
       }).then(function (response) {
-        resolve({ token: response.token, userId: response.id });
+        let user = response.user;
+        resolve({ token: user.token, userId: user.id });
       }, function (xhr, status, error) {
         reject(xhr.responseText);
       });
