@@ -25,10 +25,10 @@ export default Ember.Controller.extend({
           return {
             id: genre.id,
             genre: genre.get('genre')
-          }
+          };
         })
       }).save().then(story => {
-        return this.transitionToRoute('stories.story', story.id)
+        return this.transitionToRoute('stories.create.pages', story.id);
       });
     }
   }
