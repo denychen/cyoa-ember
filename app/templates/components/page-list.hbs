@@ -1,1 +1,5 @@
-{{yield}}
+{{#each pages as |page|}}
+  <div class='page-creator__page-item' {{action 'selectPage' page.id}}>
+    {{page-item page=page}}
+  </div>
+{{/each}}

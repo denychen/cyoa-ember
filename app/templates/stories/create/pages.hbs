@@ -1,18 +1,58 @@
 <div class='u__sp__5'></div>
 
-<div class='box row'>
-  <div>
-      {{page-list pages=pages}}
-  </div>
-  <div class='box column'>
-    <div>
+<div class='box column'>
+  <div class='card page-creator__story-name box column horizontally-align'>
+    <div class='horizontally-align'>
       {{story.title}}
     </div>
-    <div>
-      {{content-editor}}
+  </div>
+
+  <div class='u__sp__3'></div>
+
+  <div class='box row'>
+    <div class='card page-creator__list'>
+        {{page-list 
+          pages=pages
+          selectPage=(action 'selectPage')
+        }}
     </div>
-    <div>
-      {{option-editor}}
+
+    <div class='page-creator__editor box column'>
+      <div class='card page-creator__content-editor box column horizontally-align'>
+        <div class='horizontally-align'>
+          Page Name
+          <div>
+            {{input classNames='horizontally-align' autofocus=true value=activePage.name}}
+          </div>
+        </div>
+
+        <div class='u__sp__3'></div>
+
+        <div class='horizontally-align'>
+          Page Content
+          <div>
+            {{textarea classNames='horizontally-align' rows=10 value=activePage.content}}
+          </div>
+        </div>
+      </div>
+
+      <div class='u__sp__3'></div>
+
+      <div class='card page-creator__options-editor box column horizontally-align'>
+        <div class='horizontally-align'>
+          Options
+        </div>
+
+        {{#power-select-multiple
+          classNames='horizontally-align'
+          options=activePage.destinations
+          selected=selectedPage
+          onchange=(action (mut selectedPage))
+          as |page|
+        }}
+          {{page.id}}
+        {{/power-select-multiple}}
+      </div>
     </div>
   </div>
 </div>
