@@ -19,8 +19,7 @@ export default Base.extend({
         type: 'POST',
         contentType: 'application/json',
         dataType : 'json',
-        data: JSON.stringify(
-        {
+        data: JSON.stringify({
           "email": options.email, 
           "password": options.password
         })
@@ -40,8 +39,7 @@ export default Base.extend({
         type: 'DELETE',
         contentType: 'application/json',
         dataType : 'json',
-        data: JSON.stringify(
-        {
+        data: JSON.stringify({
           "userId": data.userId, 
         })
       }).then(function (/*response*/) {

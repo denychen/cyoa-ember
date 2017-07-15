@@ -5,17 +5,11 @@ export default Ember.Controller.extend({
   
   actions: {
     signup() {
-      Ember.$.ajax({
-        url: 'http://localhost:3000/api/users/signup',
-        type: 'POST',
-        contentType: 'application/json',
-        dataType : 'json',
-        data: JSON.stringify({
-          "email": this.get('email'),
-          "password": this.get('password'),
-          "username": this.get('username')
-        })
-      }).then(() => {
+      this.get('store').createRecord('user', {
+        "email": this.get('email'),
+        "password": this.get('password'),
+        "username": this.get('username')
+      }).save().then(() => {
         let credentials = { email: this.get('email'), password: this.get('password') };
 
         this.set('email', null);
