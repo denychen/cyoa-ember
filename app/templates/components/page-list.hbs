@@ -1,5 +1,5 @@
 {{#each pages as |page|}}
-  <div class='page-creator__page-item' {{action 'selectPage' page.id}}>
-    {{page-item page=page}}
+  <div {{action 'selectPage' page.id}}>
+    {{page-item classNames='card page-creator__page-item' page=page}}
   </div>
 {{/each}}

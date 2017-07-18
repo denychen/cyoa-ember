@@ -10,19 +10,18 @@
   <div class='u__sp__3'></div>
 
   <div class='box row'>
-    <div class='card page-creator__list'>
-        {{page-list 
-          pages=pages
-          selectPage=(action 'selectPage')
-        }}
-    </div>
+    {{page-list 
+      classNames='card page-creator__list'
+      pages=pages
+      selectPage=(action 'selectPage')
+    }}
 
     <div class='page-creator__editor box column'>
       <div class='card page-creator__content-editor box column horizontally-align'>
         <div class='horizontally-align'>
           Page Name
           <div>
-            {{input classNames='horizontally-align' autofocus=true value=activePage.name}}
+            {{input classNames='horizontally-align' value=activePage.name}}
           </div>
         </div>
 
@@ -43,15 +42,43 @@
           Options
         </div>
 
-        {{#power-select-multiple
-          classNames='horizontally-align'
-          options=activePage.destinations
-          selected=selectedPage
-          onchange=(action (mut selectedPage))
-          as |page|
-        }}
-          {{page.id}}
-        {{/power-select-multiple}}
+        <div class='u__sp__2'></div>
+
+        {{#each destinations as |destination|}}
+          <div class='box row u__mb__20'>
+            <div class='u__mr__10'>
+              Option: {{input classNames='horizontally-align' value=destination.option}}
+            </div>
+
+            <div>
+              <div class='box row'>
+                <div>
+                  Destination: 
+                </div>
+                {{#power-select
+                  options=pages
+                  selected=(selected-page pages=pages pageId=destination.pageId)
+                  onchange=(action 'updateDestination' destination)
+                  as |page|
+                }}
+                  {{page.name}}
+                {{/power-select}}
+              </div>
+            </div>
+          </div>
+        {{/each}}
+
+        <div class='horizontally-align'>
+          <div class='box row'>
+            <div class='button cta u__mr__10' {{action 'addDestination'}}>
+              Add destination
+            </div>
+
+            <div class='button cta' {{action 'removeDestination'}}>
+              Remove destination
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
