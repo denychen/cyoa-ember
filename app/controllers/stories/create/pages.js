@@ -28,6 +28,10 @@ export default Ember.Controller.extend({
 
     removeDestination() {
       this.get('destinations').popObject();
+    },
+
+    savePage() {
+      this.get('activePage').save();
     }
   }
 });
