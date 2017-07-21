@@ -1,3 +1,11 @@
+<div class='box column'>
+  <div class='horizontally-align'>
+    <div class='button cta u__mr__10' {{action 'addPage'}}>
+      Add page
+    </div>
+  </div>
+</div>
+
 {{#each pages as |page|}}
   <div {{action 'selectPage' page.id}}>
     {{page-item classNames='card page-creator__page-item' page=page}}

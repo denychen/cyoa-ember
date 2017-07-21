@@ -4,11 +4,9 @@ export default Ember.Controller.extend({
   emptyArray: Ember.A(),
 
   story: Ember.computed.readOnly('model.story'),
-  pages: Ember.computed.readOnly('story.pages'),
+  pages: Ember.computed.reads('story.pages'),
 
-  activePage: Ember.computed('pages', function() {
-    return this.get('pages.firstObject');
-  }),
+  activePage: Ember.computed.reads('pages.firstObject'),
 
   destinations: Ember.computed.or('activePage.destinations', 'emptyArray'),
 
@@ -32,6 +30,12 @@ export default Ember.Controller.extend({
 
     savePage() {
       this.get('activePage').save();
+    },
+
+    addPage() {
+      let newPage = this.get('store').createRecord('page');
+      this.get('pages').pushObject(newPage);
+      this.set('activePage', newPage);
     }
   }
 });
