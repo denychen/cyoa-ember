@@ -45,13 +45,13 @@
 
         <div class='u__sp__2'></div>
 
-        {{#each destinations as |destination|}}
+        {{#each destinations as |destination index|}}
           <div class='box row u__mb__20'>
             <div class='u__mr__10'>
               Option: {{input classNames='horizontally-align' value=destination.option}}
             </div>
 
-            <div>
+            <div class='u__mr__10'>
               <div class='box row'>
                 <div>
                   Destination: 
@@ -66,17 +66,17 @@
                 {{/power-select}}
               </div>
             </div>
+
+            <div class='button cta' {{action 'removeDestination' index}}>
+              Remove
+            </div>
           </div>
         {{/each}}
 
         <div class='horizontally-align'>
           <div class='box row'>
             <div class='button cta u__mr__10' {{action 'addDestination'}}>
-              Add destination
-            </div>
-
-            <div class='button cta' {{action 'removeDestination'}}>
-              Remove destination
+              Add
             </div>
           </div>
         </div>

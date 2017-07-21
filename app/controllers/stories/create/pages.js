@@ -21,11 +21,18 @@ export default Ember.Controller.extend({
     },
 
     addDestination() {
-      this.get('destinations').pushObject(this.get('store').createRecord('destination'));
+      let newDestination = this.get('store').createRecord('destination', {
+        order: this.get('destinations.length')
+      });
+
+      this.get('destinations').pushObject(newDestination);
     },
 
-    removeDestination() {
-      this.get('destinations').popObject();
+    removeDestination(index) {
+      this.get('destinations').removeAt(index);
+      this.get('destinations').forEach((destination, index) => {
+        destination.set('order', index + 1);
+      });
     },
 
     savePage() {
