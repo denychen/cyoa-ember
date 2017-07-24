@@ -2,3 +2,8 @@ $ember-power-select-default-border-radius: 0;
 $ember-power-select-border-color: #cccccc;
 
 @import "ember-power-select";
+
+.destination_selector {
+  width: 160px;
+  white-space: nowrap;
+}

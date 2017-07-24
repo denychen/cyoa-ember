@@ -58,6 +58,8 @@
                   Destination: 
                 </div>
                 {{#power-select
+                  tagName='div'
+                  class='destination_selector'
                   options=pages
                   selected=(selected-page pages=pages pageId=destination.pageId)
                   onchange=(action 'updateDestination' destination)
