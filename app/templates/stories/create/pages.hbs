@@ -1,8 +1,6 @@
 <div class='box column'>
-  <div class='page-creator__story-name box column horizontally-align'>
-    <div class='horizontally-align'>
-      <h1>{{story.title}}</h1>
-    </div>
+  <div class='box row'>
+    {{input autoresize=true classNames='page-creator__story-title__input page-creator__unstyled-input' placeholder='Enter a title' value=story.title}}
   </div>
 
   <div class='box row'>
@@ -16,13 +14,11 @@
 
     <div class='page-creator__editor box column'>
       <div class='card page-creator__page-editor box column horizontally-align'>
-        <div class='page-creator__page-title'>
-          {{input classNames='page-creator__page-title__input' placeholder='Give the page a name to remember by' value=activePage.name}}
-        </div>
+        {{input autoresize=true classNames='page-creator__page-title__input page-creator__unstyled-input' placeholder='Give the page a name to remember by' value=activePage.name}}
 
         <div class='u__sp__1'></div>
 
-         {{textarea autoresize=true classNames='page-creator__page-content__input horizontally-align' rows=5 placeholder='Write your story here' value=activePage.content}}         
+        {{textarea autoresize=true classNames='page-creator__page-content__input page-creator__unstyled-input horizontally-align' rows=5 placeholder='Write your story here' value=activePage.content}}         
 
         <div class='u__sp__1'></div>
 
