@@ -11,10 +11,6 @@ export default Ember.Controller.extend({
   destinations: Ember.computed.or('activePage.destinations', 'emptyArray'),
 
   actions: {
-    updateDestination(destination, selectedPage) {
-      destination.set('pageId', selectedPage.get('id'));
-    },
-    
     selectPage(id) {
       let activePage = this.get('pages').find(page => page.id === id);
       this.set('activePage', activePage);
@@ -28,10 +24,12 @@ export default Ember.Controller.extend({
       this.get('destinations').pushObject(newDestination);
     },
 
-    removeDestination(index) {
-      this.get('destinations').removeAt(index);
+    removePath(indexToRemove) {
+      this.get('destinations').removeAt(indexToRemove);
       this.get('destinations').forEach((destination, index) => {
-        destination.set('order', index + 1);
+        if (index >= indexToRemove) {
+          destination.set('order', index + 1);
+        }
       });
     },
 

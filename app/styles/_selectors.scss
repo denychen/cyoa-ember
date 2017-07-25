@@ -1,9 +1,11 @@
 $ember-power-select-default-border-radius: 0;
 $ember-power-select-border-color: #cccccc;
+$ember-power-select-trigger-ltr-padding: 2px 16px 0px 0px;
 
 @import "ember-power-select";
 
 .destination_selector {
-  width: 160px;
+  font-size: 16px;
   white-space: nowrap;
+  width: 160px;
 }

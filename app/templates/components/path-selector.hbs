@@ -1,0 +1,27 @@
+<div class='box row u__mb__20'>
+  {{#if showPathEditor}}
+    <div class='box row u__mr__10'>
+      {{input class='page-creator__path-name__editor u__mr__10' placeholder='Path description' value=path.option}}
+
+      {{#power-select
+        tagName='div'
+        class='destination_selector u__mr__10'
+        placeholder='Path'
+        options=pages
+        selected=(selected-page pages=pages pageId=path.pageId)
+        onchange=(action 'updateDestination' path)
+        as |page|
+      }}
+        {{page.name}}
+      {{/power-select}}
+
+      <div class='button negative' {{action 'removePath' index}}>
+        Remove
+      </div>
+    </div>
+  {{/if}}
+  
+  <div class='button {{if showPathEditor 'positive' 'destination'}}' {{action 'editPath'}}>
+    {{if showPathEditor 'Done' (if path.option path.option defaultPathName)}}
+  </div>
+</div>

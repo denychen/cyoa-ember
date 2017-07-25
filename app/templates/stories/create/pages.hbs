@@ -19,68 +19,26 @@
     }}
 
     <div class='page-creator__editor box column'>
-      <div class='card page-creator__content-editor box column horizontally-align'>
-        <div class='horizontally-align'>
-          Page Name
-          <div>
-            {{input classNames='horizontally-align' value=activePage.name}}
-          </div>
+      <div class='card page-creator__page-editor box column horizontally-align'>
+        <div class='page-creator__page-title'>
+          {{input classNames='page-creator__page-title__input' placeholder='Give the page a name to remember by' value=activePage.name}}
         </div>
 
-        <div class='u__sp__3'></div>
+        <div class='u__sp__1'></div>
 
-        <div class='horizontally-align'>
-          Page Content
-          <div>
-            {{textarea classNames='horizontally-align' rows=10 value=activePage.content}}
-          </div>
-        </div>
-      </div>
+         {{textarea autoresize=true classNames='page-creator__page-content__input horizontally-align' rows=5 placeholder='Write your story here' value=activePage.content}}         
 
-      <div class='u__sp__3'></div>
+        <div class='u__sp__1'></div>
 
-      <div class='card page-creator__options-editor box column horizontally-align'>
-        <div class='horizontally-align'>
-          Paths
+        <div class='box column o__right-align'>
+          {{#each destinations as |path index|}}
+            {{path-selector path=path pages=pages index=index removePath=(action 'removePath')}}
+          {{/each}}
         </div>
 
-        <div class='u__sp__2'></div>
-
-        {{#each destinations as |destination index|}}
-          <div class='box row u__mb__20'>
-            <div class='u__mr__10'>
-              Option: {{input classNames='horizontally-align' value=destination.option}}
-            </div>
-
-            <div class='u__mr__10'>
-              <div class='box row'>
-                <div>
-                  Destination: 
-                </div>
-                {{#power-select
-                  tagName='div'
-                  class='destination_selector'
-                  options=pages
-                  selected=(selected-page pages=pages pageId=destination.pageId)
-                  onchange=(action 'updateDestination' destination)
-                  as |page|
-                }}
-                  {{page.name}}
-                {{/power-select}}
-              </div>
-            </div>
-
-            <div class='button negative' {{action 'removeDestination' index}}>
-              Remove
-            </div>
-          </div>
-        {{/each}}
-
-        <div class='horizontally-align'>
-          <div class='box row'>
-            <div class='button positive u__mr__10 u__mb__20' {{action 'addDestination'}}>
-              Add
-            </div>
+        <div class='box column o__right-align'>
+          <div class='button positive u__mb__20' {{action 'addDestination'}}>
+            Add Path
           </div>
         </div>
       </div>
