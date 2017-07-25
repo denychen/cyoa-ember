@@ -1,4 +1,6 @@
 .page-creator__list {
+  height: 100%;
+  padding: 0px;
   width: 200px;
 }
 
@@ -7,8 +9,23 @@
 }
 
 .page-creator__page-item {
-  height: 70px;
+  border-top: thin dotted;
+  height: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
   width: inherit;
+}
+
+.o__first-page-item {
+  border-top: none;
+}
+
+.o__active-page {
+  background-color: #f0f0f0;
+}
+
+.page-creator__page-item__add-page {
+  border-bottom: thin solid;
 }
 
 .page-creator__page-editor {

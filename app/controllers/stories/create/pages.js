@@ -43,8 +43,8 @@ export default Ember.Controller.extend({
       this.set('activePage', newPage);
     },
 
-    removePage(page) {
-      page.destroyRecord().then(() => {
+    removePage() {
+      this.get('activePage').destroyRecord().then(() => {
         this.set('activePage', this.get('pages.lastObject'));
       });
     }

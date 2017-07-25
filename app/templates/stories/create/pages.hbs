@@ -1,13 +1,9 @@
-<div class='u__sp__5'></div>
-
 <div class='box column'>
-  <div class='card page-creator__story-name box column horizontally-align'>
+  <div class='page-creator__story-name box column horizontally-align'>
     <div class='horizontally-align'>
-      {{story.title}}
+      <h1>{{story.title}}</h1>
     </div>
   </div>
-
-  <div class='u__sp__3'></div>
 
   <div class='box row'>
     {{page-list 
@@ -15,7 +11,7 @@
       pages=pages
       selectPage=(action 'selectPage')
       addPage=(action 'addPage')
-      removePage=(action 'removePage')
+      activePage=activePage
     }}
 
     <div class='page-creator__editor box column'>
@@ -46,8 +42,14 @@
       <div class='u__sp__2'></div>
 
       <div class='horizontally-align'>
-        <div class='button positive u__mr__10' {{action 'savePage'}}>
-          Save page
+        <div class='box row'>
+          <div class='button positive u__mr__10' {{action 'savePage'}}>
+            Save page
+          </div>
+
+          <div class='button negative u__mr__10' {{action 'removePage'}}>
+            Remove page
+          </div>
         </div>
       </div>
     </div>

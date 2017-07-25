@@ -8,10 +8,6 @@ export default Ember.Component.extend({
 
     addPage() {
       this.sendAction('addPage');
-    },
-
-    removePage(page) {
-      this.sendAction('removePage', page);
     }
   }
 });
