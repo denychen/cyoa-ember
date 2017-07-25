@@ -33,8 +33,20 @@ export default Ember.Controller.extend({
       });
     },
 
+    saveStory() {
+      let story = this.get('story');
+      if (story.get('hasDirtyAttributes')) {
+        story.save();
+      }
+
+      this.send('savePage');
+    },
+
     savePage() {
-      this.get('activePage').save();
+      let page = this.get('activePage');
+      if (page.get('hasDirtyAttributes')) {
+        page.save();
+      }
     },
 
     addPage() {
