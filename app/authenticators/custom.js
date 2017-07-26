@@ -2,8 +2,10 @@ import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';
 
 export default Base.extend({
+  store: Ember.inject.service('store'),
+
   restore(data) {
-    return new Ember.RSVP.Promise(function(resolve, reject) { 
+    return new Ember.RSVP.Promise((resolve, reject) => { 
       if (!Ember.isEmpty(data.token)) {
         resolve(data);
       } else {
@@ -13,7 +15,7 @@ export default Base.extend({
   },
 
   authenticate(options) {
-    return new Ember.RSVP.Promise(function (resolve, reject) {
+    return new Ember.RSVP.Promise((resolve, reject) => {
       Ember.$.ajax({
         url: 'http://localhost:3000/api/users/signin',
         type: 'POST',
@@ -23,7 +25,9 @@ export default Base.extend({
           "email": options.email, 
           "password": options.password
         })
-      }).then(function (response) {
+      }).then(response => {
+        this.get('store').pushPayload(response);
+
         let user = response.user;
         resolve({ token: user.token, userId: user.id });
       }, function (xhr/*, status, error*/) {
@@ -33,7 +37,7 @@ export default Base.extend({
   },
 
   invalidate(data) {
-    return new Ember.RSVP.Promise(function (resolve/*, reject*/) {
+    return new Ember.RSVP.Promise((resolve/*, reject*/) => {
       Ember.$.ajax({
         url: 'http://localhost:3000/api/users/signout',
         type: 'DELETE',
@@ -42,7 +46,7 @@ export default Base.extend({
         data: JSON.stringify({
           "userId": data.userId, 
         })
-      }).then(function (/*response*/) {
+      }).then((/*response*/) => {
         resolve(data);
       }, function (/*xhr, status, error*/) {
         resolve(data);
