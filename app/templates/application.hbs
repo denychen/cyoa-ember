@@ -12,17 +12,16 @@
   </div>
 
   <div class='box row toolbar__items'>
-    <div class='box column o__vertical-align u__mr__15'>
-      {{#if session.isAuthenticated}}
-        {{link-to 'Create story' 'stories.create'}}
-      {{else}}
-        {{link-to 'Sign in' 'signin'}}
-      {{/if}}
-    </div>
+    {{#unless session.isAuthenticated}}
+      {{link-to 'Sign in' 'signin' classNames='box column o__vertical-align u__mr__15'}}
+    {{/unless}}
 
-    <div class='box column o__vertical-align'>
+    <div class='box column o__vertical-align user-dropdown__wrapper'>
       {{#if session.isAuthenticated}}
-        <a href='/' {{action 'signout'}}>Sign out</a>
+        <a href='/' {{action 'clickMe'}}>Me</a>
+        {{#if showUserDropdown}}
+          {{user-dropdown classNames='user-dropdown__menu' signout=(action 'signout') closeMenu=(action 'clickMe')}}
+        {{/if}}
       {{else}}
         {{link-to 'Sign up' 'signup'}}
       {{/if}}
