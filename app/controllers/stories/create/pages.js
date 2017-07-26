@@ -51,8 +51,11 @@ export default Ember.Controller.extend({
 
     addPage() {
       let newPage = this.get('store').createRecord('page');
-      this.get('pages').pushObject(newPage);
-      this.set('activePage', newPage);
+      newPage.set('story', this.get('story'));
+      newPage.save().then(page => {
+        this.get('pages').pushObject(page);
+        this.set('activePage', page);
+      });
     },
 
     removePage() {
