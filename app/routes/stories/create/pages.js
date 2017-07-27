@@ -11,7 +11,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     });
   },
 
-  afterModel(model, transition) {    
+  afterModel(model) {    
     let isAuthor = model.story.get('authors').any(author => {
       return author.get('id') === this.get('currentUser.user.id');
     });
