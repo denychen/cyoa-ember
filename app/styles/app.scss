@@ -75,38 +75,14 @@ body > .ember-view {
 
 .user-dropdown__menu {
   background-color: #fcfcfc;
-  border: 1px solid #000000;
-  border-radius: 3px;
-  padding: 15px;
+  border-radius: 0px 0px 3px 3px;
+  padding: 5px 20px 15px 15px;
   position: absolute;
-  right: -10px;
-  top: 50px;
-  width: 120px;
+  right: -20px;
+  top: 60px;
+  white-space: nowrap;
   z-index: 1000;
   box-shadow: 0px 5px 5px 0px rgba(186,186,186,1);
   -webkit-box-shadow: 0px 5px 5px 0px rgba(186,186,186,1);
   -moz-box-shadow: 0px 5px 5px 0px rgba(186,186,186,1);
-}
-
-.user-dropdown__menu:after, .user-dropdown__menu:before {
-	bottom: 100%;
-	left: 131px;
-	border: solid transparent;
-	content: ' ';
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-}
-
-.user-dropdown__menu:after {
-	border-color: rgba(255, 255, 255, 0);
-	border-bottom-color: #fcfcfc;
-	border-width: 10px;
-	margin-left: -10px;
-}
-.user-dropdown__menu:before {
-	border-bottom-color: #000000;
-	border-width: 11px;
-	margin-left: -11px;
 }
