@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
+  currentUser: Ember.inject.service('current-user'),
   
   maxTitleLength: 300,
   maxPremiseLength: 2000,
@@ -20,7 +21,7 @@ export default Ember.Controller.extend({
       this.get('store').createRecord('story', {
         title: this.get('title'),
         description: this.get('premise'),
-        authors: this.get('session.session.authenticated.userId'),
+        authors: [this.get('currentUser.user')],
         genres: this.get('selectedGenres').map(genre => {
           return {
             id: genre.id,
