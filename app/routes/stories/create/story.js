@@ -27,6 +27,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     if (pages.length === 0) {
       let newPage = this.get('store').createRecord('page');
       pages.pushObject(newPage);
+      controller.set('activePage', newPage);
     }
 
     controller.set('model', model);
