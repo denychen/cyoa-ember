@@ -29,7 +29,7 @@ export default Ember.Controller.extend({
           };
         })
       }).save().then(story => {
-        return this.transitionToRoute('stories.create.pages', story.id);
+        return this.transitionToRoute('stories.create.story', story.id);
       });
     }
   }
