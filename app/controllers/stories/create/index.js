@@ -20,6 +20,7 @@ export default Ember.Controller.extend({
     createStory() {
       this.get('store').createRecord('story', {
         title: this.get('title'),
+        published: false,
         description: this.get('premise'),
         authors: [this.get('currentUser.user')],
         genres: this.get('selectedGenres').map(genre => {

@@ -8,8 +8,10 @@
   </div>
   <div class='box column'>
     {{#each sortedStories as |story|}}
-      <div class='u__mt__10'></div>
+      {{#if story.published}}
+        <div class='u__mt__10'></div>
         {{story-card story=story}}
+      {{/if}}
     {{/each}}
   </div>
 </div>
