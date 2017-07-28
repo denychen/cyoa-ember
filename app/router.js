@@ -12,6 +12,7 @@ Router.map(function() {
     this.route('create', function() {
       this.route('story', { path: '/:storyId'});
     });
+    this.route('my-stories');
   });
   this.route('signup');
   this.route('signin');
