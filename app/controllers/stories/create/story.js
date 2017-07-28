@@ -10,6 +10,10 @@ export default Ember.Controller.extend({
 
   destinations: Ember.computed.or('activePage.destinations', 'emptyArray'),
 
+  isFirstPage: Ember.computed('activePage.id', 'activePage.story.firstPageId', function() {
+    return this.get('activePage.id') === this.get('activePage.story.firstPageId');
+  }),
+
   actions: {
     selectPage(id) {
       let activePage = this.get('pages').find(page => page.id === id);
