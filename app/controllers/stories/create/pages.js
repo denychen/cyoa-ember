@@ -44,9 +44,7 @@ export default Ember.Controller.extend({
 
     savePage() {
       let page = this.get('activePage');
-      if (page.get('hasDirtyAttributes')) {
-        page.save();
-      }
+      page.save();
     },
 
     addPage() {
