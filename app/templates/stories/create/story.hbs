@@ -17,9 +17,11 @@
         <div class='box row spaced'>
           {{input autoresize=true classNames='page-creator__page-title__input page-creator__unstyled-input' placeholder='Give the page a name to remember by' value=activePage.name}}
 
-          <div class='page-creator__set-first-page__button button positive' {{action 'setAsFirstPage'}}>
-            Set as first page
-          </div>
+          {{#unless isFirstPage}}
+            <div class='page-creator__set-first-page__button button positive' {{action 'setAsFirstPage'}}>
+              Set as first page
+            </div>
+          {{/unless}}
         </div>
 
         <div class='u__sp__1'></div>
