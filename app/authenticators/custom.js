@@ -40,12 +40,10 @@ export default Base.extend({
     return new Ember.RSVP.Promise((resolve/*, reject*/) => {
       Ember.$.ajax({
         url: 'http://localhost:3000/api/users/signout',
-        type: 'DELETE',
+        type: 'POST',
+        headers: { 'Authorization': `Bearer ${data.token}` },
         contentType: 'application/json',
-        dataType : 'json',
-        data: JSON.stringify({
-          "userId": data.userId, 
-        })
+        dataType : 'json'
       }).then((/*response*/) => {
         resolve(data);
       }, function (/*xhr, status, error*/) {
