@@ -6,7 +6,7 @@ export default DS.Model.extend({
   description: DS.attr(),
   genres: DS.attr(),
   firstPageId: DS.attr(),
-  published: DS.attr(),
+  published: DS.attr('boolean', { defaultValue: false }),
   pages: DS.hasMany('page', { async: false }),
   createdAt: DS.attr()
 });

@@ -14,6 +14,10 @@ main {
   flex-direction: column;
 }
 
+.box.spaced {
+  justify-content: space-between;
+}
+
 .box.column.o__right-align {
   align-items: flex-end;
 }

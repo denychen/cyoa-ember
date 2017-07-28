@@ -14,7 +14,13 @@
 
     <div class='page-creator__editor box column'>
       <div class='card page-creator__page-editor box column horizontally-align'>
-        {{input autoresize=true classNames='page-creator__page-title__input page-creator__unstyled-input' placeholder='Give the page a name to remember by' value=activePage.name}}
+        <div class='box row spaced'>
+          {{input autoresize=true classNames='page-creator__page-title__input page-creator__unstyled-input' placeholder='Give the page a name to remember by' value=activePage.name}}
+
+          <div class='page-creator__set-first-page__button button positive' {{action 'setAsFirstPage'}}>
+            Set as first page
+          </div>
+        </div>
 
         <div class='u__sp__1'></div>
 

@@ -33,6 +33,14 @@ export default Ember.Controller.extend({
       });
     },
 
+    setAsFirstPage() {
+      let story = this.get('story');
+      let page = this.get('activePage');
+
+      story.set('firstPageId', page.get('id'));
+      story.save();
+    },
+
     saveStory() {
       let story = this.get('story');
       if (story.get('hasDirtyAttributes')) {
