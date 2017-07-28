@@ -18,9 +18,9 @@
 
     <div class='box column o__vertical-align user-dropdown__wrapper'>
       {{#if session.isAuthenticated}}
-        <a href='/' {{action 'clickMe'}}>{{currentUser.user.username}}</a>
+        <a href='/' {{action 'clickUsername'}}>{{currentUser.user.username}}</a>
         {{#if showUserDropdown}}
-          {{user-dropdown classNames='user-dropdown__menu' signout=(action 'signout') closeMenu=(action 'clickMe')}}
+          {{user-dropdown classNames='user-dropdown__menu' signout=(action 'signout') closeMenu=(action 'clickUsername')}}
         {{/if}}
       {{else}}
         {{link-to 'Sign up' 'signup'}}
