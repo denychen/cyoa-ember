@@ -12,6 +12,10 @@ export default Ember.Controller.extend({
         story.set('firstPublishedAt', new Date());
       }
       story.save();
+    },
+
+    startStory() {
+      return this.transitionToRoute('stories.create');
     }
   }
 });

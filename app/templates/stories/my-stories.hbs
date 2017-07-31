@@ -16,6 +16,9 @@
                   <div class='story__date'>
                     Started: {{date date=unpublishedStory.createdAt}}
                   </div>
+
+                  <div class='u__sp__1'></div>
+                  
                   <div class='horizontally-align'>
                     <div class='button positive' {{action 'togglePublishStatus' unpublishedStory}}>
                       Publish
@@ -28,7 +31,11 @@
             <div class='u__sp__2'></div>
           {{/each}}
         {{else}}
-          {{empty-card text='No stories to publish :(' classNames='card o__empty box column o__vertical-align'}}
+          {{#empty-card text='No stories to publish :(' classNames='card o__empty box column o__vertical-align'}}
+            <div class='button positive' {{action 'startStory'}}>
+              Start a story
+            </div>
+          {{/empty-card}}
         {{/if}}
       </div>
       <div class='box column'>
@@ -46,6 +53,9 @@
                   <div class='story__date'>
                     Published: {{date date=publishedStory.firstPublishedAt}}
                   </div>
+
+                  <div class='u__sp__1'></div>
+
                   <div class='horizontally-align'>
                     <div class='button negative' {{action 'togglePublishStatus' publishedStory}}>
                       Unpublish
@@ -58,7 +68,11 @@
             <div class='u__sp__2'></div>
           {{/each}}
         {{else}}
-          {{empty-card text='No stories published :(' classNames='card o__empty box column o__vertical-align'}}
+          {{#empty-card text='No stories published :(' classNames='card o__empty box column o__vertical-align'}}
+            <div class='button positive' {{action 'startStory'}}>
+              Start a story
+            </div>
+          {{/empty-card}}
         {{/if}}
       </div>
     </div>
