@@ -5,53 +5,61 @@
         <div class='u__ml__5'>
           Unpublished
         </div>
-        {{#each unpublishedStories as |unpublishedStory|}}
-          {{#link-to 'stories.create.story' unpublishedStory.id classNames='card u__remove-style box column o__vertical-align story__my-stories'}}
-            <div class='box row spaced'>
-              <div class='box column o__vertical-align story__title'>
-                {{unpublishedStory.title}}
-              </div>
-              <div class='box column o__vertical-align'>
-                <div class='story__date'>
-                  Started: {{date date=unpublishedStory.createdAt}}
+        {{#if (gt unpublishedStories.length 0)}}
+          {{#each unpublishedStories as |unpublishedStory|}}
+            {{#link-to 'stories.create.story' unpublishedStory.id classNames='card u__remove-style box column o__vertical-align story__my-stories'}}
+              <div class='box row spaced'>
+                <div class='box column o__vertical-align story__title'>
+                  {{unpublishedStory.title}}
                 </div>
-                <div class='horizontally-align'>
-                  <div class='button positive' {{action 'togglePublishStatus' unpublishedStory}}>
-                    Publish
+                <div class='box column o__vertical-align'>
+                  <div class='story__date'>
+                    Started: {{date date=unpublishedStory.createdAt}}
+                  </div>
+                  <div class='horizontally-align'>
+                    <div class='button positive' {{action 'togglePublishStatus' unpublishedStory}}>
+                      Publish
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          {{/link-to}}
+            {{/link-to}}
 
-          <div class='u__sp__2'></div>
-        {{/each}}
+            <div class='u__sp__2'></div>
+          {{/each}}
+        {{else}}
+          {{empty-card text='No stories to publish :(' classNames='card o__empty box column o__vertical-align'}}
+        {{/if}}
       </div>
       <div class='box column'>
         <div class='u__ml__5'>
           Published
         </div>
-        {{#each publishedStories as |publishedStory|}}
-          {{#link-to 'stories.create.story' publishedStory.id classNames='card u__remove-style box column o__vertical-align story__my-stories'}}
-            <div class='box row spaced'>  
-              <div class='box column o__vertical-align story__title'>
-                {{publishedStory.title}}
-              </div>
-              <div class='box column o__vertical-align'>
-                <div class='story__date'>
-                  Published: {{date date=publishedStory.firstPublishedAt}}
+        {{#if (gt publishedStories.length 0)}}
+          {{#each publishedStories as |publishedStory|}}
+            {{#link-to 'stories.create.story' publishedStory.id classNames='card u__remove-style box column o__vertical-align story__my-stories'}}
+              <div class='box row spaced'>  
+                <div class='box column o__vertical-align story__title'>
+                  {{publishedStory.title}}
                 </div>
-                <div class='horizontally-align'>
-                  <div class='button negative' {{action 'togglePublishStatus' publishedStory}}>
-                    Unpublish
+                <div class='box column o__vertical-align'>
+                  <div class='story__date'>
+                    Published: {{date date=publishedStory.firstPublishedAt}}
+                  </div>
+                  <div class='horizontally-align'>
+                    <div class='button negative' {{action 'togglePublishStatus' publishedStory}}>
+                      Unpublish
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          {{/link-to}}
+            {{/link-to}}
 
-          <div class='u__sp__2'></div>
-        {{/each}}
+            <div class='u__sp__2'></div>
+          {{/each}}
+        {{else}}
+          {{empty-card text='No stories published :(' classNames='card o__empty box column o__vertical-align'}}
+        {{/if}}
       </div>
     </div>
   </div>
