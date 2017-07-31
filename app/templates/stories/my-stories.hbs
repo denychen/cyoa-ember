@@ -1,1 +1,30 @@
-{{outlet}}
+<div class='box row u__mt__15'>
+  <div class='box column'>
+    <div class='u__ml__5'>
+      Drafts
+    </div>
+    <div class='card'>
+      {{#each draftStories as |draftStory|}}
+        <div>
+          {{#link-to 'stories.create.story' draftStory.id}}
+            {{draftStory.title}}
+          {{/link-to}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  <div class='box column'>
+    <div class='u__ml__5'>
+      Published
+    </div>
+    <div class='card'>
+      {{#each publishedStories as |publishedStory|}}
+        <div>
+          {{#link-to 'stories.create.story' publishedStory.id}}
+            {{publishedStory.title}}
+          {{/link-to}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
