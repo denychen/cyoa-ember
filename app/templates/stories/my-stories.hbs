@@ -1,30 +1,58 @@
-<div class='box row u__mt__15'>
-  <div class='box column'>
-    <div class='u__ml__5'>
-      Drafts
-    </div>
-    <div class='card'>
-      {{#each draftStories as |draftStory|}}
-        <div>
-          {{#link-to 'stories.create.story' draftStory.id}}
-            {{draftStory.title}}
-          {{/link-to}}
+<div class='box column'>
+  <div class='horizontally-align'>
+    <div class='box row u__mt__15'>
+      <div class='box column'>
+        <div class='u__ml__5'>
+          Unpublished
         </div>
-      {{/each}}
-    </div>
-  </div>
-  <div class='box column'>
-    <div class='u__ml__5'>
-      Published
-    </div>
-    <div class='card'>
-      {{#each publishedStories as |publishedStory|}}
-        <div>
-          {{#link-to 'stories.create.story' publishedStory.id}}
-            {{publishedStory.title}}
+        {{#each unpublishedStories as |unpublishedStory|}}
+          {{#link-to 'stories.create.story' unpublishedStory.id classNames='card u__remove-style box column o__vertical-align story__my-stories'}}
+            <div class='box row spaced'>
+              <div class='box column o__vertical-align story__title'>
+                {{unpublishedStory.title}}
+              </div>
+              <div class='box column o__vertical-align'>
+                <div class='story__date'>
+                  Started: {{date date=unpublishedStory.createdAt}}
+                </div>
+                <div class='horizontally-align'>
+                  <div class='button positive' {{action 'togglePublishStatus' unpublishedStory}}>
+                    Publish
+                  </div>
+                </div>
+              </div>
+            </div>
           {{/link-to}}
+
+          <div class='u__sp__2'></div>
+        {{/each}}
+      </div>
+      <div class='box column'>
+        <div class='u__ml__5'>
+          Published
         </div>
-      {{/each}}
+        {{#each publishedStories as |publishedStory|}}
+          {{#link-to 'stories.create.story' publishedStory.id classNames='card u__remove-style box column o__vertical-align story__my-stories'}}
+            <div class='box row spaced'>  
+              <div class='box column o__vertical-align story__title'>
+                {{publishedStory.title}}
+              </div>
+              <div class='box column o__vertical-align'>
+                <div class='story__date'>
+                  Published: {{date date=publishedStory.firstPublishedAt}}
+                </div>
+                <div class='horizontally-align'>
+                  <div class='button negative' {{action 'togglePublishStatus' publishedStory}}>
+                    Unpublish
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{/link-to}}
+
+          <div class='u__sp__2'></div>
+        {{/each}}
+      </div>
     </div>
   </div>
 </div>
