@@ -6,8 +6,6 @@ export default Ember.Controller.extend({
   story: Ember.computed.readOnly('model.story'),
   pages: Ember.computed.reads('story.pages'),
 
-  activePage: Ember.computed.reads('pages.firstObject'),
-
   destinations: Ember.computed.or('activePage.destinations', 'emptyArray'),
 
   isFirstPage: Ember.computed('activePage.id', 'activePage.story.firstPageId', function() {
