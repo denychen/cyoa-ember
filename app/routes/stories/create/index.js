@@ -7,7 +7,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   },
 
   actions: {
-    willTransition(transition) {
+    willTransition() {
       this.set('controller.title', null);
       this.set('controller.premise', null);
       this.set('controller.selectedGenres', null);
