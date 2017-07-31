@@ -8,5 +8,6 @@ export default DS.Model.extend({
   firstPageId: DS.attr(),
   published: DS.attr('boolean', { defaultValue: false }),
   pages: DS.hasMany('page', { async: false }),
+  firstPublishedAt: DS.attr(),
   createdAt: DS.attr()
 });
