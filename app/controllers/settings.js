@@ -28,6 +28,8 @@ export default Ember.Controller.extend({
           user.set('username', newUser.user.username);
           user.set('token', newUser.user.token);
 
+          this.set('session.data.authenticated.token', newUser.user.token);
+
           this.set('email', null);
           this.set('username', null);
           this.set('password', null);
