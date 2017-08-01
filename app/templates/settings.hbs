@@ -1,0 +1,61 @@
+<div class='u__sp__5'></div>
+
+<div class='box column card horizontally-align'>
+  <div class='u__sp__4'></div>
+
+  <div class='settings__title horizontally-align'>
+    Settings
+  </div>
+
+  <div class='settings__form'>
+    <div>
+      <div>
+        New Email
+      </div>
+      <div>
+        {{input classNames='horizontally-align' autofocus=true value=email enter='saveSettings'}}
+      </div>
+    </div>
+
+    <div class='u__sp__2'></div>
+
+    <div>
+      <div>
+        New Username
+      </div>
+      <div>
+        {{input classNames='horizontally-align' value=username enter='saveSettings'}}
+      </div>
+    </div>
+
+    <div class='u__sp__2'></div>
+
+    <div>
+      <div>
+        New Password
+      </div>
+      <div>
+        {{input type='password' classNames='horizontally-align' value=password enter='saveSettings'}}
+      </div>
+    </div>
+
+    <div class='u__sp__2'></div>
+
+    <div>
+      <div>
+        Old Password
+      </div>
+      <div>
+        {{input type='password' classNames='horizontally-align' value=oldPassword enter='saveSettings'}}
+      </div>
+    </div>
+  </div>
+  
+  <div class='u__sp__2'></div>
+  
+  <div class='button positive horizontally-align' {{action 'saveSettings'}}>
+    Save
+  </div>
+
+  <div class='u__sp__5'></div>
+</div>

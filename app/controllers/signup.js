@@ -13,8 +13,8 @@ export default Ember.Controller.extend({
         let credentials = { email: this.get('email'), password: this.get('password') };
 
         this.set('email', null);
-        this.set('password', null);
         this.set('username', null);
+        this.set('password', null);
 
         return this.get('session').authenticate('authenticator:custom', credentials);
       });

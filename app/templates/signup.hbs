@@ -1,7 +1,7 @@
 <div class='u__sp__5'></div>
 
-<div class='box column card horizontally-align o__signup'>
-  <div class='u__sp__1'></div>
+<div class='box column card horizontally-align'>
+  <div class='u__sp__4'></div>
 
   <div class='signup__title horizontally-align'>
     Get started with CYOA
@@ -21,10 +21,10 @@
 
     <div>
       <div>
-        Password
+        Username
       </div>
       <div>
-        {{input type='password' classNames='horizontally-align' value=password enter='signup'}}
+        {{input classNames='horizontally-align' value=username enter='signup'}}
       </div>
     </div>
 
@@ -32,10 +32,10 @@
 
     <div>
       <div>
-        Username
+        Password
       </div>
       <div>
-        {{input classNames='horizontally-align' value=username enter='signup'}}
+        {{input type='password' classNames='horizontally-align' value=password enter='signup'}}
       </div>
     </div>
   </div>
@@ -45,4 +45,6 @@
   <div class='button positive horizontally-align' {{action 'signup'}}>
     Sign Up
   </div>
+
+  <div class='u__sp__5'></div>
 </div>

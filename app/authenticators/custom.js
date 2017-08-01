@@ -29,9 +29,9 @@ export default Base.extend({
         this.get('store').pushPayload(response);
 
         let user = response.user;
-        resolve({ token: user.token, userId: user.id });
+        return resolve({ token: user.token, userId: user.id });
       }, function (xhr/*, status, error*/) {
-        reject(xhr.responseText);
+        return reject(xhr.responseText);
       });
     });
   },
@@ -45,9 +45,9 @@ export default Base.extend({
         contentType: 'application/json',
         dataType : 'json'
       }).then((/*response*/) => {
-        resolve(data);
+        return resolve(data);
       }, function (/*xhr, status, error*/) {
-        resolve(data);
+        return resolve(data);
       });
     });
   }
