@@ -22,13 +22,12 @@ export default Ember.Controller.extend({
             "oldPassword": this.get('oldPassword')
           })
         }).then(newUser => {
-          let user = this.get('currentUser.user');
+          // https://github.com/simplabs/ember-simple-auth/issues/926#issuecomment-243953558
+          var newSession = this.get('session.data');
+          newSession['authenticated']['token'] = newUser.user.token;
+          this.get('session.store').persist(newSession);
 
-          user.set('email', newUser.user.email);
-          user.set('username', newUser.user.username);
-          user.set('token', newUser.user.token);
-
-          this.set('session.data.authenticated.token', newUser.user.token);
+          this.get('currentUser').update(newUser.user.email, newUser.user.username, newUser.user.token);
 
           this.set('email', null);
           this.set('username', null);
