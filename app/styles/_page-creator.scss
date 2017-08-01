@@ -1,11 +1,14 @@
 .page-creator__list {
-  height: 100%;
   padding: 0px;
   width: 200px;
 }
 
 .page-creator__editor {
   width: 100%;
+}
+
+.page-creator__left-column {
+  height: 100%;
 }
 
 .page-creator__unstyled-input {
@@ -94,6 +97,10 @@
   width: 160px;
 }
 
-.page-creator__first-page__indicator {
+.o__list__first-page {
   border-left: thick solid #5dbcd2;
+}
+
+.o__list__not-first-page {
+  padding-left: 13px;
 }
