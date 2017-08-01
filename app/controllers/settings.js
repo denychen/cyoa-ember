@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
     saveSettings() {
       let user = this.get('currentUser.user');
 
-      new Ember.RSVP.Promise((resolve/*, reject*/) => {
+      new Ember.RSVP.Promise((/*resolve, reject*/) => {
         Ember.$.ajax({
           url: 'http://localhost:3000/api/users/',
           type: 'PUT',

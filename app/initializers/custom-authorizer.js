@@ -1,6 +1,6 @@
 import CustomAuthorizer from '../authorizers/custom';
  
-export function initialize(container, application) {
+export function initialize(application) {
   application.register('authorizer:custom', CustomAuthorizer);
 }
  
