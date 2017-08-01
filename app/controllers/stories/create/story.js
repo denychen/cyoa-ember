@@ -52,6 +52,13 @@ export default Ember.Controller.extend({
       this.send('savePage');
     },
 
+    deleteStory() {
+      let story = this.get('story');
+      return story.destroyRecord().then(() => {
+        return this.transitionToRoute('stories.my-stories');
+      });
+    },
+
     savePage() {
       let page = this.get('activePage');
       page.save();

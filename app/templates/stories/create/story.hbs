@@ -4,13 +4,22 @@
   {{input autoresize=true classNames='page-creator__story-premise__input page-creator__unstyled-input' placeholder='Describe your story' value=story.description}}
 
   <div class='box row'>
-    {{page-list 
-      classNames='card page-creator__list'
-      pages=pages
-      selectPage=(action 'selectPage')
-      addPage=(action 'addPage')
-      activePage=activePage
-    }}
+    <div class='box column page-creator__left-column'>
+      {{page-list 
+        classNames='card page-creator__list'
+        pages=pages
+        selectPage=(action 'selectPage')
+        addPage=(action 'addPage')
+        activePage=activePage
+      }}
+
+      <div class='u__sp__2'></div>
+      <div class='horizontally-align'>
+        <div class='button negative' {{action 'deleteStory'}}>
+          Delete Story
+        </div>
+      </div>
+    </div>
 
     <div class='page-creator__editor box column'>
       <div class='card page-creator__page-editor box column horizontally-align'>
