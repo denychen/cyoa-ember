@@ -13,7 +13,7 @@
         Email
       </div>
       <div>
-        {{input classNames='horizontally-align' autofocus=true value=email enter='signup'}}
+        {{input classNames='horizontally-align' classNameBindings='missingEmail:u__error-borders' autofocus=true value=email enter='signup' placeholder=(if missingEmail 'Required')}}
       </div>
     </div>
 
@@ -24,7 +24,7 @@
         Username
       </div>
       <div>
-        {{input classNames='horizontally-align' value=username enter='signup'}}
+        {{input classNames='horizontally-align' classNameBindings='missingUsername:u__error-borders' value=username enter='signup' placeholder=(if missingUsername 'Required')}}
       </div>
     </div>
 
@@ -35,7 +35,7 @@
         Password
       </div>
       <div>
-        {{input type='password' classNames='horizontally-align' value=password enter='signup'}}
+        {{input type='password' classNames='horizontally-align' classNameBindings='missingPassword:u__error-borders' value=password enter='signup' placeholder=(if missingPassword 'Required')}}
       </div>
     </div>
   </div>
