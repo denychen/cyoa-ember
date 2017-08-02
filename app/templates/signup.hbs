@@ -41,9 +41,14 @@
   </div>
   
   <div class='u__sp__2'></div>
-  
-  <div class='button positive horizontally-align' {{action 'signup'}}>
-    Sign Up
+
+  <div class='horizontally-align'>
+    <span class='button positive u__mr__15' {{action 'signup'}}>
+      Sign Up
+    </span>
+    <span>
+      {{link-to 'or sign in to your account' 'signin' (query-params email=email)}}
+    </span>
   </div>
 
   <div class='u__sp__5'></div>

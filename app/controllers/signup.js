@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  queryParams: ['email'],
+  email: null,
+  
   session: Ember.inject.service('session'),
   anyError: Ember.computed.or('missingEmail', 'missingPassword', 'missingUsername'),
   noError: Ember.computed.not('anyError'),
