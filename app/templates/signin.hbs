@@ -8,25 +8,13 @@
   </div>
 
   <div class='signup__form'>
-    <div>
-      <div>
-        Email
-      </div>
-      <div>
-        {{input classNames='horizontally-align' classNameBindings='missingEmail:u__error-borders' autofocus=true value=email enter='signin' placeholder=(if missingEmail 'Required')}}
-      </div>
-    </div>
+    Email
+    {{input classNames='horizontally-align' classNameBindings='missingEmail:u__error-borders' autofocus=true value=email enter='signin' placeholder=(if missingEmail 'Required')}}
 
     <div class='u__sp__2'></div>
 
-    <div>
-      <div>
-        Password
-      </div>
-      <div>
-        {{input type='password' classNames='horizontally-align' classNameBindings='missingEmail:u__error-borders' value=password enter='signin' placeholder=(if missingEmail 'Required')}}
-      </div>
-    </div>
+    Password
+    {{input type='password' classNames='horizontally-align' classNameBindings='missingEmail:u__error-borders' value=password enter='signin' placeholder=(if missingEmail 'Required')}}
 
   </div>
   
@@ -41,5 +29,15 @@
     </span>
   </div>
 
-  <div class='u__sp__5'></div>
+  {{#if loginError}}
+    <div class='u__sp__2'></div>
+
+    <div class='horizontally-align u__error-text'>
+      Invalid login
+    </div>
+
+    <div class='u__sp__3'></div>
+  {{else}}
+    <div class='u__sp__5'></div>
+  {{/if}}
 </div>

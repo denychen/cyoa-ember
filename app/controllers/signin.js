@@ -10,6 +10,8 @@ export default Ember.Controller.extend({
 
   actions: {
     signin() {
+      this.set('loginError', false);
+      
       let email = this.get('email');
       let password = this.get('password');
 
@@ -26,12 +28,14 @@ export default Ember.Controller.extend({
       }
 
       if (this.get('hasNoErrors')) {
-        new Ember.RSVP.Promise((resolve/*, reject*/) => {
+        new Ember.RSVP.Promise((resolve) => {
           return (this.get('session.isAuthenticated')) ? this.get('session').invalidate() : resolve(true);
         }).then (() => {
           let credentials = { email: email, password: password };
 
-          return this.get('session').authenticate('authenticator:custom', credentials);
+          return this.get('session').authenticate('authenticator:custom', credentials).catch(error => {
+            this.set('loginError', true);
+          });
         });
       }
     }
