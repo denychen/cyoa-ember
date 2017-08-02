@@ -3,48 +3,34 @@
 <div class='box column card horizontally-align'>
   <div class='u__sp__4'></div>
 
-  <div class='signup__title horizontally-align'>
+  <div class='story__create__title horizontally-align'>
     Create a story
   </div>
 
-  <div class='signup__form'>
-    <div>
-      <div>
-        Title ({{titleLength}}/{{maxTitleLength}})
-      </div>
-      <div>
-        {{input classNames='horizontally-align' autofocus=true value=title maxlength=maxTitleLength}}
-      </div>
-    </div>
+  <div class='story__create__form'>
+    Title ({{titleLength}}/{{maxTitleLength}})
+    {{input classNames='horizontally-align' classNameBindings='missingTitle:u__error-borders' autofocus=true value=title maxlength=maxTitleLength placeholder='Required'}}
 
     <div class='u__sp__2'></div>
 
     <div>
-      <div>
-        Premise ({{premiseLength}}/{{maxPremiseLength}})
-      </div>
-      <div>
-        {{textarea classNames='horizontally-align creation__premise' value=premise maxlength=maxPremiseLength rows=10}}
-      </div>
+      Premise ({{premiseLength}}/{{maxPremiseLength}})
+      {{textarea classNames='horizontally-align creation__premise' value=premise maxlength=maxPremiseLength rows=10 placeholder='Optional'}}
     </div>
 
     <div class='u__sp__2'></div>
 
-    <div>
-      <div>
-        Genre
-      </div>
-      <div>
-        {{#power-select-multiple
-          options=genres
-          selected=selectedGenres
-          onchange=(action (mut selectedGenres))
-          as |genre|
-        }}
-          {{genre.genre}}
-        {{/power-select-multiple}}
-      </div>
-    </div>
+    Genre
+    {{#power-select-multiple
+      triggerClass=(if missingGenre 'u__error-borders')
+      options=genres
+      placeholder='Select at least one genre'
+      selected=selectedGenres
+      onchange=(action (mut selectedGenres))
+      as |genre|
+    }}
+      {{genre.genre}}
+    {{/power-select-multiple}}
   </div>
   
   <div class='u__sp__2'></div>
