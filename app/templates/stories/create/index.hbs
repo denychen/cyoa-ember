@@ -9,7 +9,7 @@
 
   <div class='story__create__form'>
     Title ({{titleLength}}/{{maxTitleLength}})
-    {{input classNames='horizontally-align' classNameBindings='missingTitle:u__error-borders' autofocus=true value=title maxlength=maxTitleLength placeholder='Required'}}
+    {{input classNames='horizontally-align' classNameBindings='missingTitle:u__error-borders' autofocus=true value=title maxlength=maxTitleLength placeholder=(if missingTitle 'Required')}}
 
     <div class='u__sp__2'></div>
 
