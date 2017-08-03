@@ -1,7 +1,7 @@
 <div class='box column'>
-  {{input autoresize=true classNames='page-creator__story-title__input page-creator__unstyled-input' placeholder='Enter a title' value=story.title}}
+  {{input autoresize=true classNames='page-creator o__story-title__input page-creator__unstyled-input' placeholder='Enter a title' value=story.title}}
 
-  {{input autoresize=true classNames='page-creator__story-premise__input page-creator__unstyled-input' placeholder='Describe your story' value=story.description}}
+  {{input autoresize=true classNames='page-creator o__story-premise__input page-creator__unstyled-input' placeholder='Describe your story' value=story.description}}
 
   <div class='box row'>
     <div class='box column page-creator__left-column'>
@@ -24,7 +24,7 @@
     <div class='page-creator__editor box column'>
       <div class='card page-creator__page-editor box column horizontally-align'>
         <div class='box row spaced'>
-          {{input autoresize=true classNames='page-creator__page-title__input page-creator__unstyled-input' placeholder='Give the page a name to remember by' value=activePage.name}}
+          {{input autoresize=true classNames='page-creator o__page-title__input page-creator__unstyled-input' placeholder='Give the page a name to remember by' value=activePage.name}}
 
           {{#unless isFirstPage}}
             <div class='page-creator__set-first-page__button button positive' {{action 'setAsFirstPage'}}>
@@ -35,7 +35,7 @@
 
         <div class='u__sp__1'></div>
 
-        {{textarea autoresize=true classNames='page-creator__page-content__input page-creator__unstyled-input horizontally-align' rows=5 placeholder='Write your story here' value=activePage.content}}         
+        {{textarea autoresize=true classNames='page-creator o__page-content__input page-creator__unstyled-input horizontally-align' rows=5 placeholder='Write your story here' value=activePage.content}}         
 
         <div class='u__sp__1'></div>
 

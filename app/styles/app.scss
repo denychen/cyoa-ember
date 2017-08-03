@@ -5,7 +5,7 @@
 @import 'positioning';
 @import 'selectors';
 @import 'settings';
-@import 'signup';
+@import 'signup-signin';
 @import 'stories';
 @import 'utilities';
 @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono');
@@ -81,4 +81,29 @@ body > .ember-view {
   box-shadow: 0px 5px 5px 0px rgba(186,186,186,1);
   -webkit-box-shadow: 0px 5px 5px 0px rgba(186,186,186,1);
   -moz-box-shadow: 0px 5px 5px 0px rgba(186,186,186,1);
+}
+
+input:not(.ember-power-select-trigger-multiple-input):not(.page-creator) {
+  border: 1px solid #9c9c9c;
+  border-radius: 2px;
+  height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+input:focus:not(.ember-power-select-trigger-multiple-input):not(.page-creator) {
+  border-color: #5dbcd2;
+  box-shadow: 0 0 3px 0px #5dbcd2;
+  outline: none !important;
+}
+
+textarea:not(.page-creator) {
+  border: 1px solid #9c9c9c;
+  border-radius: 2px;
+}
+
+textarea:focus:not(.page-creator) {
+  border-color: #5dbcd2;
+  box-shadow: 0 0 3px 0px #5dbcd2;
+  outline: none !important;
 }

@@ -27,17 +27,17 @@
   border-bottom: thin dotted black;
 }
 
-.page-creator__story-title__input {
+.o__story-title__input {
   background-color: #f0f0f0;
   border-bottom: thin dotted #f0f0f0;
   margin: 10px;
 }
 
-.page-creator__story-title__input:focus {
+.o__story-title__input:focus {
   border-bottom: thin dotted black;
 }
 
-.page-creator__story-premise__input {
+.o__story-premise__input {
   background-color: #f0f0f0;
   border-bottom: thin dotted #f0f0f0;
   font-size: 16px;
@@ -69,13 +69,13 @@
   width: 90%;
 }
 
-.page-creator__page-title__input {
+.o__page-title__input {
   border-bottom: thin dotted #fcfcfc;
   font-size: 24px;
   margin-top: 10px;
 }
 
-.page-creator__page-content__input {
+.o__page-content__input {
   border-bottom: none !important;
   font-size: 16px;
   resize: none;
