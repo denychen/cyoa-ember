@@ -4,6 +4,7 @@ import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-
 export default Ember.Route.extend(UnauthenticatedRouteMixin, {
   actions: {
     willTransition() {
+      this.set('controller.loginError', null);
       this.set('controller.email', null);
       this.set('controller.missingEmail', false);
       this.set('controller.password', null);

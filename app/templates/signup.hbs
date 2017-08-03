@@ -51,5 +51,15 @@
     </span>
   </div>
 
-  <div class='u__sp__5'></div>
+  {{#if errorMessage}}
+    <div class='u__sp__2'></div>
+
+    <div class='horizontally-align u__error-text'>
+      {{errorMessage}}
+    </div>
+
+    <div class='u__sp__3'></div>
+  {{else}}
+    <div class='u__sp__5'></div>
+  {{/if}}
 </div>

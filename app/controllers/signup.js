@@ -10,6 +10,8 @@ export default Ember.Controller.extend({
   
   actions: {
     signup() {
+      this.set('errorMessage', null);
+
       let email = this.get('email');
       let password = this.get('password');
       let username = this.get('username');
@@ -33,18 +35,27 @@ export default Ember.Controller.extend({
       }
 
       if (this.get('noError')) {
-        this.get('store').createRecord('user', {
+        let user = this.get('store').createRecord('user', {
           email: email,
           password: password,
           username: username
-        }).save().then(() => {
+        });
+
+        this.set('user', user);
+        
+        user.save().then(() => {
           let credentials = { email: this.get('email'), password: this.get('password') };
 
           this.set('email', null);
           this.set('username', null);
           this.set('password', null);
 
-          return this.get('session').authenticate('authenticator:custom', credentials);
+          return this.get('session').authenticate('authenticator:custom', credentials).catch(error => {
+            debugger;
+          });
+        }).catch(error => {
+          let errorMessage = error.errors[0].detail;
+          this.set('errorMessage', errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1));
         });
       }
     }
