@@ -87,7 +87,7 @@ input {
   font-family: 'Roboto', sans-serif !important;
 }
 
-input:not(.ember-power-select-trigger-multiple-input):not(.page-creator) {
+input:not(.ember-power-select-trigger-multiple-input):not(.ember-power-select-search-input):not(.page-creator__unstyled-input) {
   border: 1px solid #9c9c9c;
   border-radius: 2px;
   height: 30px;
@@ -95,7 +95,7 @@ input:not(.ember-power-select-trigger-multiple-input):not(.page-creator) {
   padding-right: 5px;
 }
 
-input:focus:not(.ember-power-select-trigger-multiple-input):not(.page-creator) {
+input:focus:not(.ember-power-select-trigger-multiple-input):not(.ember-power-select-search-input):not(.page-creator__unstyled-input) {
   border-color: #5dbcd2;
   box-shadow: 0 0 3px 0px #5dbcd2;
   outline: none !important;
