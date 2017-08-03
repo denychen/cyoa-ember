@@ -24,7 +24,7 @@
     {{#power-select-multiple
       triggerClass=(if missingGenre 'u__error-borders')
       options=genres
-      placeholder='Select at least one genre'
+      placeholder=(if missingGenre 'Select at least one genre')
       selected=selectedGenres
       onchange=(action (mut selectedGenres))
       as |genre|
