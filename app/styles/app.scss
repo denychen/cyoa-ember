@@ -83,6 +83,10 @@ body > .ember-view {
   -moz-box-shadow: 0px 5px 5px 0px rgba(186,186,186,1);
 }
 
+input {
+  font-family: 'Roboto', sans-serif !important;
+}
+
 input:not(.ember-power-select-trigger-multiple-input):not(.page-creator) {
   border: 1px solid #9c9c9c;
   border-radius: 2px;
@@ -95,6 +99,10 @@ input:focus:not(.ember-power-select-trigger-multiple-input):not(.page-creator) {
   border-color: #5dbcd2;
   box-shadow: 0 0 3px 0px #5dbcd2;
   outline: none !important;
+}
+
+textarea {
+  font-family: 'Roboto', sans-serif !important;
 }
 
 textarea:not(.page-creator) {
