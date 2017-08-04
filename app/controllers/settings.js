@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from './../config/environment';
 
 export default Ember.Controller.extend({
   currentUser: Ember.inject.service('current-user'),
@@ -19,7 +20,7 @@ export default Ember.Controller.extend({
       if (!this.get('missingOldPassword') && this.get('changedSetting')) {
         new Ember.RSVP.Promise((/*resolve, reject*/) => {
           Ember.$.ajax({
-            url: 'http://localhost:3000/api/users/',
+            url: `${config.backend}/api/users/`,
             type: 'PUT',
             headers: { 'Authorization': `Bearer ${user.get('token')}` },
             contentType: 'application/json',

@@ -6,6 +6,7 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
+    backend: 'http://localhost:3000',
     contentSecurityPolicy: {
       'connect-src': "'self' http://localhost:3000"
     },

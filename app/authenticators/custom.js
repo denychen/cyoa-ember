@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';
+import config from './../config/environment';
 
 export default Base.extend({
   store: Ember.inject.service('store'),
@@ -17,7 +18,7 @@ export default Base.extend({
   authenticate(options) {
     return new Ember.RSVP.Promise((resolve, reject) => {
       Ember.$.ajax({
-        url: 'http://localhost:3000/api/users/signin',
+        url: `${config.backend}/api/users/signin`,
         type: 'POST',
         contentType: 'application/json',
         dataType : 'json',
@@ -39,7 +40,7 @@ export default Base.extend({
   invalidate(data) {
     return new Ember.RSVP.Promise((resolve/*, reject*/) => {
       Ember.$.ajax({
-        url: 'http://localhost:3000/api/users/signout',
+        url: `${config.backend}/api/users/signout`,
         type: 'POST',
         headers: { 'Authorization': `Bearer ${data.token}` },
         contentType: 'application/json',
