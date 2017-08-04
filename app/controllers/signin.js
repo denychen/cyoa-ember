@@ -33,7 +33,7 @@ export default Ember.Controller.extend({
         }).then (() => {
           let credentials = { email: email, password: password };
 
-          return this.get('session').authenticate('authenticator:custom', credentials).catch(error => {
+          return this.get('session').authenticate('authenticator:custom', credentials).catch(() => {
             this.set('loginError', true);
           });
         });
