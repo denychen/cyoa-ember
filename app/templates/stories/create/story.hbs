@@ -1,7 +1,16 @@
 <div class='box column'>
-  {{input autoresize=true classNames='page-creator o__story-title__input page-creator__unstyled-input' placeholder='Enter a title' value=story.title}}
+  <div class='box row spaced'>
+    <div class='box column'>
+      {{input autoresize=true classNames='page-creator o__story-title__input page-creator__unstyled-input' placeholder='Enter a title' value=story.title}}
 
-  {{input autoresize=true classNames='page-creator o__story-premise__input page-creator__unstyled-input' placeholder='Describe your story' value=story.description}}
+      {{input autoresize=true classNames='page-creator o__story-premise__input page-creator__unstyled-input' placeholder='Describe your story' value=story.description}}
+    </div>
+    <div class='box column o__vertical-align'>
+      <div class='button edit page-creator__edit-story__button'>
+        Edit Story Details
+      </div>
+    </div>
+  </div>
 
   <div class='box row'>
     <div class='box column page-creator__left-column'>
@@ -35,7 +44,7 @@
 
         <div class='u__sp__1'></div>
 
-        {{textarea autoresize=true classNames='page-creator o__page-content__input page-creator__unstyled-input horizontally-align' rows=5 placeholder='Write your story here' value=activePage.content}}         
+        {{textarea autoresize=true classNames='page-creator o__page-content__input page-creator__unstyled-input horizontally-align' rows=10 placeholder='Write your story here' value=activePage.content}}         
 
         <div class='u__sp__1'></div>
 

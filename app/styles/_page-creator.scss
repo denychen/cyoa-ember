@@ -4,6 +4,7 @@
 }
 
 .page-creator__editor {
+  margin-right: 10px;
   width: 100%;
 }
 
@@ -66,7 +67,9 @@
 }
 
 .page-creator__page-editor {
-  width: 90%;
+  box-sizing: border-box;
+  margin-right: 10px;
+  width: 100%;
 }
 
 .o__page-title__input {
@@ -104,4 +107,8 @@
 
 .o__list__not-first-page {
   padding-left: 15px;
+}
+
+.page-creator__edit-story__button {
+  margin-right: 10px;
 }
