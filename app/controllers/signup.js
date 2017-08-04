@@ -50,8 +50,8 @@ export default Ember.Controller.extend({
           this.set('username', null);
           this.set('password', null);
 
-          return this.get('session').authenticate('authenticator:custom', credentials).catch(error => {
-            debugger;
+          return this.get('session').authenticate('authenticator:custom', credentials).catch(() => {
+             this.set('errorMessage', 'Failed to login. Please try again later.');
           });
         }).catch(error => {
           let errorMessage = error.errors[0].detail;
