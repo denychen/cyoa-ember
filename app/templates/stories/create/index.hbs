@@ -40,7 +40,11 @@
   <div class='u__sp__2'></div>
   
   <div class='button positive horizontally-align' {{action 'createStory'}}>
-    Create
+    {{#unless story}}
+      Create
+    {{else}}
+      Update
+    {{/unless}}
   </div>
 
   <div class='u__sp__5'></div>
