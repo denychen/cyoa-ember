@@ -1,9 +1,12 @@
 import Ember from 'ember';
+import RSVP from 'rsvp';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model() {
-    return this.store.findAll('genre');
+    return RSVP.hash({
+      genres: this.store.findAll('genre')
+    });
   },
 
   actions: {

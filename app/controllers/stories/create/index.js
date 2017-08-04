@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
   
   maxTitleLength: 300,
   maxPremiseLength: 2000,
-  genres: Ember.computed.readOnly('model'),
+  genres: Ember.computed.readOnly('model.genres'),
   anyError: Ember.computed.or('missingTitle', 'missingGenre'),
   noErrors: Ember.computed.not('anyError'),
 
