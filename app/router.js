@@ -8,10 +8,11 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('stories', function() {
-    this.route('story', { path: '/:storyId' });
+    this.route('story', { path: '/:id' });
     this.route('create', function() {
-      this.route('story', { path: '/:storyId'});
+      this.route('story', { path: '/:id'});
     });
+    this.route('update', { path: '/update/:id' });
     this.route('my-stories');
   });
   this.route('signup');

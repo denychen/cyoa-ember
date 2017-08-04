@@ -81,6 +81,10 @@ export default Ember.Controller.extend({
           this.set('activePage', this.get('pages.lastObject'));
         }
       });
+    },
+
+    editStory() {
+      return this.transitionToRoute('stories.update', this.get('story'));
     }
   }
 });

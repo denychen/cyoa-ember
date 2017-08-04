@@ -4,7 +4,11 @@
   <div class='u__sp__4'></div>
 
   <div class='story__create__title horizontally-align'>
-    Create a story
+    {{#unless story}}
+      Create a story
+    {{else}}
+      Update {{story.title}}
+    {{/unless}}
   </div>
 
   <div class='story__create__form'>

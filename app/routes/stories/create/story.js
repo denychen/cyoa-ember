@@ -7,7 +7,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   
   model(params) {
     return RSVP.hash({
-      story: this.get('store').findRecord('story', params.storyId, { include: 'pages', reload: true })
+      story: this.get('store').findRecord('story', params.id, { include: 'pages', reload: true })
     });
   },
 
@@ -22,6 +22,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   },
 
   setupController(controller, model) {
+    this._super(controller, model);
+
     let pages = model.story.get('pages');
 
     let page = null;
@@ -33,6 +35,5 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     }
 
     controller.set('activePage', page);
-    controller.set('model', model);
   }
 });
