@@ -43,15 +43,6 @@ export default Ember.Controller.extend({
       story.save();
     },
 
-    saveStory() {
-      let story = this.get('story');
-      if (story.get('hasDirtyAttributes')) {
-        story.save();
-      }
-
-      this.send('savePage');
-    },
-
     deleteStory() {
       let story = this.get('story');
       return story.destroyRecord().then(() => {

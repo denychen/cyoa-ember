@@ -12,10 +12,19 @@
   height: 100%;
 }
 
+.o__story-title {
+  font-size: 36px;
+  margin: 10px;
+}
+
+.o__story-premise {
+  font-size: 16px;
+  margin: 0px 10px 10px 10px;
+}
+
 .page-creator__unstyled-input {
   background-color: #fcfcfc;
   border: none;
-  font-size: 36px;
   width: 100%;
 }
 
@@ -26,23 +35,6 @@
 
 .page-creator__unstyled-input:hover {
   border-bottom: thin dotted black;
-}
-
-.o__story-title__input {
-  background-color: #f0f0f0;
-  border-bottom: thin dotted #f0f0f0;
-  margin: 10px;
-}
-
-.o__story-title__input:focus {
-  border-bottom: thin dotted black;
-}
-
-.o__story-premise__input {
-  background-color: #f0f0f0;
-  border-bottom: thin dotted #f0f0f0;
-  font-size: 16px;
-  margin: 0px 10px 10px 10px;
 }
 
 .page-creator__page-item {
