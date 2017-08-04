@@ -84,6 +84,7 @@ body > .ember-view {
 }
 
 input {
+  box-sizing: border-box;
   font-family: 'Roboto', sans-serif !important;
 }
 
@@ -102,12 +103,15 @@ input:focus:not(.ember-power-select-trigger-multiple-input):not(.ember-power-sel
 }
 
 textarea {
+  box-sizing: border-box;
   font-family: 'Roboto', sans-serif !important;
 }
 
 textarea:not(.page-creator) {
   border: 1px solid #9c9c9c;
   border-radius: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 textarea:focus:not(.page-creator) {
