@@ -26,6 +26,10 @@ main {
   justify-content: center;
 }
 
+.box.column.o__bottom-align {
+  justify-content: flex-end;
+}
+
 .horizontally-align {
   margin: 0 auto;
 }
