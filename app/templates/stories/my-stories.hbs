@@ -7,7 +7,10 @@
         </div>
         {{#if (gt unpublishedStories.length 0)}}
           {{#each unpublishedStories as |unpublishedStory|}}
-            {{#link-to 'stories.create.story' unpublishedStory.id classNames='card u__remove-style box column o__vertical-align story__my-stories'}}
+            {{#link-to 'stories.create.story' 
+              unpublishedStory.id 
+              classNames='card u__remove-style box column o__vertical-align story__my-stories'
+            }}
               <div class='box row spaced'>
                 <div class='box column o__vertical-align story__title'>
                   {{unpublishedStory.title}}
@@ -31,7 +34,9 @@
             <div class='u__sp__2'></div>
           {{/each}}
         {{else}}
-          {{#empty-card text='No stories to publish :(' classNames='card o__empty box column o__vertical-align'}}
+          {{#empty-card classNames='card o__empty box column o__vertical-align'
+            text='No stories to publish :(' 
+          }}
             <div class='button positive' {{action 'startStory'}}>
               Start a story
             </div>
@@ -44,7 +49,10 @@
         </div>
         {{#if (gt publishedStories.length 0)}}
           {{#each publishedStories as |publishedStory|}}
-            {{#link-to 'stories.create.story' publishedStory.id classNames='card u__remove-style box column o__vertical-align story__my-stories'}}
+            {{#link-to 'stories.create.story' 
+              publishedStory.id 
+              classNames='card u__remove-style box column o__vertical-align story__my-stories'
+            }}
               <div class='box row spaced'>  
                 <div class='box column o__vertical-align story__title'>
                   {{publishedStory.title}}
@@ -68,7 +76,9 @@
             <div class='u__sp__2'></div>
           {{/each}}
         {{else}}
-          {{#empty-card text='No stories published :(' classNames='card o__empty box column o__vertical-align'}}
+          {{#empty-card classNames='card o__empty box column o__vertical-align'
+            text='No stories published :(' 
+          }}
             <div class='button positive' {{action 'startStory'}}>
               Start a story
             </div>

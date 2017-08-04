@@ -9,22 +9,40 @@
 
   <div class='settings__form'>
     New Email
-    {{input classNames='horizontally-align' autofocus=true value=email placeholder='Optional' enter='saveSettings'}}
+    {{input classNames='horizontally-align' 
+      autofocus=true value=email 
+      placeholder='Optional' 
+      enter='saveSettings'
+    }}
 
     <div class='u__sp__2'></div>
 
     New Username
-    {{input classNames='horizontally-align' value=username placeholder='Optional' enter='saveSettings'}}
+    {{input classNames='horizontally-align' 
+      value=username 
+      placeholder='Optional' 
+      enter='saveSettings'
+    }}
 
     <div class='u__sp__2'></div>
 
     New Password
-    {{input type='password' classNames='horizontally-align' value=password placeholder='Optional' enter='saveSettings'}}
+    {{input type='password' 
+      classNames='horizontally-align' 
+      value=password 
+      placeholder='Optional' 
+      enter='saveSettings'
+    }}
 
     <div class='u__sp__2'></div>
 
     Old Password
-    {{input type='password' classNames='horizontally-align' classNameBindings='missingOldPassword:u__error-borders' value=oldPassword placeholder='Required' enter='saveSettings'}}
+    {{input type='password' 
+      classNames='horizontally-align' 
+      classNameBindings='missingOldPassword:u__error-borders' 
+      value=oldPassword 
+      placeholder='Required' 
+      enter='saveSettings'}}
   </div>
   
   <div class='u__sp__2'></div>

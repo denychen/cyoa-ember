@@ -13,13 +13,24 @@
 
   <div class='story__create__form'>
     Title ({{titleLength}}/{{maxTitleLength}})
-    {{input classNames='horizontally-align' classNameBindings='missingTitle:u__error-borders' autofocus=true value=title maxlength=maxTitleLength placeholder=(if missingTitle 'Required')}}
+    {{input classNames='horizontally-align' 
+      classNameBindings='missingTitle:u__error-borders' 
+      autofocus=true 
+      value=title 
+      maxlength=maxTitleLength
+       placeholder=(if missingTitle 'Required')
+      }}
 
     <div class='u__sp__2'></div>
 
     <div>
       Premise ({{premiseLength}}/{{maxPremiseLength}})
-      {{textarea classNames='horizontally-align creation__premise' value=premise maxlength=maxPremiseLength rows=10 placeholder='Optional'}}
+      {{textarea classNames='horizontally-align creation__premise' 
+        value=premise 
+        maxlength=maxPremiseLength 
+        rows=10 
+        placeholder='Optional'
+      }}
     </div>
 
     <div class='u__sp__2'></div>

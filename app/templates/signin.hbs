@@ -9,12 +9,24 @@
 
   <div class='signup-signin__form'>
     Email
-    {{input classNames='horizontally-align' classNameBindings='missingEmail:u__error-borders' autofocus=true value=email enter='signin' placeholder=(if missingEmail 'Required')}}
+    {{input classNames='horizontally-align' 
+      classNameBindings='missingEmail:u__error-borders' 
+      autofocus=true 
+      value=email 
+      enter='signin' 
+      placeholder=(if missingEmail 'Required')
+    }}
 
     <div class='u__sp__2'></div>
 
     Password
-    {{input type='password' classNames='horizontally-align' classNameBindings='missingPassword:u__error-borders' value=password enter='signin' placeholder=(if missingPassword 'Required')}}
+    {{input type='password' 
+      classNames='horizontally-align' 
+      classNameBindings='missingPassword:u__error-borders' 
+      value=password 
+      enter='signin' 
+      placeholder=(if missingPassword 'Required')
+    }}
 
   </div>
   
