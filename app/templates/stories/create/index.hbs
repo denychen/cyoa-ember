@@ -4,7 +4,7 @@
   <div class='u__sp__4'></div>
 
   <div class='story__create__title horizontally-align'>
-    {{#unless story}}
+    {{#unless story.id}}
       Create a story
     {{else}}
       Update {{story.title}}
@@ -39,8 +39,8 @@
   
   <div class='u__sp__2'></div>
   
-  <div class='button positive horizontally-align' {{action 'createStory'}}>
-    {{#unless story}}
+  <div class='button positive horizontally-align' {{action 'saveStory'}}>
+    {{#unless story.id}}
       Create
     {{else}}
       Update

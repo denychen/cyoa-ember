@@ -1,12 +1,11 @@
 import Ember from 'ember';
-import RSVP from 'rsvp';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   currentUser: Ember.inject.service('current-user'),
   
   model(params) {
-    return RSVP.hash({
+    return Ember.RSVP.hash({
       story: this.get('store').findRecord('story', params.id, { include: 'pages', reload: true })
     });
   },
