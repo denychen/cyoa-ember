@@ -52,7 +52,15 @@ export default Ember.Controller.extend({
 
     savePage() {
       let page = this.get('activePage');
-      page.save();
+      page.save().then(() => {
+        this.get('notifications').success('Page saved', {
+          autoClear: true
+        });
+      }).catch(() => {
+        this.get('notifications').error('Page failed to save', {
+          autoClear: true
+        });
+      });
     },
 
     addPage() {
