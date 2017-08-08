@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
 
     addDestination() {
       let newDestination = this.get('store').createRecord('destination', {
-        order: this.get('destinations.length')
+        order: this.get('destinations.length') + 1
       });
 
       this.get('destinations').pushObject(newDestination);
@@ -52,11 +52,12 @@ export default Ember.Controller.extend({
 
     savePage() {
       let page = this.get('activePage');
-      page.save().then(() => {
+      page.save().then(result => {
+        this.set('activePage.destinations', this.get('activePage.destinations').rejectBy('id', null));
         this.get('notifications').success('Page saved', {
           autoClear: true
         });
-      }).catch(() => {
+      }).catch(error => {
         this.get('notifications').error('Page failed to save', {
           autoClear: true
         });
