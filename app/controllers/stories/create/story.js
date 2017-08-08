@@ -63,12 +63,12 @@ export default Ember.Controller.extend({
       });
 
       if (!hasAnyError) {
-        page.save().then(result => {
+        page.save().then(() => {
           this.set('activePage.destinations', this.get('activePage.destinations').rejectBy('id', null));
           this.get('notifications').success('Page saved', {
             autoClear: true
           });
-        }).catch(error => {
+        }).catch(() => {
           this.get('notifications').error('Page failed to save', {
             autoClear: true
           });
