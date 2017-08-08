@@ -17,7 +17,7 @@
         onchange=(action 'updatePath' path)
         as |page|
       }}
-        {{page.name}}
+        {{if page.name page.name 'Untitled page'}}
       {{/power-select}}
 
       <div class='button negative' {{action 'removePath' index}}>
