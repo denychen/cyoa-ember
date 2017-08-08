@@ -4,9 +4,9 @@ export default Ember.Component.extend({
   hasPathError: Ember.computed.readOnly('path.hasPathError'),
   
   actions: {
-    updateDestination(destination, selectedPage) {
+    updatePath(path, selectedPage) {
       this.set('path.hasPathError', false);
-      destination.set('pageId', selectedPage.get('id'));
+      path.set('pageId', selectedPage.get('id'));
     },
 
     togglePreview() {

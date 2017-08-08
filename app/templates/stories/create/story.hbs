@@ -62,8 +62,8 @@
         <div class='u__sp__1'></div>
 
         <div class='box column o__right-align'>
-          {{#if hasDestinations}}
-            {{#each destinations as |path index|}}
+          {{#if hasPaths}}
+            {{#each paths as |path index|}}
               {{path-selector path=path pages=pages index=index removePath=(action 'removePath')}}
             {{/each}}
           {{else}}

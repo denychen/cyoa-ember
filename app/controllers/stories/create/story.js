@@ -6,8 +6,8 @@ export default Ember.Controller.extend({
   story: Ember.computed.readOnly('model.story'),
   pages: Ember.computed.reads('story.pages'),
 
-  destinations: Ember.computed.or('activePage.destinations', 'emptyArray'),
-  hasDestinations: Ember.computed.gt('destinations.length', 0),
+  paths: Ember.computed.or('activePage.destinations', 'emptyArray'),
+  hasPaths: Ember.computed.gt('paths.length', 0),
 
   isFirstPage: Ember.computed('activePage.id', 'activePage.story.firstPageId', function() {
     return this.get('activePage.id') === this.get('activePage.story.firstPageId');
@@ -21,15 +21,15 @@ export default Ember.Controller.extend({
 
     addDestination() {
       let newDestination = this.get('store').createRecord('destination', {
-        order: this.get('destinations.length') + 1
+        order: this.get('paths.length') + 1
       });
 
-      this.get('destinations').pushObject(newDestination);
+      this.get('paths').pushObject(newDestination);
     },
 
     removePath(indexToRemove) {
-      this.get('destinations').removeAt(indexToRemove);
-      this.get('destinations').forEach((destination, index) => {
+      this.get('paths').removeAt(indexToRemove);
+      this.get('paths').forEach((destination, index) => {
         if (index >= indexToRemove) {
           destination.set('order', index + 1);
         }
@@ -55,7 +55,7 @@ export default Ember.Controller.extend({
       let page = this.get('activePage');
       let hasAnyError = false;
 
-      this.get('destinations').forEach(destination => {
+      this.get('paths').forEach(destination => {
         if (Ember.isEmpty(destination.get('pageId'))) {
           destination.set('hasPathError', true);
           hasAnyError = true;
@@ -81,10 +81,13 @@ export default Ember.Controller.extend({
     },
 
     addPage() {
+      let story = this.get('story');
       let newPage = this.get('store').createRecord('page');
-      newPage.set('story', this.get('story'));
+
+      newPage.set('story', story);
       newPage.save().then(page => {
         this.get('pages').pushObject(page);
+        story.set('firstPageId', page.get('id'));
         this.set('activePage', page);
       });
     },

@@ -23,16 +23,21 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   setupController(controller, model) {
     this._super(controller, model);
 
-    let pages = model.story.get('pages');
+    let story = model.story;
+    let pages = story.get('pages');
 
     let page = null;
     if (pages.length === 0) {
       page = this.get('store').createRecord('page');
-      pages.pushObject(page);
+      page.set('story', story);
+      page.save().then(page => {
+        pages.pushObject(page);
+        story.set('firstPageId', page.get('id'));
+        controller.set('activePage', page);
+      });
     } else {
       page = pages.get('firstObject');
+      controller.set('activePage', page);
     }
-
-    controller.set('activePage', page);
   }
 });
