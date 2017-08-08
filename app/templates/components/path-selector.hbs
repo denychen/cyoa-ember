@@ -1,5 +1,5 @@
 <div class='box row u__mb__20'>
-  {{#if showPathEditor}}
+  {{#unless showPreview}}
     <div class='box row u__mr__10'>
       {{input class='page-creator o__path-name__editor u__mr__10' 
         placeholder='Path description' 
@@ -22,9 +22,9 @@
         Remove
       </div>
     </div>
-  {{/if}}
+  {{/unless}}
   
-  <div class='button {{if showPathEditor 'positive' 'edit'}}' {{action 'editPath'}}>
-    {{if showPathEditor 'Done' (if path.option path.option defaultPathName)}}
+  <div class='button {{if showPreview 'edit' 'positive'}}' {{action 'togglePreview'}}>
+    {{unless showPreview 'Preview' path.option}}
   </div>
 </div>
