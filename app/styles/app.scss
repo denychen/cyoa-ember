@@ -125,3 +125,7 @@ textarea:focus:not(.page-creator) {
   font-style: italic;
   color: #9c9c9c;
 }
+
+input::placeholder {
+  color: #9c9c9c;
+}
