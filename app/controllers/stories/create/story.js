@@ -12,6 +12,7 @@ export default Ember.Controller.extend({
   isFirstPage: Ember.computed('activePage.id', 'activePage.story.firstPageId', function() {
     return this.get('activePage.id') === this.get('activePage.story.firstPageId');
   }),
+  hasNoName: Ember.computed.empty('activePage.name'),
 
   actions: {
     selectPage(id) {

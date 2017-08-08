@@ -41,6 +41,7 @@
             classNames='page-creator o__page-title__input page-creator__unstyled-input' 
             placeholder='Give the page a name to remember by' 
             value=activePage.name
+            autofocus=(if hasNoName 'autofocus')
           }}
 
           {{#unless isFirstPage}}
