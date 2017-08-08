@@ -53,16 +53,31 @@ export default Ember.Controller.extend({
 
     savePage() {
       let page = this.get('activePage');
-      page.save().then(result => {
-        this.set('activePage.destinations', this.get('activePage.destinations').rejectBy('id', null));
-        this.get('notifications').success('Page saved', {
-          autoClear: true
-        });
-      }).catch(error => {
-        this.get('notifications').error('Page failed to save', {
-          autoClear: true
-        });
+      let hasAnyError = false;
+
+      this.get('destinations').forEach(destination => {
+        if (Ember.isEmpty(destination.id)) {
+          destination.set('hasPathError', true);
+          hasAnyError = true;
+
+          this.get('notifications').error('All paths need to lead to a page', {
+            autoClear: true
+          });
+        }
       });
+
+      if (!hasAnyError) {
+        page.save().then(result => {
+          this.set('activePage.destinations', this.get('activePage.destinations').rejectBy('id', null));
+          this.get('notifications').success('Page saved', {
+            autoClear: true
+          });
+        }).catch(error => {
+          this.get('notifications').error('Page failed to save', {
+            autoClear: true
+          });
+        });
+      }
     },
 
     addPage() {

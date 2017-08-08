@@ -9,6 +9,7 @@
       {{#power-select
         tagName='div'
         class='destination_selector u__mr__10'
+        classNameBindings='hasPathError:u__error-borders'
         placeholder='Path'
         options=pages
         selected=(selected-page pages=pages pageId=path.pageId)
@@ -24,7 +25,7 @@
     </div>
   {{/unless}}
   
-  <div class='button {{if showPreview 'edit' 'positive'}}' {{action 'togglePreview'}}>
+  <div class='button {{if showPreview 'edit' 'positive'}} {{if (and showPreview hasPathError) 'u__error-borders'}}' {{action 'togglePreview'}}>
     {{unless showPreview 'Preview' path.option}}
   </div>
 </div>
