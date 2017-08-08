@@ -12,6 +12,7 @@
         classNameBindings='hasPathError:u__error-borders'
         placeholder='Path'
         options=pages
+        searchField='name'
         selected=(selected-page pages=pages pageId=path.pageId)
         onchange=(action 'updateDestination' path)
         as |page|
