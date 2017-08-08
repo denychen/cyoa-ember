@@ -39,5 +39,16 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
       page = pages.get('firstObject');
       controller.set('activePage', page);
     }
+  },
+
+  actions: {
+    didTransition() {
+      Ember.run.scheduleOnce('afterRender', this, () => {
+        let input = Ember.$('.o__page-title__input')[0];
+        if (!input.value) {
+          input.focus();
+        }
+      });
+    }
   }
 });
