@@ -59,10 +59,6 @@ export default Ember.Controller.extend({
         if (Ember.isEmpty(destination.id)) {
           destination.set('hasPathError', true);
           hasAnyError = true;
-
-          this.get('notifications').error('All paths need to lead to a page', {
-            autoClear: true
-          });
         }
       });
 
@@ -76,6 +72,10 @@ export default Ember.Controller.extend({
           this.get('notifications').error('Page failed to save', {
             autoClear: true
           });
+        });
+      } else {
+        this.get('notifications').error('All paths need to lead to a page', {
+          autoClear: true
         });
       }
     },
