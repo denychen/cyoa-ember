@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
   pages: Ember.computed.reads('story.pages'),
 
   destinations: Ember.computed.or('activePage.destinations', 'emptyArray'),
+  hasDestinations: Ember.computed.gt('destinations.length', 0),
 
   isFirstPage: Ember.computed('activePage.id', 'activePage.story.firstPageId', function() {
     return this.get('activePage.id') === this.get('activePage.story.firstPageId');

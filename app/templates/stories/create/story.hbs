@@ -62,9 +62,15 @@
         <div class='u__sp__1'></div>
 
         <div class='box column o__right-align'>
-          {{#each destinations as |path index|}}
-            {{path-selector path=path pages=pages index=index removePath=(action 'removePath')}}
-          {{/each}}
+          {{#if hasDestinations}}
+            {{#each destinations as |path index|}}
+              {{path-selector path=path pages=pages index=index removePath=(action 'removePath')}}
+            {{/each}}
+          {{else}}
+            <div class='tooltip u__mb__10'>
+              Because this page has no paths, it’s the end and will lead back to the beginning
+            </div>
+          {{/if}}
         </div>
 
         <div class='box column o__right-align'>
