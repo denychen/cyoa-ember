@@ -56,7 +56,7 @@ export default Ember.Controller.extend({
       let hasAnyError = false;
 
       this.get('destinations').forEach(destination => {
-        if (Ember.isEmpty(destination.id)) {
+        if (Ember.isEmpty(destination.get('pageId'))) {
           destination.set('hasPathError', true);
           hasAnyError = true;
         }
