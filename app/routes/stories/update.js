@@ -5,5 +5,11 @@ export default CreateRoute.extend({
 
   model(params) {
     return this.store.find('story', params.id);
+  },
+
+  actions: {
+    willTransition() {
+      return false;
+    }
   }
 });

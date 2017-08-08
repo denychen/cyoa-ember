@@ -12,5 +12,15 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
     this.store.findAll('genre').then(genres => {
       controller.set('genres', genres);
     });
+  },
+
+  actions: {
+    willTransition() {
+      this.set('controller.title', null);
+      this.set('controller.premise', null);
+      this.set('controller.selectedGenres', Ember.A());
+
+      return true;
+    }
   }
 });
