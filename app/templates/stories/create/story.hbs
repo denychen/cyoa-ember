@@ -39,7 +39,7 @@
         <div class='box row spaced'>
           {{input autoresize=true 
             classNames='page-creator o__page-title__input page-creator__unstyled-input' 
-            placeholder='Give the page a name to remember by' 
+            placeholder='Give this page a name to remember by' 
             value=activePage.name
             autofocus=(if hasNoName 'autofocus')
           }}
@@ -69,7 +69,7 @@
             {{/each}}
           {{else}}
             <div class='tooltip u__mb__10'>
-              Because this page has no paths, it’s the end and will lead back to the beginning
+              Because this page has no paths, it’s the end of the story and will lead back to the beginning
             </div>
           {{/if}}
         </div>

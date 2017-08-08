@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   hasPathError: Ember.computed.readOnly('path.hasPathError'),
+  hasNoPages: Ember.computed.empty('pages'),
   
   actions: {
     updatePath(path, selectedPage) {

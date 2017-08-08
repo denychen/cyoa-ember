@@ -12,7 +12,7 @@
         classNameBindings='hasPathError:u__error-borders'
         options=pages
         searchField='name'
-        placeholder=(if (lte pages.length 1) 'Create a page first')
+        placeholder=(if hasNoPages 'Create a page first')
         selected=(selected-page pages=pages pageId=path.pageId)
         onchange=(action 'updatePath' path)
         as |page|

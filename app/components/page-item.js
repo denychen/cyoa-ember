@@ -4,13 +4,23 @@ export default Ember.Component.extend({
   classNameBindings: ['isActivePage:o__active-page', 'isFirstPage:o__list__first-page', 'isNotFirstPage:o__list__not-first-page'],
   defaultPageName: 'Untitled page',
   pageName: Ember.computed.or('page.name', 'defaultPageName'),
-  isDirty: Ember.computed('page.id', 'page.hasDirtyAttributes', function() {
-    if (this.get('page.id')) {
-      return this.get('page.hasDirtyAttributes');
-    } else {
-      return false;
+  _destinations: Ember.computed.reads('page.destinations'),
+
+  isTitleOrContentDirty: Ember.computed('page.id', 'page.name', 'page.content', 'page.hasDirtyAttributes', function() {
+    if (this.get('page.id') && this.get('page.hasDirtyAttributes')) {
+      let changedAttributes = this.get('page').changedAttributes();
+      return Object.values(changedAttributes).some(attributes => !attributes[0] !== !attributes[1]);
     }
+    
+    return false;
   }),
+
+  isDestinationDirty: Ember.computed('page.destinations.@each.hasDirtyAttributes', function() {
+    return this.get('page.destinations').isAny('hasDirtyAttributes', true);
+  }),
+
+  isDirty: Ember.computed.or('isTitleOrContentDirty', 'isDestinationDirty'),
+
   isActivePage: Ember.computed('page.id', 'activePage.id', function() {
     return this.get('page.id') === this.get('activePage.id');
   }),
