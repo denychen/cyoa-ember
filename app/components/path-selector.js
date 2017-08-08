@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   
   actions: {
     updateDestination(destination, selectedPage) {
+      this.set('path.hasPathError', false);
       destination.set('pageId', selectedPage.get('id'));
     },
 
