@@ -87,8 +87,12 @@ export default Ember.Controller.extend({
 
       newPage.set('story', story);
       newPage.save().then(page => {
-        this.get('pages').pushObject(page);
-        story.set('firstPageId', page.get('id'));
+        let pages = this.get('pages');
+        
+        pages.pushObject(page);
+        if (pages.length <= 1) {
+          story.set('firstPageId', page.get('id'));
+        }
         this.set('activePage', page);
       });
     },
