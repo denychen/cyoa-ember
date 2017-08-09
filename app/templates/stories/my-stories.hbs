@@ -23,7 +23,7 @@
                   <div class='u__sp__1'></div>
                   
                   <div class='horizontally-align'>
-                    <div class='button positive' {{action 'togglePublishStatus' unpublishedStory}}>
+                    <div class='button edit' {{action 'showPublishConfirmation' unpublishedStory bubbles=false}}>
                       Publish
                     </div>
                   </div>
@@ -65,7 +65,7 @@
                   <div class='u__sp__1'></div>
 
                   <div class='horizontally-align'>
-                    <div class='button negative' {{action 'togglePublishStatus' publishedStory}}>
+                    <div class='button negative' {{action 'showPublishConfirmation' publishedStory bubbles=false}}>
                       Unpublish
                     </div>
                   </div>
@@ -88,3 +88,11 @@
     </div>
   </div>
 </div>
+ 
+{{confirmation-dialog 
+  messageBody=publishConfirmationBody
+  messageContinue=publishConfirmationMessageContinue
+  messageCancel='Cancel'
+  showDialog=showPublishDialog
+  continueDialog=(action 'continuePublish')
+}} 
