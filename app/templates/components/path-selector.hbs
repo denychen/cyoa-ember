@@ -26,7 +26,7 @@
     </div>
   {{/unless}}
   
-  <div class='button {{if showPreview 'edit' 'positive'}} {{if (and showPreview hasPathError) 'u__error-borders'}}' {{action 'togglePreview'}}>
+  <div class='button {{if showPreview 'destination' 'edit'}} {{if (and showPreview hasPathError) 'u__error-borders'}}' {{action 'togglePreview'}}>
     {{unless showPreview 'Preview' path.option}}
   </div>
 </div>
