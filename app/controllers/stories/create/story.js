@@ -15,6 +15,9 @@ export default Ember.Controller.extend({
   hasNoName: Ember.computed.empty('activePage.name'),
 
   showDeleteConfirmation: false,
+  deleteConfirmationBody: Ember.computed('story.title', function() {
+    return `Are you sure you want to delete ${this.get('story.title')}?`;
+  }),
 
   actions: {
     selectPage(id) {
