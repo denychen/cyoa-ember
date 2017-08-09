@@ -98,11 +98,16 @@ export default Ember.Controller.extend({
     },
 
     removePage() {
+      let activeIndex = this.get('pages').toArray().findIndex(page => {
+        return page.get('id') === this.get('activePage.id');
+      });
+      let newIndex = activeIndex === this.get('pages.length') - 1 ? activeIndex - 1 : activeIndex;
+
       this.get('activePage').destroyRecord().then(() => {
         if(this.get('pages.length') === 0) {
           this.send('addPage');
         } else {
-          this.set('activePage', this.get('pages.lastObject'));
+          this.set('activePage', this.get('pages').objectAt(newIndex));
         }
       });
     },
