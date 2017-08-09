@@ -1,0 +1,20 @@
+{{#if showDialog}}
+  {{#modal-dialog 
+    onClose=(action 'cancelDialog') 
+    translucentOverlay=true
+  }}
+    <div class='box column'>
+      <div class='u__mb__30'>
+        {{messageBody}}
+      </div>
+      <div class='box row spaced'>
+        <div class='button negative' {{action 'cancelDialog'}}>
+          {{messageCancel}}
+        </div>
+        <div class='button edit' {{action 'continueDialog'}}>
+          {{messageContinue}}
+        </div>
+      </div>
+    </div>
+  {{/modal-dialog}}
+{{/if}}

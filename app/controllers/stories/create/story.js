@@ -14,6 +14,8 @@ export default Ember.Controller.extend({
   }),
   hasNoName: Ember.computed.empty('activePage.name'),
 
+  showDeleteConfirmation: false,
+
   actions: {
     selectPage(id) {
       let activePage = this.get('pages').find(page => page.id === id);
@@ -50,6 +52,10 @@ export default Ember.Controller.extend({
       return story.destroyRecord().then(() => {
         return this.transitionToRoute('stories.my-stories');
       });
+    },
+
+    toggleDeleteConfirmation() {
+      this.toggleProperty('showDeleteConfirmation');
     },
 
     savePage() {

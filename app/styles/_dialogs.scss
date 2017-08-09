@@ -1,0 +1,12 @@
+@import "ember-modal-dialog/ember-modal-structure";
+
+.ember-modal-dialog {
+  background-color: #fcfcfc;
+  border: 1px solid #000000;
+  border-radius: 3px;
+  box-shadow: 0 0 10px #222;
+  padding: 24px 24px;
+}
+.ember-modal-overlay.translucent {
+  background-color: rgba(#808080, .77);
+}

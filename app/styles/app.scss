@@ -1,6 +1,7 @@
 @import 'buttons';
 @import 'cards';
 @import 'creation';
+@import 'dialogs';
 @import 'page-creator';
 @import 'positioning';
 @import 'selectors';
@@ -34,7 +35,6 @@ body > .ember-view {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1999999999;
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -61,7 +61,7 @@ body > .ember-view {
 }
 
 .background {
-  background-color: #f0f0f0;
+  background-color: #fcfcfc;
   flex: 1 1 auto;
   padding: 75px 10px 15px 10px;
 }

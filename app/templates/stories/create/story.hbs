@@ -11,7 +11,7 @@
     </div>
     <div class='box column o__vertical-align'>
       <div class='box row'>
-        <div class='button negative u__mr__10' {{action 'deleteStory'}}>
+        <div class='button negative u__mr__10' {{action 'toggleDeleteConfirmation'}}>
           Delete story
         </div>
         <div class='button edit page-creator__edit-story__button' {{action 'editStory'}}>
@@ -93,3 +93,11 @@
     </div>
   </div>
 </div>
+
+{{confirmation-dialog 
+  messageBody='Are you sure you want to delete the story?'
+  messageContinue='Delete'
+  messageCancel='Cancel'
+  showDialog=showDeleteConfirmation
+  continueDialog=(action 'deleteStory')
+}}
