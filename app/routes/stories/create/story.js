@@ -36,7 +36,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
         controller.set('activePage', page);
       });
     } else {
-      page = pages.get('firstObject');
+      page = pages.findBy('id', story.get('firstPageId'));
       controller.set('activePage', page);
     }
   },
