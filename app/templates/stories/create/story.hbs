@@ -33,9 +33,16 @@
 
       <div class='u__sp__2'></div>
       <div class='horizontally-align'>
-        <div class='button negative' {{action 'removePage'}}>
+        <div class='button negative {{if isFirstPage 'o__disabled'}}' {{action 'removePage'}}>
           Remove page
         </div>
+        {{#if isFirstPage}}
+          {{tooltip-on-element 
+            side='bottom' 
+            delay=500
+            text='Cannot remove first page'
+          }}
+        {{/if}}
       </div>
     </div>
 

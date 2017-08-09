@@ -1132,6 +1132,21 @@ broccoli-asset-rewrite@^1.1.0:
   dependencies:
     broccoli-filter "^1.2.3"
 
+broccoli-babel-transpiler@^5.6.0:
+  version "5.7.2"
+  resolved "https://registry.yarnpkg.com/broccoli-babel-transpiler/-/broccoli-babel-transpiler-5.7.2.tgz#756c30544775144e984333b7115f42c916ba08e0"
+  dependencies:
+    babel-core "^5.0.0"
+    broccoli-funnel "^1.0.0"
+    broccoli-merge-trees "^1.0.0"
+    broccoli-persistent-filter "^1.4.2"
+    clone "^0.2.0"
+    hash-for-dep "^1.0.2"
+    heimdalljs-logger "^0.1.7"
+    json-stable-stringify "^1.0.0"
+    rsvp "^3.5.0"
+    workerpool "^2.2.1"
+
 broccoli-babel-transpiler@^5.6.2:
   version "5.7.1"
   resolved "https://registry.yarnpkg.com/broccoli-babel-transpiler/-/broccoli-babel-transpiler-5.7.1.tgz#e10d831faed1c57e37272e4223748ba71a7926d1"
@@ -2253,6 +2268,16 @@ ember-cli-app-version@^3.0.0:
     ember-cli-htmlbars "^1.0.0"
     git-repo-version "0.4.1"
 
+ember-cli-babel@5.1.10:
+  version "5.1.10"
+  resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-5.1.10.tgz#d403f178aab602e1337c403c5a58c0200a8969aa"
+  dependencies:
+    broccoli-babel-transpiler "^5.6.0"
+    broccoli-funnel "^1.0.0"
+    clone "^1.0.2"
+    ember-cli-version-checker "^1.0.2"
+    resolve "^1.1.2"
+
 ember-cli-babel@^5.1.6, ember-cli-babel@^5.1.7, ember-cli-babel@^5.2.4:
   version "5.2.4"
   resolved "https://registry.yarnpkg.com/ember-cli-babel/-/ember-cli-babel-5.2.4.tgz#5ce4f46b08ed6f6d21e878619fb689719d6e8e13"
@@ -2437,6 +2462,17 @@ ember-cli-qunit@^4.0.0:
     qunitjs "^2.0.1"
     resolve "^1.1.6"
     silent-error "^1.0.0"
+
+ember-cli-sass@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-sass/-/ember-cli-sass-6.0.0.tgz#31c9c8fa789c0d25aaf8e315431b7a3ec4ba0175"
+  dependencies:
+    broccoli-funnel "^1.0.0"
+    broccoli-merge-trees "^1.1.0"
+    broccoli-sass-source-maps "^2.0.0"
+    ember-cli-babel "5.1.10"
+    ember-cli-version-checker "^1.0.2"
+    merge "^1.2.0"
 
 ember-cli-sass@^7.0.0:
   version "7.0.0"
@@ -2689,6 +2725,13 @@ ember-getowner-polyfill@^1.1.0, ember-getowner-polyfill@^1.2.2:
     ember-cli-version-checker "^1.2.0"
     ember-factory-for-polyfill "^1.1.0"
 
+ember-hash-helper-polyfill@^0.1.1:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/ember-hash-helper-polyfill/-/ember-hash-helper-polyfill-0.1.2.tgz#bc8ee6fa59e9541fce07d2cf4f263cf785e9e1db"
+  dependencies:
+    ember-cli-babel "^5.1.7"
+    ember-cli-version-checker "^1.2.0"
+
 ember-ignore-children-helper@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ember-ignore-children-helper/-/ember-ignore-children-helper-1.0.0.tgz#7645d769377779ff292235725b5b1f5c2e4c16ab"
@@ -2819,11 +2862,28 @@ ember-test-helpers@^0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/ember-test-helpers/-/ember-test-helpers-0.6.3.tgz#f864cdf6f4e75f3f8768d6537785b5ab6e82d907"
 
+ember-tether@^1.0.0-beta.0:
+  version "1.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/ember-tether/-/ember-tether-1.0.0-beta.0.tgz#fd9f46427e3ed138110b1c21e4be815338c02aa8"
+  dependencies:
+    ember-cli-babel "^5.1.7"
+    ember-cli-node-assets "^0.2.2"
+    tether "^1.4.0"
+
 ember-text-measurer@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/ember-text-measurer/-/ember-text-measurer-0.3.3.tgz#0762809a71c2e1f2e60ab00c53c6eb1b63c9f963"
   dependencies:
     ember-cli-babel "^5.1.6"
+
+ember-tooltips@^2.9.0-beta.0:
+  version "2.9.0-beta.0"
+  resolved "https://registry.yarnpkg.com/ember-tooltips/-/ember-tooltips-2.9.0-beta.0.tgz#a7a024cc606bc18d58f8f7a655ca4e65e0d25ac6"
+  dependencies:
+    ember-cli-babel "^5.1.7"
+    ember-cli-htmlbars "^1.1.1"
+    ember-cli-sass "6.0.0"
+    ember-hash-helper-polyfill "^0.1.1"
 
 ember-truth-helpers@^1.3.0:
   version "1.3.0"
@@ -4627,7 +4687,7 @@ merge-trees@^1.0.1:
     rimraf "^2.4.3"
     symlink-or-copy "^1.0.0"
 
-merge@^1.1.3:
+merge@^1.1.3, merge@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/merge/-/merge-1.2.0.tgz#7531e39d4949c281a66b8c5a6e0265e8b05894da"
 
@@ -6444,6 +6504,10 @@ testem@^1.15.0:
     styled_string "0.0.1"
     tap-parser "^5.1.0"
     xmldom "^0.1.19"
+
+tether@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/tether/-/tether-1.4.0.tgz#0f9fa171f75bf58485d8149e94799d7ae74d1c1a"
 
 text-table@~0.2.0:
   version "0.2.0"
