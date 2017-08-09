@@ -6,8 +6,8 @@ export default Ember.Controller.extend({
 
   genres: null,
 
-  maxTitleLength: 300,
-  maxPremiseLength: 2000,
+  maxTitleLength: 150,
+  maxPremiseLength: 1000,
 
   story: Ember.computed.readOnly('model.story'),
   title: Ember.computed.reads('story.title'),
