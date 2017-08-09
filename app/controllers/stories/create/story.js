@@ -95,6 +95,8 @@ export default Ember.Controller.extend({
         }
         this.set('activePage', page);
       });
+
+      Ember.$('.o__page-title__input')[0].focus();
     },
 
     removePage() {
