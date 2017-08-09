@@ -49,11 +49,15 @@
             autofocus=(if hasNoName 'autofocus')
           }}
 
-          {{#unless isFirstPage}}
-            <div class='page-creator__set-first-page__button button edit' {{action 'setAsFirstPage'}}>
+          {{#if isFirstPage}}
+            <div class='tooltip u__mt__10'>
+              This page is currently the first page of the story
+            </div>
+          {{else}}
+            <div class='button edit u__mt__10' {{action 'setAsFirstPage'}}>
               Set as start of story
             </div>
-          {{/unless}}
+          {{/if}}
         </div>
 
         <div class='u__sp__1'></div>
