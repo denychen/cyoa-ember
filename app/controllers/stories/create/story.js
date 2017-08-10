@@ -3,6 +3,13 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   emptyArray: Ember.A(),
 
+  maxPageNameLength: 50,
+  maxPageContentLength: 3000,
+
+  contentLength: Ember.computed('activePage.content', function() {
+    return this.get('maxPageContentLength') - (this.get('activePage.content.length') || 0);
+  }),
+
   story: Ember.computed.readOnly('model.story'),
   pages: Ember.computed.reads('story.pages'),
 

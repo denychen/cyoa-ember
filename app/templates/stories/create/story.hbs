@@ -53,6 +53,7 @@
             classNames='page-creator o__page-title__input page-creator__unstyled-input' 
             placeholder='Give this page a name to remember by' 
             value=activePage.name
+            maxlength=maxPageNameLength
             autofocus=(if hasNoName 'autofocus')
           }}
 
@@ -73,8 +74,12 @@
           classNames='page-creator o__page-content__input page-creator__unstyled-input horizontally-align' 
           rows=10 
           placeholder='Write your story here' 
+          maxlength=maxPageContentLength
           value=activePage.content
-        }}         
+        }}
+        <div class='word-count box column u__mt__5'>
+          ({{contentLength}}/{{maxPageContentLength}})
+        </div>    
 
         <div class='u__sp__1'></div>
 
