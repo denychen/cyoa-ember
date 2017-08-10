@@ -10,7 +10,6 @@ export default Ember.Component.extend({
       return author.get('username');
     }).join(', ');
   }),
-  description: Ember.computed.readOnly('story.description'),
   titleFirstLetter: Ember.computed('title', function() {
     return this.get('title').charAt(0);
   })

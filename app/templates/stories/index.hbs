@@ -1,16 +1,15 @@
 <div class='box column'>
-  <div class='latest-stories__header horizontally-align'>
-    <div class='u__sp__1'></div>
+  <div class='latest-stories__header u__ml__20'>
+    <div class='u__sp__2'></div>
 
     Latest Stories
 
-    <div class='u__sp__1'></div>  
+    <div class='u__sp__2'></div>
   </div>
-  <div class='box column'>
+  <div class='box row'>
     {{#each sortedStories as |story|}}
       {{#if story.published}}
-        <div class='u__mt__10'></div>
-        {{story-card story=story classNames='horizontally-align'}}
+        {{story-card story=story}}
       {{/if}}
     {{/each}}
   </div>

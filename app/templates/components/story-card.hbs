@@ -1,23 +1,22 @@
 {{#link-to 'stories.story' storyId classNames='u__remove-style'}}
-  <div class='box row card'>
-    <div class='story__hero'>
+  <div class='box column card o__cover'>
+    <div class='story__hero horizontally-align'>
       {{titleFirstLetter}}
     </div>
-    <div class='box column story__details'>
-      <div class='story__title'>
+    <div class='box column story__details horizontally-align'>
+      <div class='story__title horizontally-align'>
         {{title}}
       </div>
       {{#if authors}}
-        <div class='story__author'>
+        <div class='story__author horizontally-align'>
           by {{authors}}
         </div>
       {{/if}}
-
-      <div class='u__sp__1'></div>
-
-      <div class='story__description'>
-      {{description}}
-      </div>
+    </div>
+    <div class='story__genres'>
+      {{#each story.genres key='id' as |genre|}}
+        {{genre-emoji id=genre.id}}
+      {{/each}}
     </div>
   </div>
 {{/link-to}}
