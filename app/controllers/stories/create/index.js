@@ -4,14 +4,24 @@ export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   currentUser: Ember.inject.service('current-user'),
 
+  emptyGenres: Ember.A(),
   genres: null,
 
   maxTitleLength: 150,
   maxPremiseLength: 1000,
+  maxGenreCount: 3,
+
+  maxGenreCountMet: Ember.computed('selectedGenresCount', 'maxGenreCount', function() {
+    return this.get('selectedGenresCount') >= this.get('maxGenreCount');
+  }),
+  maxGenreCountMessage: Ember.computed('maxGenreCount', function() {
+    return `Max ${this.get('maxGenreCount')} genres`;
+  }),
 
   story: Ember.computed.readOnly('model.story'),
   title: Ember.computed.reads('story.title'),
   premise: Ember.computed.reads('story.description'),
+  selectedGenresCount: Ember.computed.readOnly('selectedGenres.length'),
   selectedGenres: Ember.computed.reads('initiallySelectedGenres'),
   initiallySelectedGenres: Ember.computed.filter('genres', function(genre) {
     let selectedGenres = this.get('story.genres');

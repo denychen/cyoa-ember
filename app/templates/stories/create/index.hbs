@@ -46,8 +46,9 @@
     Genre
     {{#power-select-multiple
       triggerClass=(if missingGenre 'u__error-borders')
-      options=genres
+      options=(unless maxGenreCountMet genres emptyGenres)
       placeholder=(if missingGenre 'Select at least one genre')
+      noMatchesMessage=(if maxGenreCountMet maxGenreCountMessage)
       selected=selectedGenres
       searchField='genre'
       onchange=(action (mut selectedGenres))
