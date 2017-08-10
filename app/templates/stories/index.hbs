@@ -1,16 +1,18 @@
-<div class='box column'>
-  <div class='latest-stories__header u__ml__20'>
+<div class='box'>
+  <div class='horizontally-align'>
     <div class='u__sp__2'></div>
-
-    Latest Stories
+    
+    <div class='latest-stories__header u__ml__20'>
+      Latest Stories
+    </div>
 
     <div class='u__sp__2'></div>
-  </div>
-  <div class='box row'>
-    {{#each sortedStories as |story|}}
-      {{#if story.published}}
-        {{story-card story=story}}
-      {{/if}}
-    {{/each}}
+    <div class='box row horizontally-align'>
+      {{#each sortedStories as |story|}}
+        {{#if story.published}}
+          {{story-card story=story}}
+        {{/if}}
+      {{/each}}
+    </div>
   </div>
 </div>
