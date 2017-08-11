@@ -22,8 +22,8 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    loadMore(story) {
-      this.store.query('story', { id: story.get('id') });
+    showMoreStories(lastStory) {
+      this.store.query('story', { id: lastStory.get('id') });
     }
   }
 });
