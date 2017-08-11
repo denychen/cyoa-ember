@@ -22,7 +22,11 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    showMoreStories(lastStory) {
+    showMoreStories(stories) {
+      let lastStory = stories.objectAt(stories.length - 1);
+      if (lastStory.get('id') === null) {
+        lastStory = stories.objectAt(stories.length - 2);
+      }
       this.store.query('story', { id: lastStory.get('id') });
     }
   }
