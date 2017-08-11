@@ -27,7 +27,7 @@ export default Ember.Controller.extend({
     let selectedGenres = this.get('story.genres');
 
     if (selectedGenres) {
-      return this.get('story.genres').includes(genre.get('genre'));
+      return this.get('story.genres').map(genre => genre.id).includes(parseInt(genre.get('id')));
     } else {
       return false;
     }
