@@ -18,10 +18,13 @@
         {{/each}}
       </div>
     </div>
-    <div class='u__sp__2'></div>
 
-    <a class='story__show-more' {{action 'showMoreStories' sortedStories}}>
-      Show more
-    </a>
+    {{#if (gt paginatedStories.length 0)}}
+      <div class='u__sp__2'></div>
+
+      <a class='story__show-more' {{action 'showMoreStories' sortedStories}}>
+        Show more
+      </a>
+    {{/if}}
   </div>
 </div>
