@@ -33,17 +33,11 @@
   border: 1px solid #9c9c9c;
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
-  width: 50px;
+  width: 15%;
 }
 
 .ember-password-toggle-btn:focus {
-  border-color: #5dbcd2;
-  box-shadow: 0 0 3px 0px #5dbcd2;
-  outline: none !important;
-}
-
-.ember-password-toggle-input:focus ~ .ember-password-toggle-btn {
-  border-color: #5dbcd2;
-  box-shadow: 0 0 3px 0px #5dbcd2;
+  border-color: none !important;
+  box-shadow: none !important;
   outline: none !important;
 }
