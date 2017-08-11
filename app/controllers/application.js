@@ -10,8 +10,12 @@ export default Ember.Controller.extend({
       this.get('session').invalidate();
     },
 
-    clickUsername() {
+    toggleUserDropdown() {
       this.toggleProperty('showUserDropdown');
     },
+
+    closeUserDropdown() {
+      this.set('showUserDropdown', false);
+    }
   }
 });
