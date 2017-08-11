@@ -5,14 +5,23 @@
     <div class='latest-stories__header u__ml__20'>
       Latest Stories
     </div>
-
-    <div class='u__sp__2'></div>
     <div class='box row horizontally-align'>
-      {{#each sortedStories as |story|}}
-        {{#if story.published}}
-          {{story-card story=story}}
-        {{/if}}
-      {{/each}}
+      <div class='box column'>
+        {{#each paginatedStories as |storyLine|}}
+          <div class='box row'>
+            {{#each storyLine as |story index|}}
+              {{#if story.published}}
+                {{story-card story=story}}
+              {{/if}}
+            {{/each}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+    <div class='u__sp__2'></div>
+
+    <div {{action 'loadMore' sortedStories.lastObject}}>
+      Load more
     </div>
   </div>
 </div>
