@@ -50,5 +50,7 @@
     "node": "^4.5 || 6.* || >= 7.*"
   },
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "ember-cli-password-toggle": "^2.0.1"
+  }
 }

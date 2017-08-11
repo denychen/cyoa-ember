@@ -46,13 +46,20 @@
         Password
       </div>
       <div>
-        {{input type='password' 
-          classNames='horizontally-align' 
-          classNameBindings='missingPassword:u__error-borders' 
-          value=password 
-          enter='signup' 
-          placeholder=(if missingPassword 'Required')
-        }}
+        {{#unless missingPassword}}
+          {{password-toggle password=password
+            wrapperClass='horizontally-align'
+            enter='signup'
+            placeholder=(if missingPassword 'Required')
+          }}
+        {{else}}
+          {{password-toggle password=password
+            wrapperClass='horizontally-align'
+            inputClass='u__error-borders'
+            enter='signup'
+            placeholder=(if missingPassword 'Required')
+          }}
+        {{/unless}}
       </div>
     </div>
   </div>
