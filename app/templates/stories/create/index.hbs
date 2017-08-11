@@ -54,7 +54,7 @@
       onchange=(action (mut selectedGenres))
       as |genre|
     }}
-      {{genre.genre}}
+      {{genre-emoji id=genre.id}} {{genre.genre}}
     {{/power-select-multiple}}
   </div>
   
