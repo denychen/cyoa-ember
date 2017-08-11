@@ -9,12 +9,12 @@
 {{#each pages as |page index|}}
   <div {{action 'selectPage' page.id bubbles=false}}>
     {{#if (gt index 0)}}
-      {{page-item classNames='box column o__vertical-align page-creator__page-item' 
+      {{page-item
         page=page 
         activePage=activePage
       }}
     {{else}}
-      {{page-item classNames='box column o__vertical-align page-creator__page-item o__first-page-item' 
+      {{page-item classNames='o__first-page-item' 
         page=page 
         activePage=activePage
       }}

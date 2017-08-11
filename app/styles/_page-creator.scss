@@ -104,3 +104,10 @@
 .page-creator__page-title-input__wrapper {
   padding-right: 10px;
 }
+
+.page-create__page-list__page-name {
+  padding-right: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

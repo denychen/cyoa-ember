@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  classNames: ['box', 'column', 'o__vertical-align', 'page-creator__page-item'],
   classNameBindings: ['isActivePage:o__active-page', 'isFirstPage:o__list__first-page', 'isNotFirstPage:o__list__not-first-page'],
   defaultPageName: 'Untitled page',
   pageName: Ember.computed.or('page.name', 'defaultPageName'),
