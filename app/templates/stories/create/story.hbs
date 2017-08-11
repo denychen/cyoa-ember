@@ -49,13 +49,15 @@
     <div class='page-creator__editor box column'>
       <div class='card page-creator__page-editor box column horizontally-align'>
         <div class='box row spaced'>
-          {{input autoresize=true 
-            classNames='page-creator o__page-title__input page-creator__unstyled-input' 
-            placeholder='Give this page a name to remember by' 
-            value=activePage.name
-            maxlength=maxPageNameLength
-            autofocus=(if hasNoName 'autofocus')
-          }}
+          <div class='page-creator__page-title-input__wrapper' {{action 'focusPageTitleEdit'}}>
+            {{input autoresize=true 
+              classNames='page-creator o__page-title__input page-creator__unstyled-input' 
+              placeholder='Give this page a name to remember by' 
+              value=activePage.name
+              maxlength=maxPageNameLength
+              autofocus=(if hasNoName 'autofocus')
+            }}
+          </div>
 
           {{#if isFirstPage}}
             <div class='tooltip u__mt__10'>

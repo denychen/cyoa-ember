@@ -134,6 +134,10 @@ export default Ember.Controller.extend({
 
     editStory() {
       return this.transitionToRoute('stories.update', this.get('story'));
+    },
+
+    focusPageTitleEdit() {
+      Ember.$('.o__page-title__input')[0].focus();
     }
   }
 });
