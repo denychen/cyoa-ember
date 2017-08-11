@@ -27,8 +27,8 @@ export default Ember.Controller.extend({
       if (lastStory.get('id') === null) {
         lastStory = stories.objectAt(stories.length - 2);
       }
-      this.store.query('story', { id: lastStory.get('id') }).then(stories => {
-        debugger;
+      this.store.query('story', { id: lastStory.get('id') }).then(newStories => {
+        this.set('noMoreStories', newStories.get('length') === 0);
       });
     }
   }

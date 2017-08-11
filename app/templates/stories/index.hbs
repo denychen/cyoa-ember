@@ -20,11 +20,15 @@
     </div>
 
     {{#if (gt paginatedStories.length 0)}}
-      <div class='u__sp__2'></div>
-
-      <a class='story__show-more' {{action 'showMoreStories' sortedStories}}>
-        Show more
-      </a>
+      {{#if noMoreStories}}
+        <div class='story__no-more u__mt__20'>
+          No more stories
+        </div>
+      {{else}}
+        <div class='story__show-more u__mt__20' {{action 'showMoreStories' sortedStories}}>
+          Show more
+        </div>
+      {{/if}}
     {{/if}}
   </div>
 </div>
