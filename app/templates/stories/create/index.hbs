@@ -54,14 +54,7 @@
       onchange=(action (mut selectedGenres))
       as |genre|
     }}
-      <div class='box row'>
-        <div class='u__mr__10'>
-          {{genre-emoji id=genre.id}}
-        </div>
-        <div>
-          {{genre.genre}}
-        </div>
-      </div>
+      {{genre-emoji id=genre.id}}&nbsp;&nbsp;{{genre.genre}}
     {{/power-select-multiple}}
   </div>
   
