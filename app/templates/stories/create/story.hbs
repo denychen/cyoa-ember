@@ -102,9 +102,13 @@
             <div class='button positive' {{action 'savePage'}}>
               Save
             </div>
-            <div class='button positive' {{action 'addDestination'}}>
-              Add path
-            </div>
+            {{#if hasPaths}}
+              {{#if (lt paths.length 5)}}
+                <div class='button positive' {{action 'addDestination'}}>
+                  Add path
+                </div>
+              {{/if}}
+            {{/if}}
           </div>
         </div>
       </div>
