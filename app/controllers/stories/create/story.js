@@ -16,6 +16,9 @@ export default Ember.Controller.extend({
 
   paths: Ember.computed.or('activePage.destinations', 'emptyArray'),
   hasPaths: Ember.computed.gt('paths.length', 0),
+  tooManyPaths: Ember.computed('hasPaths', 'paths.length', 'maxPathCount', function() {
+    return this.get('hasPaths') && this.get('paths.length') === this.get('maxPathCount');
+  }),
 
   isFirstPage: Ember.computed('activePage.id', 'activePage.story.firstPageId', function() {
     return this.get('activePage.id') === this.get('activePage.story.firstPageId');
