@@ -103,7 +103,7 @@
               Save
             </div>
             {{#if hasPaths}}
-              {{#if (lt paths.length 5)}}
+              {{#if (lt paths.length maxPathCount)}}
                 <div class='button positive' {{action 'addDestination'}}>
                   Add path
                 </div>

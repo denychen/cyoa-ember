@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
 
   maxPageNameLength: 50,
   maxPageContentLength: 3000,
+  maxPathCount: 5,
 
   contentLength: Ember.computed('activePage.content', function() {
     return this.get('maxPageContentLength') - (this.get('activePage.content.length') || 0);
