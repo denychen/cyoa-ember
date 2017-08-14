@@ -2435,9 +2435,9 @@ ember-cli-notifications@^4.2.0:
     font-awesome "^4.7.0"
     postcss-cssnext "^2.6.0"
 
-ember-cli-password-toggle@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/ember-cli-password-toggle/-/ember-cli-password-toggle-2.0.1.tgz#f5630b95de7e4a1d688f9539a3e6136092017ddd"
+ember-cli-password-toggle@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/ember-cli-password-toggle/-/ember-cli-password-toggle-2.1.0.tgz#9b5554df14bac01be572332059edf662bdac9a76"
   dependencies:
     ember-cli-babel "^5.1.5"
 
