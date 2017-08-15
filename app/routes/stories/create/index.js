@@ -15,21 +15,17 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ConfirmationMixin, {
     });
   },
 
-  shouldCheckIsPageDirty(transition) {
+  shouldCheckIsPageDirty() {
     this._super(...arguments);
     return false;
   },
 
-  isPageDirty(model) {
-    if (model.get('dirtyType') === 'created') {
-      let dirtyTitle = !Ember.isEmpty(this.get('controller.title'));
-      let dirtyPremise = !Ember.isEmpty(this.get('controller.premise'));
-      let dirtyGenres = !Ember.isEmpty(this.get('controller.selectedGenres'));
+  isPageDirty() {
+    let dirtyTitle = !Ember.isEmpty(this.get('controller.title'));
+    let dirtyPremise = !Ember.isEmpty(this.get('controller.premise'));
+    let dirtyGenres = !Ember.isEmpty(this.get('controller.selectedGenres'));
 
-      return dirtyTitle || dirtyPremise || dirtyGenres;
-    } else {
-      return this._super(...arguments);
-    }
+    return dirtyTitle || dirtyPremise || dirtyGenres;
   },
 
   confirmationMessage: 'Changes you made may not be saved. Do you still want to continue?',

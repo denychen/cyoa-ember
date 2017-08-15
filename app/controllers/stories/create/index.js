@@ -19,8 +19,8 @@ export default Ember.Controller.extend({
   }),
 
   story: Ember.computed.readOnly('model.story'),
-  title: Ember.computed.reads('story.title'),
-  premise: Ember.computed.reads('story.description'),
+  title: Ember.computed.alias('story.title'),
+  premise: Ember.computed.alias('story.description'),
   selectedGenresCount: Ember.computed.readOnly('selectedGenres.length'),
   selectedGenres: Ember.computed.reads('initiallySelectedGenres'),
   initiallySelectedGenres: Ember.computed.filter('genres', function(genre) {
@@ -46,17 +46,14 @@ export default Ember.Controller.extend({
 
   actions: {
     saveStory() {
-      let title = this.get('title');
-      let description = this.get('premise');
+      let story = this.get('story');
       let author = this.get('currentUser.user');
       let selectedGenres = this.get('selectedGenres');
-      let published = this.get('story.published');
 
-      title ? this.set('missingTitle', false) : this.set('missingTitle', true);
+      story.get('title') ? this.set('missingTitle', false) : this.set('missingTitle', true);
       !Ember.isEmpty(selectedGenres) ? this.set('missingGenre', false) : this.set('missingGenre', true);
       
       if (this.get('noErrors')) {
-        let story = this.get('story');
         let genres = selectedGenres.map(genre => {
           return {
             id: genre.id,
@@ -64,11 +61,8 @@ export default Ember.Controller.extend({
           };
         });
 
-        story.set('title', title);
-        story.set('description', description);
         story.set('authors', [author]);
         story.set('genres', genres);
-        story.set('published', published);
 
         story.save().then(story => {
           return this.transitionToRoute('stories.create.story', story.id);
