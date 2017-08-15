@@ -1,8 +1,12 @@
-<div class='horizontally-align'>
-  <div class='u__sp__1'></div>
+<div class='u__sp__1'></div>
 
-  {{page.content}}
-</div>
+{{#each content as |line|}}
+  {{#if line}}
+    {{line}}<br>
+  {{else}}
+    <br>
+  {{/if}}
+{{/each}}
 
 {{#if page.destinations}}
   <div class='u__sp__2'></div>
