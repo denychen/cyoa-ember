@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
+export default Ember.Route.extend(AuthenticatedRouteMixin, ConfirmationMixin, {
   currentUser: Ember.inject.service('current-user'),
   
   model(params) {
@@ -19,6 +20,32 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
       this.replaceWith('stories.create');
     }
   },
+
+  shouldCheckIsPageDirty() {
+    this._super(...arguments);
+    return false;
+  },
+
+  isPageDirty(model) {
+    let pages = model.story.get('pages');
+
+    return pages.any(page => {
+      let hasDirtyDestinations = page.get('destinations').isAny('hasDirtyAttributes', true);
+      
+      if (hasDirtyDestinations) {
+        return true;
+      }
+
+      if (page.get('id') && page.get('hasDirtyAttributes')) {
+        let changedAttributes = page.changedAttributes();
+        return Object.values(changedAttributes).some(attributes => attributes[0] !== attributes[1]);
+      }
+
+      return false;
+    });
+  },
+
+  confirmationMessage: 'Changes you made may not be saved. Do you still want to continue?',
 
   setupController(controller, model) {
     this._super(controller, model);
