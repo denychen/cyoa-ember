@@ -29,7 +29,7 @@ export default Ember.Controller.extend({
   deleteStoryConfirmationBody: Ember.computed('story.title', function() {
     return `Are you sure you want to delete ${this.get('story.title')}?`;
   }),
-  deletePageConfirmationBody: Ember.computed('activePage.name', function() {
+  removePageConfirmationBody: Ember.computed('activePage.name', function() {
     let pageName = this.get('activePage.name');
 
     if (Ember.isEmpty(pageName)) {
