@@ -10,10 +10,6 @@ export default Ember.Component.extend({
       path.set('pageId', selectedPage.get('id'));
     },
 
-    togglePreview() {
-      this.toggleProperty('showPreview');
-    },
-
     removePath(index) {
       this.sendAction('removePath', index);
     }

@@ -1,32 +1,24 @@
 <div class='box row u__mb__20'>
-  {{#unless showPreview}}
-    <div class='box row u__mr__10'>
-      {{input class='page-creator o__path-name__editor u__mr__10' 
-        placeholder='Path description' 
-        value=path.option
-      }}
+  {{input class='page-creator o__path-name__editor u__mr__10' 
+    placeholder='Path description' 
+    value=path.option
+  }}
 
-      {{#power-select
-        tagName='div'
-        class='destination_selector u__mr__10'
-        classNameBindings='hasPathError:u__error-borders'
-        options=pages
-        searchField='name'
-        placeholder=(if hasNoPages 'Create a page first')
-        selected=(selected-page pages=pages pageId=path.pageId)
-        onchange=(action 'updatePath' path)
-        as |page|
-      }}
-        {{if page.name page.name 'Untitled page'}}
-      {{/power-select}}
+  {{#power-select
+    tagName='div'
+    class='destination_selector u__mr__10'
+    classNameBindings='hasPathError:u__error-borders'
+    options=pages
+    searchField='name'
+    placeholder=(if hasNoPages 'Create a page first')
+    selected=(selected-page pages=pages pageId=path.pageId)
+    onchange=(action 'updatePath' path)
+    as |page|
+  }}
+    {{if page.name page.name 'Untitled page'}}
+  {{/power-select}}
 
-      <div class='button negative' {{action 'removePath' index}}>
-        Remove
-      </div>
-    </div>
-  {{/unless}}
-  
-  <div class='button {{if showPreview 'destination' 'edit'}} {{if (and showPreview hasPathError) 'u__error-borders'}}' {{action 'togglePreview'}}>
-    {{unless showPreview 'Preview' path.option}}
+  <div class='button negative' {{action 'removePath' index}}>
+    Remove
   </div>
 </div>
