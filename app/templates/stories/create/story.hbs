@@ -11,7 +11,7 @@
     </div>
     <div class='box column o__vertical-align'>
       <div class='box row'>
-        <div class='button negative u__mr__10' {{action 'toggleDeleteConfirmation'}}>
+        <div class='button negative u__mr__10' {{action 'toggleDeleteStoryConfirmation'}}>
           Delete story
         </div>
         <div class='button edit page-creator__edit-story__button' {{action 'editStory'}}>
@@ -33,7 +33,7 @@
 
       <div class='u__sp__2'></div>
       <div class='horizontally-align'>
-        <div class='button negative {{if isFirstPage 'o__disabled'}}' {{action 'removePage'}}>
+        <div class='button negative {{if isFirstPage 'o__disabled'}}' {{action 'toggleRemovePageConfirmation'}}>
           Remove page
         </div>
         {{#if isFirstPage}}
@@ -118,6 +118,14 @@
   messageBody=deleteConfirmationBody
   messageContinue='Delete'
   messageCancel='Cancel'
-  showDialog=showDeleteConfirmation
+  showDialog=showDeletStoryeConfirmation
   continueDialog=(action 'deleteStory')
+}}
+
+{{confirmation-dialog 
+  messageBody=deletePageConfirmationBody
+  messageContinue='Remove'
+  messageCancel='Cancel'
+  showDialog=showRemoveStoryConfirmation
+  continueDialog=(action 'removePage')
 }}

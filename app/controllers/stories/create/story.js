@@ -26,8 +26,17 @@ export default Ember.Controller.extend({
   hasNoName: Ember.computed.empty('activePage.name'),
 
   showDeleteConfirmation: false,
-  deleteConfirmationBody: Ember.computed('story.title', function() {
+  deleteStoryConfirmationBody: Ember.computed('story.title', function() {
     return `Are you sure you want to delete ${this.get('story.title')}?`;
+  }),
+  deletePageConfirmationBody: Ember.computed('activePage.name', function() {
+    let pageName = this.get('activePage.name');
+
+    if (Ember.isEmpty(pageName)) {
+      return `Are you sure you want to remove this page?`;
+    } else {
+      return `Are you sure you want to remove page ${this.get('activePage.name')}?`;
+    }
   }),
 
   actions: {
@@ -68,8 +77,12 @@ export default Ember.Controller.extend({
       });
     },
 
-    toggleDeleteConfirmation() {
-      this.toggleProperty('showDeleteConfirmation');
+    toggleDeleteStoryConfirmation() {
+      this.toggleProperty('showDeletStoryeConfirmation');
+    },
+
+    toggleRemovePageConfirmation() {
+      this.toggleProperty('showRemoveStoryConfirmation')
     },
 
     savePage() {
