@@ -11,8 +11,11 @@ export default Ember.Component.extend({
     }).join(', ');
   }),
   description: Ember.computed('story.description', function() {
-    let lines = this.get('story.description').split(/[\n\r]/gm);
-    return lines;
+    let description = this.get('story.description');
+
+    if (description) {
+      return this.get('story.description').split(/[\n\r]/gm);
+    }
   }),
   firstPageId: Ember.computed.readOnly('story.firstPageId'),
   genres: Ember.computed.readOnly('story.genres'),

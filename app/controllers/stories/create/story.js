@@ -8,8 +8,11 @@ export default Ember.Controller.extend({
   maxPathCount: 5,
 
   description: Ember.computed('story.description', function() {
-    let lines = this.get('story.description').split(/[\n\r]/gm);
-    return lines;
+    let description = this.get('story.description');
+
+    if (description) {
+      return this.get('story.description').split(/[\n\r]/gm);
+    }
   }),
 
   contentLength: Ember.computed('activePage.content', function() {
