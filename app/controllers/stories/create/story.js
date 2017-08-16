@@ -7,6 +7,11 @@ export default Ember.Controller.extend({
   maxPageContentLength: 3000,
   maxPathCount: 5,
 
+  description: Ember.computed('story.description', function() {
+    let lines = this.get('story.description').split(/[\n\r]/gm);
+    return lines;
+  }),
+
   contentLength: Ember.computed('activePage.content', function() {
     return this.get('maxPageContentLength') - (this.get('activePage.content.length') || 0);
   }),

@@ -16,7 +16,13 @@
 <div class='u__sp__3'></div>
 
 <div class='horizontally-align'>
-  {{description}}
+  {{#each description as |line|}}
+    {{#if line}}
+      {{line}}<br>
+    {{else}}
+      <br>
+    {{/if}}
+  {{/each}}
 </div>
 
 <div class='u__sp__3'></div>

@@ -6,7 +6,13 @@
       </div>
 
       <div class='page-creator o__story-premise'>
-        {{story.description}}
+        {{#each description as |line|}}
+          {{#if line}}
+            {{line}}<br>
+          {{else}}
+            <br>
+          {{/if}}
+        {{/each}}
       </div>
     </div>
     <div class='box column o__vertical-align'>

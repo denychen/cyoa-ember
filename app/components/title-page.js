@@ -10,7 +10,10 @@ export default Ember.Component.extend({
       return author.get('username');
     }).join(', ');
   }),
-  description: Ember.computed.readOnly('story.description'),
+  description: Ember.computed('story.description', function() {
+    let lines = this.get('story.description').split(/[\n\r]/gm);
+    return lines;
+  }),
   firstPageId: Ember.computed.readOnly('story.firstPageId'),
   genres: Ember.computed.readOnly('story.genres'),
   formattedGenres: Ember.computed('genres', function() {
