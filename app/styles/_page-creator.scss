@@ -1,3 +1,7 @@
+.page-creator {
+  width: 100%;
+}
+
 .page-creator__list {
   padding: 0px;
   width: 200px;
@@ -13,8 +17,7 @@
 }
 
 .page-creator__story-buttons {
-  margin-top: 65px;
-  width: 150px;
+  margin: 10px 0px;
 }
 
 .o__story-title {
@@ -102,8 +105,13 @@
   padding-left: 15px;
 }
 
+.page-creator__delete-story__button {
+  text-align: center;
+}
+
 .page-creator__edit-story__button {
   margin-right: 10px;
+  text-align: center;
 }
 
 .page-creator__page-title-input__wrapper {

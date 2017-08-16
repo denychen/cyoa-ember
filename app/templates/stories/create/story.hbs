@@ -1,8 +1,22 @@
 <div class='box column'>
   <div class='box row spaced'>
-    <div class='box column'>
-      <div class='page-creator o__story-title'>
-        {{story.title}}
+    <div class='box column page-creator'>
+      <div class='box row spaced u__mb__10'>
+        <div class='page-creator o__story-title'>
+          {{story.title}}
+        </div>
+
+        <div class='box column page-creator__story-buttons'>
+          <div class='button edit page-creator__edit-story__button' {{action 'editStory'}}>
+            Edit story details
+          </div>
+
+          <div class='u__sp__1'></div>
+
+          <div class='button negative page-creator__delete-story__button u__mr__10' {{action 'toggleDeleteStoryConfirmation'}}>
+            Delete story
+          </div>
+        </div>
       </div>
 
       <div class='page-creator o__story-premise'>
@@ -13,16 +27,6 @@
             <br>
           {{/if}}
         {{/each}}
-      </div>
-    </div>
-    <div class='box column page-creator__story-buttons'>
-      <div class='box row'>
-        <div class='button negative u__mr__10' {{action 'toggleDeleteStoryConfirmation'}}>
-          Delete story
-        </div>
-        <div class='button edit page-creator__edit-story__button' {{action 'editStory'}}>
-          Edit story details
-        </div>
       </div>
     </div>
   </div>

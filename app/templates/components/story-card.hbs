@@ -4,19 +4,21 @@
       {{titleFirstLetter}}
     </div>
     <div class='box column story__details'>
-      <div class='story__title horizontally-align'>
-        {{title}}
-      </div>
-      {{#if authors}}
-        <div class='story__author horizontally-align'>
-          by {{authors}}
+      <div class='box column u__mb__1'>
+        <div class='story__title horizontally-align'>
+          {{title}}
         </div>
-      {{/if}}
-    </div>
-    <div class='story__genres'>
-      {{#each story.genres key='id' as |genre|}}
-        {{genre-emoji id=genre.id}}
-      {{/each}}
+        {{#if authors}}
+          <div class='story__author horizontally-align'>
+            by {{authors}}
+          </div>
+        {{/if}}
+      </div>
+      <div class='story__genres'>
+        {{#each story.genres key='id' as |genre|}}
+          {{genre-emoji id=genre.id}}
+        {{/each}}
+      </div>
     </div>
   </div>
 {{/link-to}}
