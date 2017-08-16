@@ -82,7 +82,9 @@ export default Ember.Controller.extend({
     },
 
     toggleRemovePageConfirmation() {
-      this.toggleProperty('showRemoveStoryConfirmation')
+      if (!this.get('isFirstPage')) {
+        this.toggleProperty('showRemoveStoryConfirmation'); 
+      }
     },
 
     savePage() {
