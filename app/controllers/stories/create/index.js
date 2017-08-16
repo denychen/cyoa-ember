@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
   emptyGenres: Ember.A(),
   genres: null,
 
-  maxTitleLength: 150,
+  maxTitleLength: 70,
   maxPremiseLength: 1000,
   maxGenreCount: 3,
 
