@@ -1,6 +1,11 @@
 <div class='box row u__mb__20'>
-  {{input class='page-creator o__path-name__editor u__mr__10' 
+  <div class='word-count box column o__vertical-align u__mr__10'>
+    ({{optionLength}}/{{maxOptionLength}})
+  </div>
+
+  {{input class='page-creator o__path-name__editor u__mr__10'
     placeholder='Path description' 
+    maxlength=maxOptionLength
     value=path.option
   }}
 
