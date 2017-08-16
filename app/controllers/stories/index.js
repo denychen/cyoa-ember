@@ -3,20 +3,22 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   stories: Ember.computed.readOnly('model'),
   storiesSorting: ['createdAt:desc'],
+  additionalRowsToShow: 0,
   sortedStories: Ember.computed.sort('stories', 'storiesSorting'),
-  paginatedStories: Ember.computed('sortedStories.@each.published','sortedStories.[]', function() {
+  paginatedStories: Ember.computed('additionalRowsToShow', 'sortedStories.@each.published', 'sortedStories.[]', function() {
     let storyLines = Ember.A();
     let storyLine = Ember.A();
-    let numStories = this.get('sortedStories.length');
-
     let sortedPublishedStories = this.get('sortedStories').rejectBy('published', false);
+    let numStories = sortedPublishedStories.length;
 
     sortedPublishedStories.forEach((story, index) => {
-      storyLine.pushObject(story);
+      if (this.get('additionalRowsToShow') >= storyLines.length) {
+        storyLine.pushObject(story);
 
-      if (storyLine.length === 5 || index === numStories - 1) {
-        storyLines.pushObject(storyLine);
-        storyLine = Ember.A();
+        if (storyLine.length === 5 || index === numStories - 1) {
+          storyLines.pushObject(storyLine);
+          storyLine = Ember.A();
+        }
       }
     });
 
@@ -24,7 +26,16 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
-    showMoreStories(stories) {
+    willTransition() {
+      this.set('additionalRowsToShow', 0);
+      return true;
+    },
+
+    showMoreStories() {
+      this.set('additionalRowsToShow', this.get('additionalRowsToShow') + 1);
+      let paginatedStories = this.get('paginatedStories');
+      let stories = paginatedStories[paginatedStories.length - 1];
+
       let lastStory = stories.objectAt(stories.length - 1);
       if (lastStory.get('id') === null) {
         lastStory = stories.objectAt(stories.length - 2);
