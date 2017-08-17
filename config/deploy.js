@@ -8,15 +8,15 @@ module.exports = function(deployTarget) {
       type: 'git-commit'
     },
     'ssh-index': {
-      remoteDir: "/usr/ocal/www/cyoa",
-      username: "pi",
+      remoteDir: "/usr/local/www/cyoa",
+      username: "denychen",
       host: "73.189.62.98",
       privateKeyFile: "~/.ssh/id_rsa",
       allowOverwrite: true
     },
     rsync: {
-      dest: "/usr/ocal/www/cyoa",
-      username: "pi",
+      dest: "/usr/local/www/cyoa",
+      username: "denychen",
       host: "73.189.62.98",
       delete: false
     }
