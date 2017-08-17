@@ -2,6 +2,7 @@ import Ember from 'ember';
 import config from './../config/environment';
 
 export default Ember.Controller.extend({
+  session: Ember.inject.service('session'),
   queryParams: ['resetToken'],
   resetToken: null,
 
@@ -52,7 +53,14 @@ export default Ember.Controller.extend({
           "resetToken": resetToken,
           "password": password
         })
-      }).then(result => {
+      }).then(() => {
+        this.get('notifications').success('Password successfully changed', {
+          autoClear: true
+        });
+
+        return this.transitionToRoute('signin');
+      }).catch(error => {
+        this.set('errorMessage', error.responseJSON.errors[0].detail);
       });
     }
   }
