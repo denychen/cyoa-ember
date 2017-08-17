@@ -18,6 +18,7 @@ Router.map(function() {
   this.route('signup');
   this.route('signin');
   this.route('settings');
+  this.route('reset-password');
 });
 
 export default Router;
