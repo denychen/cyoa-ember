@@ -49,7 +49,11 @@ export default Ember.Controller.extend({
             autoClear: true
           });
         }).catch(error => {
-          this.set('errorMessage', error.responseJSON.errors[0].detail);
+          let errorMessage = error.responseJSON.errors[0].detail;
+          if (errorMessage.startsWith('Old password')) {
+            this.set('oldPasswordError', true);
+          }
+          this.set('errorMessage', errorMessage);
         });
       }
     }
