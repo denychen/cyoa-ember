@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
         data: JSON.stringify({
           "email": email
         })
-      })
+      });
 
       this.set('emailSent', true);
     }
