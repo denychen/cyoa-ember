@@ -39,7 +39,7 @@
     Old Password
     {{input type='password' 
       classNames='horizontally-align' 
-      classNameBindings='missingOldPassword:u__error-borders' 
+      classNameBindings='oldPasswordError:u__error-borders' 
       value=oldPassword 
       placeholder='Required' 
       enter='saveSettings'}}
@@ -50,6 +50,14 @@
   <div class='button positive horizontally-align' {{action 'saveSettings'}}>
     Save
   </div>
+
+  {{#if errorMessage}}
+    <div class='u__sp__3'></div>
+
+    <div class='horizontally-align u__error-text'>
+      {{errorMessage}}
+    </div>
+  {{/if}}
 
   <div class='u__sp__5'></div>
 </div>

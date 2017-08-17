@@ -10,14 +10,16 @@ export default Ember.Controller.extend({
     saveSettings() {
       let user = this.get('currentUser.user');
       let oldPassword = this.get('oldPassword');
+      this.set('errorMessage', null);
+      this.set('oldPasswordError', false);
 
       if (oldPassword) {
-        this.set('missingOldPassword', false);
+        this.set('oldPasswordError', false);
       } else {
-        this.set('missingOldPassword', true);
+        this.set('oldPasswordError', true);
       }
 
-      if (!this.get('missingOldPassword') && this.get('changedSetting')) {
+      if (!this.get('oldPasswordError') && this.get('changedSetting')) {
         Ember.$.ajax({
           url: `${config.backend}/api/users/`,
           type: 'PUT',
@@ -43,9 +45,11 @@ export default Ember.Controller.extend({
           this.set('password', null);
           this.set('oldPassword', null);
 
-          this.get('notifications').success('Setting successfully changed', {
+          this.get('notifications').success('Settings successfully changed', {
             autoClear: true
           });
+        }).catch(error => {
+          this.set('errorMessage', error.responseJSON.errors[0].detail);
         });
       }
     }

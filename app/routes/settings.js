@@ -8,7 +8,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
       this.set('controller.username', null);
       this.set('controller.password', null);
       this.set('controller.oldPassword', null);
-      this.set('controller.missingOldPassword', false);
+      this.set('controller.oldPasswordError', false);
+      this.set('controller.errorMessage', null);
     }
   }
 });
