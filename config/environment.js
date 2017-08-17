@@ -6,9 +6,9 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
-    backend: 'http://localhost:3000',
+    backend: environment === 'development' ? 'http://127.0.0.1:3000' : 'http://73.189.62.98:3000',
     contentSecurityPolicy: {
-      'connect-src': "'self' http://localhost:3000"
+      'connect-src': `'self' ${environment === 'development' ? 'http://127.0.0.1:3000' : 'http://73.189.62.98:3000'}`
     },
     EmberENV: {
       FEATURES: {
