@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from './../config/environment';
 
 export default Ember.Controller.extend({
   queryParams: ['email'],
@@ -13,6 +14,16 @@ export default Ember.Controller.extend({
       } else {
         this.set('missingEmail', true);
       }
+
+      Ember.$.ajax({
+        url: `${config.backend}/api/users/forgot-password`,
+        type: 'POST',
+        contentType: 'application/json',
+        dataType : 'json',
+        data: JSON.stringify({
+          "email": email
+        })
+      })
 
       this.set('emailSent', true);
     }
