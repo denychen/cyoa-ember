@@ -42,6 +42,10 @@ export default Ember.Controller.extend({
           this.set('username', null);
           this.set('password', null);
           this.set('oldPassword', null);
+
+          this.get('notifications').success('Setting successfully changed', {
+            autoClear: true
+          });
         });
       }
     }
