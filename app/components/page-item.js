@@ -10,7 +10,15 @@ export default Ember.Component.extend({
   isTitleOrContentDirty: Ember.computed('page.id', 'page.name', 'page.content', 'page.hasDirtyAttributes', function() {
     if (this.get('page.id') && this.get('page.hasDirtyAttributes')) {
       let changedAttributes = this.get('page').changedAttributes();
-      return Object.values(changedAttributes).some(attributes => attributes[0] !== attributes[1]);
+      return Object.values(changedAttributes).some(attributes => {
+        let original = attributes[0];
+        let updated = attributes[1]
+        if (original === null && updated === "") {
+          return false;
+        } else {
+          return attributes[0] !== attributes[1];
+        }
+      });
     }
     
     return false;
