@@ -53,7 +53,7 @@ export default Ember.Controller.extend({
           if (errorMessage.startsWith('Old password')) {
             this.set('oldPasswordError', true);
           }
-          this.set('errorMessage', errorMessage);
+          this.set('errorMessage', errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1));
         });
       }
     }
