@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
   email: null,
   
   session: Ember.inject.service('session'),
-  anyError: Ember.computed.or('missingEmail', 'missingPassword', 'shortPassword', 'missingUsername'),
+  anyError: Ember.computed.or('emailError', 'passwordError', 'usernameError'),
   noError: Ember.computed.not('anyError'),
 
   minimumPasswordLength: 8,
@@ -19,29 +19,25 @@ export default Ember.Controller.extend({
       let username = this.get('username');
 
       if (!email) {
-        this.set('missingEmail', true);
+        this.set('emailError', true);
       } else {
-        this.set('missingEmail', false);
+        this.set('emailError', false);
       }
 
       if (!password) {
-        this.set('missingPassword', true);
+        this.set('passwordError', true);
       } else {
-        this.set('missingPassword', false);
-      }
-
-      if (password) {
         let passwordLengthRequirement = password.length < this.get('minimumPasswordLength');
-        this.set('shortPassword', passwordLengthRequirement);
+        this.set('passwordError', passwordLengthRequirement);
         if (passwordLengthRequirement) {
-          this.set('errorMessage', 'Password should be at least 8 characters long');
+          this.set('errorMessage', `Password should be at least ${minimumPasswordLength} characters long`);
         }
       }
 
       if (!username) {
-        this.set('missingUsername', true);
+        this.set('usernameError', true);
       } else {
-        this.set('missingUsername', false);
+        this.set('usernameError', false);
       }
 
       if (this.get('noError')) {
@@ -64,8 +60,16 @@ export default Ember.Controller.extend({
              this.set('errorMessage', 'Failed to login. Please try again later.');
           });
         }).catch(error => {
-          let errorMessage = error.errors[0].detail;
-          this.set('errorMessage', errorMessage.charAt(0).toUpperCase() + errorMessage.slice(1));
+          let message = error.errors[0].detail;
+          let errorMessage = message.charAt(0).toUpperCase() + message.slice(1);
+
+          if (errorMessage === 'Email must be unique') {
+            this.set('emailError', true);
+          } else if (errorMessage === 'Username must be unique') {
+            this.set('usernameError', true);
+          }
+
+          this.set('errorMessage', errorMessage);
         });
       }
     }

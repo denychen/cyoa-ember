@@ -14,11 +14,11 @@
       </div>
       <div>
         {{input classNames='horizontally-align' 
-          classNameBindings='missingEmail:u__error-borders' 
+          classNameBindings='emailError:u__error-borders' 
           autofocus=true 
           value=email 
           enter='signup' 
-          placeholder=(if missingEmail 'Required')
+          placeholder=(if emailError 'Required')
         }}
       </div>
     </div>
@@ -31,10 +31,10 @@
       </div>
       <div>
         {{input classNames='horizontally-align' 
-          classNameBindings='missingUsername:u__error-borders' 
+          classNameBindings='usernameError:u__error-borders' 
           value=username 
           enter='signup' 
-          placeholder=(if missingUsername 'Required')
+          placeholder=(if usernameError 'Required')
         }}
       </div>
     </div>
@@ -48,7 +48,7 @@
       <div>
         {{password-toggle password=password
           wrapperClass='horizontally-align'
-          inputClass=(if (or missingPassword shortPassword) 'u__error-borders')
+          inputClass=(if passwordError 'u__error-borders')
           enter='signup'
           placeholder=(if missingPassword 'Required' 'Minimum of 8 characters')
         }}

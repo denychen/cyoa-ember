@@ -6,9 +6,9 @@ export default Ember.Route.extend(UnauthenticatedRouteMixin, {
     willTransition() {
       this.set('controller.errorMessage', null);
       this.set('controller.email', null);
-      this.set('controller.missingEmail', false);
+      this.set('controller.emailError', false);
       this.set('controller.username', null);
-      this.set('controller.missingUsername', false);
+      this.set('controller.usernameError', false);
       this.set('controller.password', null);
       this.set('controller.missingPassword', false);
     }

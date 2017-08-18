@@ -10,6 +10,7 @@
   <div class='settings__form'>
     New Email
     {{input classNames='horizontally-align' 
+      classNameBindings='emailError:u__error-borders'
       autofocus=true value=email 
       placeholder='Optional' 
       enter='saveSettings'
@@ -19,6 +20,7 @@
 
     New Username
     {{input classNames='horizontally-align' 
+      classNameBindings='usernameError:u__error-borders'
       value=username 
       placeholder='Optional' 
       enter='saveSettings'
@@ -28,9 +30,10 @@
 
     New Password
     {{input type='password' 
-      classNames='horizontally-align' 
+      classNames='horizontally-align'
+      classNameBindings='newPasswordError:u__error-borders'
       value=password 
-      placeholder='Optional' 
+      placeholder='Optional, with a minimum of 8 characters'
       enter='saveSettings'
     }}
 
