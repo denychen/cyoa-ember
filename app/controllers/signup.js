@@ -5,8 +5,10 @@ export default Ember.Controller.extend({
   email: null,
   
   session: Ember.inject.service('session'),
-  anyError: Ember.computed.or('missingEmail', 'missingPassword', 'missingUsername'),
+  anyError: Ember.computed.or('missingEmail', 'missingPassword', 'shortPassword', 'missingUsername'),
   noError: Ember.computed.not('anyError'),
+
+  minimumPasswordLength: 8,
   
   actions: {
     signup() {
@@ -26,6 +28,14 @@ export default Ember.Controller.extend({
         this.set('missingPassword', true);
       } else {
         this.set('missingPassword', false);
+      }
+
+      if (password) {
+        let passwordLengthRequirement = password.length < this.get('minimumPasswordLength');
+        this.set('shortPassword', passwordLengthRequirement);
+        if (passwordLengthRequirement) {
+          this.set('errorMessage', 'Password should be at least 8 characters long');
+        }
       }
 
       if (!username) {

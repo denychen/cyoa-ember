@@ -48,9 +48,9 @@
       <div>
         {{password-toggle password=password
           wrapperClass='horizontally-align'
-          inputClass=(if missingPassword 'u__error-borders')
+          inputClass=(if (or missingPassword shortPassword) 'u__error-borders')
           enter='signup'
-          placeholder=(if missingPassword 'Required')
+          placeholder=(if missingPassword 'Required' 'Minimum of 8 characters')
         }}
       </div>
     </div>
