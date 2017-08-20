@@ -25,6 +25,11 @@ export default Ember.Component.extend({
       return genre.charAt(0).toLowerCase() + genre.substr(1);
     });
   }),
+  genresStartWithVowel: Ember.computed('formattedGenres', function() {
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    
+    return vowels.contains(this.get('formattedGenres').charAt(0));
+  }),
 
   actions: {
     loadNextPage(id) {
