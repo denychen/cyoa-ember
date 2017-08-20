@@ -16,23 +16,36 @@ export default Ember.Route.extend(ConfirmationMixin, {
     });
   },
 
-  shouldCheckIsPageDirty() {
+  shouldCheckIsPageDirty(transition) {
     this._super(...arguments);
-    return false;
+    return transition.targetName === 'stories.create.story';
   },
 
   isPageDirty(model) {
-    let changedAttributes = model.changedAttributes();
     let originalGenres = this.get('controller.initiallySelectedGenres').mapBy('id');
     let newGenres = this.get('controller.selectedGenres').mapBy('id');
     
-    let dirtyTitle = !Ember.isEmpty(changedAttributes['title']);
-    let dirtyPremise = !Ember.isEmpty(changedAttributes['description']);
+    let dirtyTitle = this.get('controller.title') !== model.get('title');
+    let dirtyPremise = this.get('controller.premise') !== model.get('description');
     let dirtyGenres = (originalGenres.length !== newGenres.length) || !originalGenres.every((genre, index) => {
       return genre === newGenres[index]; 
     });
 
     return dirtyTitle || dirtyPremise || dirtyGenres;
+  },
+
+  actions: {
+    willTransition() {
+      let transition = this._super(...arguments);
+      
+      if (transition) {
+        this.set('controller.title', this.get('controller.story.title'));
+        this.set('controller.premise', this.get('controller.story.description'));
+        this.set('controller.selectedGenres', this.get('controller.initiallySelectedGenres'));
+      }
+
+      return true;
+    }
   },
 
   confirmationMessage: 'Changes you made may not be saved. Do you still want to continue?',

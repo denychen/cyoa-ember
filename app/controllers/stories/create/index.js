@@ -19,8 +19,8 @@ export default Ember.Controller.extend({
   }),
 
   story: Ember.computed.readOnly('model.story'),
-  title: Ember.computed.alias('story.title'),
-  premise: Ember.computed.alias('story.description'),
+  title: Ember.computed.reads('story.title'),
+  premise: Ember.computed.reads('story.description'),
   selectedGenresCount: Ember.computed.readOnly('selectedGenres.length'),
   selectedGenres: Ember.computed.reads('initiallySelectedGenres'),
   initiallySelectedGenres: Ember.computed.filter('genres', function(genre) {
@@ -47,10 +47,12 @@ export default Ember.Controller.extend({
   actions: {
     saveStory() {
       let story = this.get('story');
+      let title = this.get('title');
+      let premise = this.get('premise');
       let author = this.get('currentUser.user');
       let selectedGenres = this.get('selectedGenres');
 
-      story.get('title') ? this.set('missingTitle', false) : this.set('missingTitle', true);
+      this.get('title') ? this.set('missingTitle', false) : this.set('missingTitle', true);
       !Ember.isEmpty(selectedGenres) ? this.set('missingGenre', false) : this.set('missingGenre', true);
       
       if (this.get('noErrors')) {
@@ -61,6 +63,8 @@ export default Ember.Controller.extend({
           };
         });
 
+        story.set('title', title);
+        story.set('description', premise);
         story.set('authors', [author]);
         story.set('genres', genres);
 
