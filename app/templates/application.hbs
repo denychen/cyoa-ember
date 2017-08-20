@@ -19,7 +19,16 @@
 
     <div class='box column o__vertical-align user-dropdown__wrapper'>
       {{#if session.isAuthenticated}}
-        <a href='/' {{action 'toggleUserDropdown'}}>{{currentUser.user.username}}</a>
+        <a href='/' {{action 'toggleUserDropdown'}}>
+          <div class='box row'>
+            <div class='u__mr__5'>
+              {{currentUser.user.username}}
+            </div>
+            <div class='box column o__vertical-align'>
+              <span class='toolbar__triangle {{if showUserDropdown 'o__up' 'o__down'}}'></span>
+            </div>
+          </div>
+        </a>
         {{#if showUserDropdown}}
           {{#click-outside action=(action 'closeUserDropdown')}}
             {{user-dropdown classNames='user-dropdown__menu' 

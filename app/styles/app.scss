@@ -60,6 +60,22 @@ body > .ember-view {
   margin-right: 30px;
 }
 
+.toolbar__triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.toolbar__triangle.o__down {
+  border-width: 5px 5px 0 5px;
+  border-color: #5dbdd2 transparent transparent transparent;
+}
+
+.toolbar__triangle.o__up {
+  border-width: 0 5px 5px 5px;
+  border-color: transparent transparent #5dbdd2 transparent;
+}
+
 .background {
   background-color: #fcfcfc;
   flex: 1 1 auto;
