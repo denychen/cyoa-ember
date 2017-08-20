@@ -12,6 +12,7 @@ module.exports = function(deployTarget) {
       username: "denychen",
       host: "73.189.62.98",
       privateKeyFile: "~/.ssh/id_rsa",
+      passphrase: process.env.PRIVATE_KEY_PASSPHRASE,
       allowOverwrite: true
     },
     rsync: {
