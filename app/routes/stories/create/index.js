@@ -15,9 +15,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ConfirmationMixin, {
     });
   },
 
-  shouldCheckIsPageDirty() {
+  shouldCheckIsPageDirty(transition) {
     this._super(...arguments);
-    return false;
+    return transition.targetName === 'stories.create.story';
   },
 
   isPageDirty() {
