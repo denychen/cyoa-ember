@@ -13,7 +13,7 @@ export default Ember.Component.extend({
       return Object.values(changedAttributes).some(attributes => {
         let original = attributes[0];
         let updated = attributes[1]
-        if (original === null && updated === "") {
+        if (original == null && updated === "") {
           return false;
         } else {
           return attributes[0] !== attributes[1];
