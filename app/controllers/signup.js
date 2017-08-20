@@ -30,7 +30,7 @@ export default Ember.Controller.extend({
         let passwordLengthRequirement = password.length < this.get('minimumPasswordLength');
         this.set('passwordError', passwordLengthRequirement);
         if (passwordLengthRequirement) {
-          this.set('errorMessage', `Password should be at least ${minimumPasswordLength} characters long`);
+          this.set('errorMessage', `Password should be at least ${this.get('minimumPasswordLength')} characters long`);
         }
       }
 
