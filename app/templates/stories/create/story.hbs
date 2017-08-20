@@ -49,7 +49,7 @@
         {{#if isFirstPage}}
           {{tooltip-on-element 
             side='bottom' 
-            delay=500
+            delay=250
             text='Cannot remove first page'
           }}
         {{/if}}
@@ -109,8 +109,17 @@
 
         <div class='box column'>
           <div class='box row spaced u__mb__20'>
-            <div class='button positive' {{action 'savePage'}}>
-              Save
+            <div>
+              <div class='button positive {{unless isDirty 'o__disabled'}}' {{action 'savePage'}}>
+                Save
+              </div>
+              {{#unless isDirty}}
+                {{tooltip-on-element 
+                  side='bottom' 
+                  delay=250
+                  text='Make changes before saving'
+                }}
+              {{/unless}}
             </div>
             {{#unless tooManyPaths}}
               <div class='button positive' {{action 'addDestination'}}>

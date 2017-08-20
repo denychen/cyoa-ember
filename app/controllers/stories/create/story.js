@@ -47,6 +47,29 @@ export default Ember.Controller.extend({
     }
   }),
 
+  isTitleOrContentDirty: Ember.computed('activePage.id', 'activePage.name', 'activePage.content', 'activePage.hasDirtyAttributes', function() {
+    if (this.get('activePage.id') && this.get('activePage.hasDirtyAttributes')) {
+      let changedAttributes = this.get('activePage').changedAttributes();
+      return Object.values(changedAttributes).some(attributes => {
+        let original = attributes[0];
+        let updated = attributes[1]
+        if (original === null && updated === "") {
+          return false;
+        } else {
+          return attributes[0] !== attributes[1];
+        }
+      });
+    }
+    
+    return false;
+  }),
+
+  isDestinationDirty: Ember.computed('activePage.destinations.@each.hasDirtyAttributes', function() {
+    return this.get('activePage.destinations').isAny('hasDirtyAttributes', true);
+  }),
+
+  isDirty: Ember.computed.or('isTitleOrContentDirty', 'isDestinationDirty'),
+
   actions: {
     selectPage(id) {
       let activePage = this.get('pages').find(page => page.id === id);
@@ -96,31 +119,33 @@ export default Ember.Controller.extend({
     },
 
     savePage() {
-      let page = this.get('activePage');
-      let hasAnyError = false;
+      if (this.get('isDirty')) {
+        let page = this.get('activePage');
+        let hasAnyError = false;
 
-      this.get('paths').forEach(destination => {
-        if (Ember.isEmpty(destination.get('pageId'))) {
-          destination.set('hasPathError', true);
-          hasAnyError = true;
+        this.get('paths').forEach(destination => {
+          if (Ember.isEmpty(destination.get('pageId'))) {
+            destination.set('hasPathError', true);
+            hasAnyError = true;
+          }
+        });
+
+        if (!hasAnyError) {
+          page.save().then(() => {
+            this.set('activePage.destinations', this.get('activePage.destinations').rejectBy('id', null));
+            this.get('notifications').success('Page saved', {
+              autoClear: true
+            });
+          }).catch(() => {
+            this.get('notifications').error('Page failed to save', {
+              autoClear: true
+            });
+          });
+        } else {
+          this.get('notifications').error('All paths need to lead to a page', {
+            autoClear: true
+          });
         }
-      });
-
-      if (!hasAnyError) {
-        page.save().then(() => {
-          this.set('activePage.destinations', this.get('activePage.destinations').rejectBy('id', null));
-          this.get('notifications').success('Page saved', {
-            autoClear: true
-          });
-        }).catch(() => {
-          this.get('notifications').error('Page failed to save', {
-            autoClear: true
-          });
-        });
-      } else {
-        this.get('notifications').error('All paths need to lead to a page', {
-          autoClear: true
-        });
       }
     },
 
