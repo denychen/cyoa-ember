@@ -21,7 +21,7 @@
     {{input classNames='horizontally-align' 
       classNameBindings='missingTitle:u__error-borders' 
       autofocus=true 
-      value=title 
+      value=story.title 
       maxlength=maxTitleLength
       placeholder=(if missingTitle 'Required')
     }}
@@ -35,7 +35,7 @@
       </div>
     </div>
     {{textarea classNames='horizontally-align creation__premise' 
-      value=premise 
+      value=story.description 
       maxlength=maxPremiseLength 
       rows=10 
       placeholder='Optional'

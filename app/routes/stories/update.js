@@ -44,9 +44,7 @@ export default Ember.Route.extend(ConfirmationMixin, {
       let transition = this._super(...arguments);
       
       if (transition) {
-        this.set('controller.title', this.get('controller.story.title'));
-        this.set('controller.premise', this.get('controller.story.description'));
-        this.set('controller.selectedGenres', this.get('controller.initiallySelectedGenres'));
+        this.get('controller.model.story').rollbackAttributes()
       }
 
       return true;
