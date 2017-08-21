@@ -21,17 +21,21 @@ export default Ember.Controller.extend({
   story: Ember.computed.readOnly('model.story'),
   title: Ember.computed.reads('story.title'),
   premise: Ember.computed.reads('story.description'),
+  
+  selectedGenreIds: Ember.computed.mapBy('story.genres', 'id'),
   selectedGenresCount: Ember.computed.readOnly('selectedGenres.length'),
   selectedGenres: Ember.computed.reads('initiallySelectedGenres'),
-  initiallySelectedGenres: Ember.computed.filter('genres', function(genre) {
-    let selectedGenres = this.get('story.genres');
+  initiallySelectedGenres: Ember.computed('genres.[]', 'story.genres.[]', function() {
+    let selectedGenreIds = this.get('selectedGenreIds');
 
-    if (selectedGenres) {
-      return this.get('story.genres').map(genre => genre.id).includes(parseInt(genre.get('id')));
+    if (!Ember.isEmpty(selectedGenreIds)) {
+      return this.get('genres').filter(genre => {
+        return selectedGenreIds.includes(parseInt(genre.get('id'))) || selectedGenreIds.includes(genre.get('id'));
+      });
     } else {
       return false;
     }
-  }).property('genres.genre', 'story.genres'),
+  }),
   
   anyError: Ember.computed.or('missingTitle', 'missingGenre'),
   noErrors: Ember.computed.not('anyError'),

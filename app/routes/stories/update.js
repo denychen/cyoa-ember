@@ -8,12 +8,17 @@ export default Ember.Route.extend(ConfirmationMixin, {
     return this.store.find('story', params.id);
   },
 
+  afterModel() {
+    return this.store.findAll('genre').then(genres => {
+      this.set('genres', genres);
+    });
+  },
+
   setupController(controller, model) {
     this._super(controller, { story: model });
 
-    this.store.findAll('genre').then(genres => {
-      controller.set('genres', genres);
-    });
+    controller.set('model', { story: model });
+    controller.set('genres', this.get('genres'));
   },
 
   shouldCheckIsPageDirty(transition) {
