@@ -51,7 +51,7 @@
       noMatchesMessage=(if maxGenreCountMet maxGenreCountMessage)
       selected=selectedGenres
       searchField='genre'
-      onchange=(action (mut selectedGenres))
+      onchange=(action 'updateSelectedGenres')
       as |genre|
     }}
       {{genre-emoji id=genre.id}}&nbsp;&nbsp;{{genre.genre}}

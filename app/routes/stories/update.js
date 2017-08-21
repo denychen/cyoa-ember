@@ -10,7 +10,11 @@ export default Ember.Route.extend(ConfirmationMixin, {
 
   afterModel() {
     return this.store.findAll('genre').then(genres => {
-      this.set('genres', genres);
+      let formattedGenres = genres.map(genre => {
+        return { id: genre.id, genre: genre.get('genre') };
+      });
+
+      this.set('genres', formattedGenres);
     });
   },
 

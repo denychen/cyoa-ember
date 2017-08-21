@@ -30,7 +30,7 @@ export default Ember.Controller.extend({
 
     if (!Ember.isEmpty(selectedGenreIds)) {
       return this.get('genres').filter(genre => {
-        return selectedGenreIds.includes(parseInt(genre.get('id'))) || selectedGenreIds.includes(genre.get('id'));
+        return selectedGenreIds.includes(parseInt(genre.id));
       });
     } else {
       return false;
@@ -49,6 +49,13 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
+    updateSelectedGenres(selectedGenres) {
+      let newGenres = selectedGenres.map(selectedGenre => {
+        return { id: parseInt(selectedGenre.id), genre: selectedGenre.genre };
+      });
+      this.set('story.genres', newGenres);
+    },
+
     saveStory() {
       let story = this.get('story');
       let title = story.get('title');
@@ -62,7 +69,7 @@ export default Ember.Controller.extend({
         let genres = selectedGenres.map(genre => {
           return {
             id: genre.id,
-            genre: genre.get('genre')
+            genre: genre.genre
           };
         });
 
