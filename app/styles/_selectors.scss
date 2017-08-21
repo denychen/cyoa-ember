@@ -17,6 +17,18 @@ $ember-power-select-trigger-ltr-padding: 2px 16px 0px 5px;
   width: 170px;
 }
 
+.destination_selector:hover {
+  cursor: pointer;
+}
+
+.ember-power-select-multiple-trigger:hover {
+  cursor: text;
+}
+
+.ember-power-select-status-icon:hover {
+  cursor: pointer;
+}
+
 .ember-power-select-search-input {
   border: none;
   box-shadow: none;
