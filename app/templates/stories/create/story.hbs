@@ -34,7 +34,7 @@
   <div class='box row page-creator__breadcrumbs'>
     {{#each breadCrumbs as |page index|}}
       <div class='o__page__name u__ml__5 u__mr__5' {{action 'goToBreadCrumb' page index}}>
-        {{page.name}}
+        {{if page.name page.name 'Untitled page'}}
       </div> 
       <div class='o__arrow'>
         >
