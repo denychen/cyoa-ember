@@ -29,8 +29,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ConfirmationMixin, {
   },
 
   isPageDirty() {
-    let dirtyTitle = !Ember.isEmpty(this.get('controller.title'));
-    let dirtyPremise = !Ember.isEmpty(this.get('controller.premise'));
+    let dirtyAttributes = model.changedAttributes();
+    let dirtyTitle = dirtyAttributes['title'];
+    let dirtyPremise = dirtyAttributes['description'];
     let dirtyGenres = !Ember.isEmpty(this.get('controller.selectedGenres'));
 
     return dirtyTitle || dirtyPremise || dirtyGenres;

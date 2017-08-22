@@ -31,16 +31,22 @@ export default Ember.Route.extend(ConfirmationMixin, {
   },
 
   isPageDirty(model) {
-    let originalGenres = this.get('controller.initiallySelectedGenres').mapBy('id');
-    let newGenres = this.get('controller.selectedGenres').mapBy('id');
-    
-    let dirtyTitle = this.get('controller.title') !== model.get('title');
-    let dirtyPremise = this.get('controller.premise') !== model.get('description');
-    let dirtyGenres = (originalGenres.length !== newGenres.length) || !originalGenres.every((genre, index) => {
-      return genre === newGenres[index]; 
-    });
+    let dirtyAttributes = model.changedAttributes();
 
-    return dirtyTitle || dirtyPremise || dirtyGenres;
+    let dirtyTitle = dirtyAttributes['title'];
+    let dirtyPremise = dirtyAttributes['description'];
+    let dirtyGenres = dirtyAttributes['genres'];
+
+    let isGenreDirty = false;
+    if (dirtyGenres) {
+      let originalGenres = dirtyGenres[0]
+      let newGenres = dirtyGenres[1]
+      isGenreDirty = (originalGenres.length !== newGenres.length) || !originalGenres.every((genre, index) => {
+        return genre.id === newGenres[index].id; 
+      });
+    }
+
+    return dirtyTitle || dirtyPremise || isGenreDirty;
   },
 
   actions: {

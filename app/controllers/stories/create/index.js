@@ -24,8 +24,7 @@ export default Ember.Controller.extend({
   
   selectedGenreIds: Ember.computed.mapBy('story.genres', 'id'),
   selectedGenresCount: Ember.computed.readOnly('selectedGenres.length'),
-  selectedGenres: Ember.computed.reads('initiallySelectedGenres'),
-  initiallySelectedGenres: Ember.computed('genres.[]', 'story.genres.[]', function() {
+  selectedGenres: Ember.computed('genres.[]', 'story.genres.[]', function() {
     let selectedGenreIds = this.get('selectedGenreIds');
 
     if (!Ember.isEmpty(selectedGenreIds)) {
@@ -60,13 +59,12 @@ export default Ember.Controller.extend({
       let story = this.get('story');
       let title = story.get('title');
       let author = this.get('currentUser.user');
-      let selectedGenres = this.get('selectedGenres');
 
       title ? this.set('missingTitle', false) : this.set('missingTitle', true);
-      !Ember.isEmpty(selectedGenres) ? this.set('missingGenre', false) : this.set('missingGenre', true);
+      !Ember.isEmpty(this.get('story.genres')) ? this.set('missingGenre', false) : this.set('missingGenre', true);
       
       if (this.get('noErrors')) {
-        let genres = selectedGenres.map(genre => {
+        let genres = this.get('selectedGenres').map(genre => {
           return {
             id: genre.id,
             genre: genre.genre
