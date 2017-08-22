@@ -88,9 +88,17 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ConfirmationMixin, {
       if (transition) {
         this.get('controller.story.pages').forEach(page => {
           page.rollbackAttributes();
+
+          let destinationsToRemove = Ember.A();
           page.get('destinations').forEach(destination => {
-            destination.rollbackAttributes();
+            if (destination && destination.get('id')) {
+              destination.rollbackAttributes();
+            } else {
+              destinationsToRemove.pushObject(destination);
+            }
           });
+
+          page.get('destinations').removeObjects(destinationsToRemove);
         });
       }
 
