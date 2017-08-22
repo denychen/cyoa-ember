@@ -16,7 +16,7 @@
     options=pages
     searchField='name'
     placeholder=(if hasNoPages 'Create a page first')
-    selected=(selected-page pages=pages pageId=path.pageId)
+    selected=selectedPage
     onchange=(action 'updatePath' path)
     as |page|
   }}

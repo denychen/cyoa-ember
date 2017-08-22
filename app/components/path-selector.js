@@ -5,6 +5,10 @@ export default Ember.Component.extend({
   hasNoPages: Ember.computed.empty('pages'),
   maxOptionLength: 30,
 
+  selectedPage: Ember.computed('pages.@each.id', 'path.pageId', function() {
+    return this.get('pages').findBy('id', this.get('path.pageId'))
+  }),
+
   optionLength: Ember.computed('path.option', function() {
     return this.get('maxOptionLength') - (this.get('path.option.length') || 0);
   }),
@@ -21,7 +25,6 @@ export default Ember.Component.extend({
     
     updatePath(path, selectedPage) {
       this.set('path.hasPathError', false);
-      this.set('selectedPage', selectedPage);
       path.set('pageId', selectedPage.get('id'));
     },
 
