@@ -20,6 +20,22 @@
   margin: 10px 30px 10px 10px;
 }
 
+.page-creator__breadcrumbs {
+  color: #5dbcd2;
+  flex-wrap: wrap;
+  font-size: 20px;
+  margin-left: 210px;
+  margin-right: 10px;
+}
+
+.page-creator__breadcrumbs .o__page__name {
+  cursor: pointer;
+}
+
+.page-creator__breadcrumbs .o__arrow {
+  color: #9c9c9c;
+}
+
 .o__story-title {
   font-size: 36px;
   margin: 10px;

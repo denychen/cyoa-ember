@@ -31,6 +31,17 @@
     </div>
   </div>
 
+  <div class='box row page-creator__breadcrumbs'>
+    {{#each breadCrumbs as |page index|}}
+      <div class='o__page__name u__ml__5 u__mr__5' {{action 'goToBreadCrumb' page index}}>
+        {{page.name}}
+      </div> 
+      <div class='o__arrow'>
+        >
+      </div>
+    {{/each}}
+  </div>
+
   <div class='box row'>
     <div class='box column page-creator__left-column'>
       {{page-list 

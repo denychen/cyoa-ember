@@ -13,7 +13,6 @@ export default Ember.Component.extend({
     return this.get('maxOptionLength') - (this.get('path.option.length') || 0);
   }),
 
-  
   actions: {
     goToPath() {
       let selectedPage = this.get('selectedPage');

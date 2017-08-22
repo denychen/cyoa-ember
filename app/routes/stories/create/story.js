@@ -69,10 +69,12 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ConfirmationMixin, {
         pages.pushObject(page);
         story.set('firstPageId', page.get('id'));
         controller.set('activePage', page);
+        controller.set('breadCrumbs', Ember.A([page]));
       });
     } else {
       page = pages.findBy('id', story.get('firstPageId'));
       controller.set('activePage', page);
+      controller.set('breadCrumbs', Ember.A([page]));
     }
   },
 

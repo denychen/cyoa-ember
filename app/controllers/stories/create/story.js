@@ -73,6 +73,10 @@ export default Ember.Controller.extend({
   actions: {
     selectPage(id) {
       let activePage = this.get('pages').find(page => page.id === id);
+      let breadCrumbs = this.get('breadCrumbs');
+
+      breadCrumbs.clear();
+      breadCrumbs.pushObject(activePage);
       this.set('activePage', activePage);
     },
 
@@ -95,6 +99,12 @@ export default Ember.Controller.extend({
 
     updateActivePage(page) {
       this.set('activePage', page);
+      this.get('breadCrumbs').pushObject(page);
+    },
+
+    goToBreadCrumb(page, index) {
+      this.set('activePage', page);
+      this.set('breadCrumbs', this.get('breadCrumbs').slice(0, index + 1));
     },
 
     setAsFirstPage() {
