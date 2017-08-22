@@ -135,9 +135,13 @@
   padding-right: 10px;
 }
 
-.page-create__page-list__page-name {
+.page-creator__page-list__page-name {
   padding-right: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.page-creator__my-stories__link {
+  display: inline-block;
 }
