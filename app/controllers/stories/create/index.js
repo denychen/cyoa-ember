@@ -60,6 +60,8 @@ export default Ember.Controller.extend({
       let title = story.get('title');
       let author = this.get('currentUser.user');
 
+      let isUpdate = story.get('id') ? true : false;
+
       title ? this.set('missingTitle', false) : this.set('missingTitle', true);
       !Ember.isEmpty(this.get('story.genres')) ? this.set('missingGenre', false) : this.set('missingGenre', true);
       
@@ -75,6 +77,11 @@ export default Ember.Controller.extend({
         story.set('genres', genres);
 
         story.save().then(story => {
+          if (isUpdate) {
+            this.get('notifications').success('Story successfully updated', {
+              autoClear: true
+            });
+          }
           return this.transitionToRoute('stories.create.story', story.id);
         });
       }
