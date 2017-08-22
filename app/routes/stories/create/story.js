@@ -30,7 +30,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ConfirmationMixin, {
     let pages = model.story.get('pages');
 
     return pages.any(page => {
-      let hasDirtyDestinations = page.get('destinations').isAny('hasDirtyAttributes', true);
+      let destinations = page.get('destinations');
+      
+      let hasDirtyDestinations = destinations.isAny('hasDirtyAttributes', true) || 
+        destinations.length !== destinations.get('canonicalState.length');
       
       if (hasDirtyDestinations) {
         return true;

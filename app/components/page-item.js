@@ -25,7 +25,9 @@ export default Ember.Component.extend({
   }),
 
   isDestinationDirty: Ember.computed('page.destinations.@each.hasDirtyAttributes', function() {
-    return this.get('page.destinations').isAny('hasDirtyAttributes', true);
+    let destinations = this.get('activePage.destinations');
+    
+    return destinations.isAny('hasDirtyAttributes', true) || destinations.length !== destinations.get('canonicalState.length');
   }),
 
   isDirty: Ember.computed.or('isTitleOrContentDirty', 'isDestinationDirty'),

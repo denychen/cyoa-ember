@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
   maxPageNameLength: 50,
   maxPageContentLength: 3000,
   maxPathCount: 5,
+  pathCount: Ember.computed.reads('paths.length'),
 
   description: Ember.computed('story.description', function() {
     let description = this.get('story.description');
@@ -65,7 +66,9 @@ export default Ember.Controller.extend({
   }),
 
   isDestinationDirty: Ember.computed('activePage.destinations.@each.hasDirtyAttributes', function() {
-    return this.get('activePage.destinations').isAny('hasDirtyAttributes', true);
+    let destinations = this.get('activePage.destinations');
+
+    return destinations.isAny('hasDirtyAttributes', true) || destinations.length !== destinations.get('canonicalState.length');
   }),
 
   isDirty: Ember.computed.or('isTitleOrContentDirty', 'isDestinationDirty'),
