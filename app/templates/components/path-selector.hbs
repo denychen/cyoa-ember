@@ -23,6 +23,10 @@
     {{if page.name page.name 'Untitled page'}}
   {{/power-select}}
 
+  <div class='button edit u__mr__10 {{unless path.pageId 'o__disabled'}}' {{action 'goToPath' index}}>
+    ⬎
+  </div>
+
   <div class='button negative' {{action 'removePath' index}}>
     Remove
   </div>

@@ -98,7 +98,7 @@
         <div class='box column o__right-align'>
           {{#if hasPaths}}
             {{#each paths as |path index|}}
-              {{path-selector path=path pages=pages index=index removePath=(action 'removePath')}}
+              {{path-selector path=path pages=pages index=index removePath=(action 'removePath') updateActivePage=(action 'updateActivePage')}}
             {{/each}}
           {{else}}
             <div class='tooltip u__mb__10'>

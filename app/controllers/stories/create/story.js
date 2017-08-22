@@ -93,6 +93,10 @@ export default Ember.Controller.extend({
       });
     },
 
+    updateActivePage(page) {
+      this.set('activePage', page);
+    },
+
     setAsFirstPage() {
       let story = this.get('story');
       let page = this.get('activePage');
