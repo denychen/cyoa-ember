@@ -28,8 +28,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ConfirmationMixin, {
     return transition.targetName === 'stories.create.story';
   },
 
-  isPageDirty() {
+  isPageDirty(model) {
     let dirtyAttributes = model.changedAttributes();
+    
     let dirtyTitle = dirtyAttributes['title'];
     let dirtyPremise = dirtyAttributes['description'];
     let dirtyGenres = !Ember.isEmpty(this.get('controller.selectedGenres'));
