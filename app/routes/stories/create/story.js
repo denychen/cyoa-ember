@@ -82,6 +82,21 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ConfirmationMixin, {
   },
 
   actions: {
+    willTransition() {
+      let transition = this._super(...arguments);
+      
+      if (transition) {
+        this.get('controller.story.pages').forEach(page => {
+          page.rollbackAttributes();
+          page.get('destinations').forEach(destination => {
+            destination.rollbackAttributes();
+          });
+        });
+      }
+
+      return true;
+    },
+
     didTransition() {
       Ember.run.scheduleOnce('afterRender', this, () => {
         let input = Ember.$('.o__page-title__input')[0];
