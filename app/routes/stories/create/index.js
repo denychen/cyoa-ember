@@ -44,7 +44,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ConfirmationMixin, {
       let transition = this._super(...arguments);
       
       if (transition) {
-        this.get('controller.model.story').rollbackAttributes()
+        this.get('controller.model.story').rollbackAttributes();
+        this.set('controller.missingTitle', false);
+        this.set('controller.missingGenre', false);
       }
 
       return true;
