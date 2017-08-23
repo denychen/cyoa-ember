@@ -104,7 +104,7 @@ export default Ember.Controller.extend({
       page.startTrack();
       page.get('destinations').removeObject(pathToRemove);
       page.get('destinations').forEach((destination, index) => {
-        if (index > pathToRemove.get('order')) {
+        if (index >= pathToRemove.get('order')) {
           destination.set('order', index + 1);
         }
       });
