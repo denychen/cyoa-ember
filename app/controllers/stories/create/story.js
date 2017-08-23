@@ -83,7 +83,7 @@ export default Ember.Controller.extend({
       this.set('activePage', activePage);
     },
 
-    addDestination() {
+    addPath() {
       let newDestination = this.get('store').createRecord('destination', {
         order: this.get('paths.length') + 1
       });

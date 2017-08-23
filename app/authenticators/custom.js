@@ -38,7 +38,7 @@ export default Base.extend({
   },
 
   invalidate(data) {
-    return new Ember.RSVP.Promise((resolve/*, reject*/) => {
+    return new Ember.RSVP.Promise(resolve => {
       Ember.$.ajax({
         url: `${config.backend}/api/users/signout`,
         type: 'POST',

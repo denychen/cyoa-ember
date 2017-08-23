@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
       }
 
       if (this.get('hasNoErrors')) {
-        new Ember.RSVP.Promise((resolve) => {
+        new Ember.RSVP.Promise(resolve => {
           return (this.get('session.isAuthenticated')) ? this.get('session').invalidate() : resolve(true);
         }).then (() => {
           let credentials = { email: email, password: password };
