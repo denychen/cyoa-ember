@@ -29,13 +29,17 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, ConfirmationMixin, {
   isPageDirty(model) {
     let pages = model.story.get('pages');
 
-    return pages.any(page => {
-      let destinations = page.get('destinations');
-      
-      let hasDirtyDestinations = destinations.isAny('hasDirtyAttributes', true) || 
-        destinations.length !== destinations.get('canonicalState.length');
-      
-      if (hasDirtyDestinations) {
+    return pages.any(page => {      
+      let paths = page.get('destinations');
+  
+      let hasDirtyDestination = paths.isAny('hasDirtyAttributes', true);
+  
+      let hasAddedOrRemovedDestination = false;
+      if (page.get('isDirty')) {
+        hasAddedOrRemovedDestination = page.didChange('destinations');
+      }
+
+      if (hasDirtyDestination || hasAddedOrRemovedDestination) {
         return true;
       }
 

@@ -24,10 +24,18 @@ export default Ember.Component.extend({
     return false;
   }),
 
-  isDestinationDirty: Ember.computed('page.destinations.@each.hasDirtyAttributes', function() {
-    let destinations = this.get('activePage.destinations');
-    
-    return destinations.isAny('hasDirtyAttributes', true) || destinations.length !== destinations.get('canonicalState.length');
+  isDestinationDirty: Ember.computed('page', 'page.destinations.@each.hasDirtyAttributes', 'page.isDirty', function() {
+    let page = this.get('page');
+    let paths = page.get('destinations');
+
+    let hasDirtyDestination = paths.isAny('hasDirtyAttributes', true);
+
+    let hasAddedOrRemovedDestination = false;
+    if (page.get('isDirty')) {
+      hasAddedOrRemovedDestination = page.didChange('destinations');
+    }
+
+    return hasDirtyDestination || hasAddedOrRemovedDestination;
   }),
 
   isDirty: Ember.computed.or('isTitleOrContentDirty', 'isDestinationDirty'),

@@ -13,7 +13,7 @@
     tagName='div'
     class='destination_selector u__mr__10'
     classNameBindings='hasPathError:u__error-borders'
-    options=pages
+    options=pagePagesWithNew
     searchField='name'
     placeholder=(if hasNoPages 'Create a page first')
     selected=selectedPage
@@ -23,11 +23,11 @@
     {{if page.name page.name 'Untitled page'}}
   {{/power-select}}
 
-  <div class='button edit u__mr__10 {{unless path.pageId 'o__disabled'}}' {{action 'goToPath' index}}>
+  <div class='button edit u__mr__10 {{unless path.pageId 'o__disabled'}}' {{action 'goToPath'}}>
     ⬎
   </div>
 
-  <div class='button negative' {{action 'removePath' index}}>
+  <div class='button negative' {{action 'removePath' path}}>
     Remove
   </div>
 </div>

@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  emptyArray: Ember.A(),
-
   maxPageNameLength: 50,
   maxPageContentLength: 3000,
   maxPathCount: 5,
@@ -65,10 +63,18 @@ export default Ember.Controller.extend({
     return false;
   }),
 
-  isDestinationDirty: Ember.computed('activePage.destinations.@each.hasDirtyAttributes', function() {
-    let destinations = this.get('activePage.destinations');
+  isDestinationDirty: Ember.computed('activePage', 'activePage.destinations.@each.hasDirtyAttributes', 'activePage.isDirty', function() {
+    let page = this.get('activePage');
+    let paths = page.get('destinations');
 
-    return destinations.isAny('hasDirtyAttributes', true) || destinations.length !== destinations.get('canonicalState.length');
+    let hasDirtyDestination = paths.isAny('hasDirtyAttributes', true);
+
+    let hasAddedOrRemovedDestination = false;
+    if (page.get('isDirty')) {
+      hasAddedOrRemovedDestination = page.didChange('destinations');
+    }
+
+    return hasDirtyDestination || hasAddedOrRemovedDestination;
   }),
 
   isDirty: Ember.computed.or('isTitleOrContentDirty', 'isDestinationDirty'),
@@ -88,13 +94,17 @@ export default Ember.Controller.extend({
         order: this.get('paths.length') + 1
       });
 
-      this.get('paths').pushObject(newDestination);
+      let page = this.get('activePage');
+      page.startTrack();
+      page.get('destinations').pushObject(newDestination);
     },
 
-    removePath(indexToRemove) {
-      this.get('paths').removeAt(indexToRemove);
-      this.get('paths').forEach((destination, index) => {
-        if (index >= indexToRemove) {
+    removePath(pathToRemove) {
+      let page = this.get('activePage');
+      page.startTrack();
+      page.get('destinations').removeObject(pathToRemove);
+      page.get('destinations').forEach((destination, index) => {
+        if (index > pathToRemove.get('order')) {
           destination.set('order', index + 1);
         }
       });
@@ -137,19 +147,27 @@ export default Ember.Controller.extend({
 
     savePage() {
       if (this.get('isDirty')) {
-        let page = this.get('activePage');
-        let hasAnyError = false;
+        let newPagePromises = [];
 
-        this.get('paths').forEach(destination => {
-          if (Ember.isEmpty(destination.get('pageId'))) {
-            destination.set('hasPathError', true);
-            hasAnyError = true;
+        this.get('paths').forEach(path => {
+          if (Ember.isEmpty(path.get('pageId'))) {
+            let story = this.get('story');
+            let newPage = this.get('store').createRecord('page');
+      
+            newPage.set('story', story);
+            let newPagePromise = newPage.save().then(page => {
+              path.set('pageId', page.get('id'));
+            });
+            
+            newPagePromises.push(newPagePromise);
           }
         });
 
-        if (!hasAnyError) {
+        Ember.RSVP.all(newPagePromises).then(() => {
+          let page = this.get('activePage');
           page.save().then(() => {
             this.set('activePage.destinations', this.get('activePage.destinations').rejectBy('id', null));
+            page.startTrack();
             this.get('notifications').success('Page saved', {
               autoClear: true
             });
@@ -158,11 +176,7 @@ export default Ember.Controller.extend({
               autoClear: true
             });
           });
-        } else {
-          this.get('notifications').error('All paths need to lead to a page', {
-            autoClear: true
-          });
-        }
+        });
       }
     },
 

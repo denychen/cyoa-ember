@@ -5,12 +5,20 @@ export default Ember.Component.extend({
   hasNoPages: Ember.computed.empty('pages'),
   maxOptionLength: 30,
 
-  selectedPage: Ember.computed('pages.@each.id', 'path.pageId', function() {
-    return this.get('pages').findBy('id', this.get('path.pageId'))
+  selectedPage: Ember.computed('pagePagesWithNew.@each.id', 'path.pageId', function() {
+    return this.get('pagePagesWithNew').findBy('id', this.get('path.pageId'));
   }),
 
   optionLength: Ember.computed('path.option', function() {
     return this.get('maxOptionLength') - (this.get('path.option.length') || 0);
+  }),
+
+  pathPages: Ember.computed.reads('pages'),
+  pagePagesWithNew: Ember.computed('pathPages', function() {
+    let pathPages = this.get('pathPages').toArray();
+    pathPages.push({ name: '+ New path' });
+    
+    return pathPages;
   }),
 
   actions: {
@@ -24,11 +32,11 @@ export default Ember.Component.extend({
     
     updatePath(path, selectedPage) {
       this.set('path.hasPathError', false);
-      path.set('pageId', selectedPage.get('id'));
+      path.set('pageId', selectedPage.id);
     },
 
-    removePath(index) {
-      this.sendAction('removePath', index);
+    removePath(path) {
+      this.sendAction('removePath', path);
     }
   }
 });
