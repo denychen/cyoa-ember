@@ -54,6 +54,7 @@ export default Ember.Controller.extend({
       this.store.query('story', { user: true, type: 'unpublished', id: lastUnpublishedStory.get('id') }).then(stories => {
         this.set('noMoreUnpublished', stories.get('length') === 0);
         stories.forEach(story => {
+          // https://github.com/emberjs/data/issues/3530
           this.get('unpublishedStories').content.addObject(story._internalModel);
         });
       });
@@ -64,6 +65,7 @@ export default Ember.Controller.extend({
       this.store.query('story', { user: true, type: 'published', id: lastPublishedStory.get('id') }).then(stories => {
         this.set('noMorePublished', stories.get('length') === 0);
         stories.forEach(story => {
+          // https://github.com/emberjs/data/issues/3530
           this.get('publishedStories').content.addObject(story._internalModel);
         });
       });
