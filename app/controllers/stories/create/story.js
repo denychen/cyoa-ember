@@ -65,6 +65,11 @@ export default Ember.Controller.extend({
 
   isDestinationDirty: Ember.computed('activePage', 'activePage.destinations.@each.hasDirtyAttributes', 'activePage.isDirty', function() {
     let page = this.get('activePage');
+
+    if (!page) {
+      return false;
+    }
+
     let paths = page.get('destinations');
 
     let hasDirtyDestination = paths.isAny('hasDirtyAttributes', true);
