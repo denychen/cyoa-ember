@@ -28,7 +28,7 @@ export default Ember.Component.extend({
   genresStartWithVowel: Ember.computed('formattedGenres', function() {
     let vowels = ['a', 'e', 'i', 'o', 'u'];
     
-    return vowels.contains(this.get('formattedGenres').charAt(0));
+    return vowels.includes(this.get('formattedGenres').charAt(0));
   }),
 
   actions: {
