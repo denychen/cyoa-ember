@@ -16,7 +16,7 @@
       
       <div class='u__sp__1'></div>
 
-      <div class='button destination' {{action 'loadNextPage' destination.pageId}}>
+      <div class='button destination {{unless destination.option 'o__no-text'}}' {{action 'loadNextPage' destination.pageId}}>
         {{destination.option}}
       </div>
     {{/each}}
