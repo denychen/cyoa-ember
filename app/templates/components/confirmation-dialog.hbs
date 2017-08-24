@@ -11,7 +11,7 @@
         <div class='button edit' {{action 'cancelDialog'}}>
           {{messageCancel}}
         </div>
-        <div class='button negative' {{action 'continueDialog'}}>
+        <div class='button {{if isPositive 'positive' (if isNegative 'negative' 'edit')}}' {{action 'continueDialog'}}>
           {{messageContinue}}
         </div>
       </div>

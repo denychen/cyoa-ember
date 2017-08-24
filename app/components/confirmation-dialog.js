@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   messageContinue: 'Yes',
   messageCancel: 'No',
+  isPositive: Ember.computed.equal('confirmationType', 'positive'),
+  isNegative: Ember.computed.equal('confirmationType', 'negative'),
 
   actions: {
     continueDialog() {
