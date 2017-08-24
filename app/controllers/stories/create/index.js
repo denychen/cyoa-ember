@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
         return selectedGenreIds.includes(parseInt(genre.id));
       });
     } else {
-      return false;
+      return Ember.A();
     }
   }),
   

@@ -1,9 +1,9 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  title: DS.attr(),
+  title: DS.attr('string', { defaultValue: '' }),
   authors: DS.hasMany('user', { async: false }),
-  description: DS.attr(),
+  description: DS.attr('string', { defaultValue: '' }),
   genres: DS.attr(),
   firstPageId: DS.attr(),
   published: DS.attr('boolean', { defaultValue: false }),
