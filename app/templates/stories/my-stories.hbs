@@ -33,6 +33,15 @@
 
             <div class='u__sp__2'></div>
           {{/each}}
+          {{#if noMoreUnpublished}}
+            <div class='story__no-more horizontally-align u__mt__5'>
+              No more unpublished stories
+            </div>
+          {{else}}
+            <div class='story__show-more horizontally-align u__mt__5' {{action 'showMoreUnpublished'}}>
+              Show more unpublished stories
+            </div>
+          {{/if}}
         {{else}}
           {{#empty-card classNames='card o__empty box column o__vertical-align'
             text='No stories to publish :(' 
@@ -75,6 +84,15 @@
 
             <div class='u__sp__2'></div>
           {{/each}}
+          {{#if noMorePublished}}
+            <div class='story__no-more horizontally-align u__mt__5'>
+              No more published stories
+            </div>
+          {{else}}
+            <div class='story__show-more horizontally-align u__mt__5' {{action 'showMorePublished'}}>
+              Show more published stories
+            </div>
+          {{/if}}
         {{else}}
           {{#empty-card classNames='card o__empty box column o__vertical-align'
             text='Publish a story for others to read' 

@@ -2,8 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   stories: Ember.computed.readOnly('model'),
-  unpublishedStories: Ember.computed.filterBy('stories', 'published', false),
-  publishedStories: Ember.computed.filterBy('stories', 'published', true),
+  unpublishedStories: Ember.computed.reads('stories.unpublished'),
+  publishedStories: Ember.computed.reads('stories.published'),
 
   showPublishDialog: false,
   publishStory: null,
@@ -21,8 +21,18 @@ export default Ember.Controller.extend({
   actions: {
     continuePublish() {
       let story = this.get('publishStory');
+      let published = story.get('published');
 
+      if (published) {
+        this.get('publishedStories').content.removeObject(story._internalModel);
+        this.get('unpublishedStories').content.unshiftObject(story._internalModel);
+      } else {
+        this.get('unpublishedStories').content.removeObject(story._internalModel);
+        this.get('publishedStories').content.unshiftObject(story._internalModel);
+      }
+      
       story.toggleProperty('published');
+
       if (!story.get('firstPublishedAt')) {
         story.set('firstPublishedAt', new Date());
       }
@@ -37,6 +47,26 @@ export default Ember.Controller.extend({
 
     startStory() {
       return this.transitionToRoute('stories.create');
+    },
+
+    showMoreUnpublished() {
+      let lastUnpublishedStory = this.get('unpublishedStories.lastObject');
+      this.store.query('story', { user: true, type: 'unpublished', id: lastUnpublishedStory.get('id') }).then(stories => {
+        this.set('noMoreUnpublished', stories.get('length') === 0);
+        stories.forEach(story => {
+          this.get('unpublishedStories').content.addObject(story._internalModel);
+        });
+      });
+    },
+
+    showMorePublished() {
+      let lastPublishedStory = this.get('publishedStories.lastObject');
+      this.store.query('story', { user: true, type: 'published', id: lastPublishedStory.get('id') }).then(stories => {
+        this.set('noMorePublished', stories.get('length') === 0);
+        stories.forEach(story => {
+          this.get('publishedStories').content.addObject(story._internalModel);
+        });
+      });
     }
   }
 });
