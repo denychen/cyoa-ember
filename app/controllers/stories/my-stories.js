@@ -24,9 +24,11 @@ export default Ember.Controller.extend({
       let published = story.get('published');
 
       if (published) {
+        // https://github.com/emberjs/data/issues/3530
         this.get('publishedStories').content.removeObject(story._internalModel);
         this.get('unpublishedStories').content.unshiftObject(story._internalModel);
       } else {
+        // https://github.com/emberjs/data/issues/3530
         this.get('unpublishedStories').content.removeObject(story._internalModel);
         this.get('publishedStories').content.unshiftObject(story._internalModel);
       }
