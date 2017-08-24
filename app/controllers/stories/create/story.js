@@ -126,11 +126,13 @@ export default Ember.Controller.extend({
     },
 
     setAsFirstPage() {
-      let story = this.get('story');
-      let page = this.get('activePage');
+      if (!this.get('isFirstPage')) {
+        let story = this.get('story');
+        let page = this.get('activePage');
 
-      story.set('firstPageId', page.get('id'));
-      story.save();
+        story.set('firstPageId', page.get('id'));
+        story.save();
+      }
     },
 
     deleteStory() {

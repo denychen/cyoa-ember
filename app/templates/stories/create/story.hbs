@@ -80,15 +80,18 @@
             }}
           </div>
 
-          {{#if isFirstPage}}
-            <div class='tooltip u__mt__10'>
-              This page is currently the first page of the story
-            </div>
-          {{else}}
-            <div class='button edit u__mt__10' {{action 'setAsFirstPage'}}>
+          <div class='u__mt__10'>
+            <div class='button edit {{if isFirstPage 'o__disabled'}}' {{action 'setAsFirstPage'}}>
               Set as start of story
             </div>
-          {{/if}}
+            {{#if isFirstPage}}
+              {{tooltip-on-element 
+                side='bottom' 
+                delay=250
+                text='This page is already the first page of the story'
+              }}
+            {{/if}}
+          </div>
         </div>
 
         <div class='u__sp__1'></div>
