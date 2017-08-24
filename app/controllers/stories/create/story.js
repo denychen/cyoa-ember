@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   maxPageNameLength: 50,
   maxPageContentLength: 3000,
-  maxPathCount: 5,
+  maxPathCount: 3,
   pathCount: Ember.computed.reads('paths.length'),
 
   description: Ember.computed('story.description', function() {
