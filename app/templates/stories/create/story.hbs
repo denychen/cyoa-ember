@@ -110,21 +110,15 @@
         <div class='u__sp__1'></div>
 
         <div class='box column o__right-align'>
-          {{#if hasPaths}}
-            {{#each paths as |path index|}}
-              {{path-selector 
-                path=path 
-                activePage=activePage 
-                pages=pages 
-                removePath=(action 'removePath') 
-                updateActivePage=(action 'updateActivePage')
-              }}
-            {{/each}}
-          {{else}}
-            <div class='tooltip u__mb__10'>
-              Because this page has no paths, it’s the end of the story and will lead back to the beginning
-            </div>
-          {{/if}}
+          {{#each paths as |path index|}}
+            {{path-selector 
+              path=path 
+              activePage=activePage 
+              pages=pages 
+              removePath=(action 'removePath') 
+              updateActivePage=(action 'updateActivePage')
+            }}
+          {{/each}}
         </div>
 
         <div class='box column'>
@@ -141,11 +135,30 @@
                 }}
               {{/unless}}
             </div>
-            {{#unless tooManyPaths}}
-              <div class='button positive' {{action 'addPath'}}>
-                Add path
+            <div>
+              <div class='box row'>
+                {{#unless hasPaths}}
+                  <div class='box column tooltip info o__vertical-align u__mr__15'>
+                    ⓘ
+                    {{tooltip-on-element 
+                      side='left' 
+                      delay=250
+                      text='Because this page has no paths, it’s the end of the story and will lead back to the title page'
+                    }}
+                  </div>
+                {{/unless}}
+                <div class='button positive {{if tooManyPaths 'o__disabled'}}' {{action 'addPath'}}>
+                  Add path
+                </div>
               </div>
-            {{/unless}}
+              {{#if tooManyPaths}}
+                {{tooltip-on-element 
+                  side='left' 
+                  delay=250
+                  text='You have the maximum number of paths'
+                }}
+              {{/if}}
+            </div>
           </div>
         </div>
       </div>

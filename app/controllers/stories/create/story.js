@@ -95,13 +95,15 @@ export default Ember.Controller.extend({
     },
 
     addPath() {
-      let newDestination = this.get('store').createRecord('destination', {
-        order: this.get('paths.length') + 1
-      });
-
-      let page = this.get('activePage');
-      page.startTrack();
-      page.get('destinations').pushObject(newDestination);
+      if (!this.get('tooManyPaths')) {
+        let newDestination = this.get('store').createRecord('destination', {
+          order: this.get('paths.length') + 1
+        });
+  
+        let page = this.get('activePage');
+        page.startTrack();
+        page.get('destinations').pushObject(newDestination);
+      }
     },
 
     removePath(pathToRemove) {
