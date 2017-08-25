@@ -23,9 +23,9 @@ export default Ember.Component.extend({
 
   actions: {
     goToPath() {
-      let selectedPage = this.get('selectedPage');
+      let selectedPageId = this.get('selectedPage.id');
 
-      if (selectedPage) {
+      if (selectedPageId) {
         this.sendAction('updateActivePage', selectedPage);
       }
     },
