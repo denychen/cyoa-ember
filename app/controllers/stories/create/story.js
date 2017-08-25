@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
   story: Ember.computed.readOnly('model.story'),
   pages: Ember.computed.reads('story.pages'),
 
-  paths: Ember.computed.or('activePage.destinations', 'emptyArray'),
+  paths: Ember.computed.readOnly('activePage.destinations'),
   hasPaths: Ember.computed.gt('paths.length', 0),
   tooManyPaths: Ember.computed('hasPaths', 'paths.length', 'maxPathCount', function() {
     return this.get('hasPaths') && this.get('paths.length') === this.get('maxPathCount');
@@ -36,15 +36,7 @@ export default Ember.Controller.extend({
   deleteStoryConfirmationBody: Ember.computed('story.title', function() {
     return `Are you sure you want to delete ${this.get('story.title')}?`;
   }),
-  removePageConfirmationBody: Ember.computed('activePage.name', function() {
-    let pageName = this.get('activePage.name');
-
-    if (Ember.isEmpty(pageName)) {
-      return `Are you sure you want to remove this page?`;
-    } else {
-      return `Are you sure you want to remove page ${this.get('activePage.name')}?`;
-    }
-  }),
+  removePageConfirmationBody: 'Are you sure you want to remove this page? Paths to this page will be removed too.',
 
   isTitleOrContentDirty: Ember.computed('activePage.id', 'activePage.name', 'activePage.content', 'activePage.hasDirtyAttributes', function() {
     if (this.get('activePage.id') && this.get('activePage.hasDirtyAttributes')) {
@@ -162,7 +154,6 @@ export default Ember.Controller.extend({
           if (Ember.isEmpty(path.get('pageId'))) {
             let story = this.get('story');
             let newPage = this.get('store').createRecord('page');
-      
             newPage.set('name', path.get('option'));
             newPage.set('story', story);
             let newPagePromise = newPage.save().then(page => {
@@ -210,13 +201,20 @@ export default Ember.Controller.extend({
 
     removePage() {
       if (!this.get('isFirstPage')) {
+        let activePage = this.get('activePage');
         let activeIndex = this.get('pages').toArray().findIndex(page => {
-          return page.get('id') === this.get('activePage.id');
+          return page.get('id') === activePage.get('id');
         });
         let newIndex = activeIndex === this.get('pages.length') - 1 ? activeIndex - 1 : activeIndex;
 
-        this.get('activePage').destroyRecord().then(() => {
-          if(this.get('pages.length') === 0) {
+        activePage.destroyRecord().then(() => {
+          this.get('pages').forEach(page => { 
+            let destinations = page.get('destinations');
+            let removedDestination = destinations.find(destination => destination.get('pageId') === activePage.get('id'));
+            destinations.removeObject(removedDestination);
+            
+          });
+          if (this.get('pages.length') === 0) {
             this.send('addPage');
           } else {
             this.set('activePage', this.get('pages').objectAt(newIndex));
