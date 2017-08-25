@@ -163,6 +163,7 @@ export default Ember.Controller.extend({
             let story = this.get('story');
             let newPage = this.get('store').createRecord('page');
       
+            newPage.set('name', path.get('option'));
             newPage.set('story', story);
             let newPagePromise = newPage.save().then(page => {
               path.set('pageId', page.get('id'));
