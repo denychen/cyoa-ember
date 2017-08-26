@@ -167,7 +167,7 @@ export default Ember.Controller.extend({
         Ember.RSVP.all(newPagePromises).then(() => {
           let page = this.get('activePage');
           page.save().then(() => {
-            this.set('activePage.destinations', this.get('activePage.destinations').rejectBy('id', null));
+            page.set('destinations', page.get('destinations').rejectBy('id', null));
             page.startTrack();
             this.get('notifications').success('Page saved', {
               autoClear: true
