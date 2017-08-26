@@ -222,19 +222,26 @@ export default Ember.Controller.extend({
         let activeIndex = this.get('pages').toArray().findIndex(page => {
           return page.get('id') === activePage.get('id');
         });
-        let newIndex = activeIndex === this.get('pages.length') - 1 ? activeIndex - 1 : activeIndex;
 
         activePage.destroyRecord().then(() => {
           this.get('pages').forEach(page => { 
             let destinations = page.get('destinations');
             let removedDestination = destinations.find(destination => destination.get('pageId') === activePage.get('id'));
             destinations.removeObject(removedDestination);
-            
           });
-          if (this.get('pages.length') === 0) {
-            this.send('addPage');
-          } else {
-            this.set('activePage', this.get('pages').objectAt(newIndex));
+
+          let isLastPage = activeIndex >= this.get('pages.length') - 1;
+
+          let newIndex = isLastPage ? activeIndex - 1 : activeIndex;
+          let newPage = this.get('pages').objectAt(newIndex);
+          this.set('activePage', newPage);
+
+          let breadCrumbs = this.get('breadCrumbs');
+          breadCrumbs.popObject();
+          if (!isLastPage) {
+            breadCrumbs.clear();
+          } else if (Ember.isEmpty(breadCrumbs)) {
+            breadCrumbs.pushObject(newPage)
           }
         });
       }
