@@ -150,39 +150,49 @@ export default Ember.Controller.extend({
       if (this.get('isDirty')) {
         let newPagePromise = Ember.RSVP.resolve();
 
-        this.get('paths').forEach((path, index) => {
-          if (Ember.isEmpty(path.get('pageId'))) {
-            let story = this.get('story');
-            let newPage = this.get('store').createRecord('page');
-            newPage.set('name', path.get('option'));
-            newPage.set('story', story);
+        let savePage = () => {
+          let page = this.get('activePage');
+          page.save().then(() => {
+            page.set('destinations', page.get('destinations').rejectBy('id', null));
+            page.startTrack();
+            this.get('notifications').success('Page saved', {
+              autoClear: true
+            });
+          }).catch(() => {
+            this.get('notifications').error('Page failed to save', {
+              autoClear: true
+            });
+          });
+        };
 
-            let resolveNextPromise = () => {
-              return newPagePromise.then(() => {
-                return newPage.save().then(page => {
-                  path.set('pageId', page.get('id'));
-                });
-              });
-            };
+        let paths = this.get('paths');
+        let everyPathPageExists = paths.every(path => {
+          let pageId = path.get('pageId');
+          return pageId !== null && pageId !== undefined;
+        });
 
-            if (index < this.get('paths.length') - 1) {
-              newPagePromise = resolveNextPromise();
-            } else {
-              newPagePromise = resolveNextPromise().then(() => {
-                let page = this.get('activePage');
-                page.save().then(() => {
-                  page.set('destinations', page.get('destinations').rejectBy('id', null));
-                  page.startTrack();
-                  this.get('notifications').success('Page saved', {
-                    autoClear: true
-                  });
-                }).catch(() => {
-                  this.get('notifications').error('Page failed to save', {
-                    autoClear: true
-                  });
-                });
-              });
-            }
+        if (Ember.isEmpty(paths) || everyPathPageExists) {
+          savePage();
+          return;
+        }
+
+        let newPathPages = paths.filterBy('pageId', null || undefined);
+        newPathPages.forEach((path, index) => {
+          let story = this.get('story');
+          let newPage = this.get('store').createRecord('page');
+          newPage.set('name', path.get('option'));
+          newPage.set('story', story);
+
+          newPagePromise = newPagePromise.then(() => {
+            return newPage.save().then(page => {
+              path.set('pageId', page.get('id'));
+            });
+          });
+
+          if (index === newPathPages.length - 1) {
+            newPagePromise = newPagePromise.then(() => {
+              savePage();
+            });
           }
         });
       }
