@@ -84,6 +84,7 @@ export default Ember.Controller.extend({
       breadCrumbs.clear();
       breadCrumbs.pushObject(activePage);
       this.set('activePage', activePage);
+      window.scrollTo(0,0);
     },
 
     addPath() {
@@ -112,11 +113,13 @@ export default Ember.Controller.extend({
     updateActivePage(page) {
       this.set('activePage', page);
       this.get('breadCrumbs').pushObject(page);
+      window.scrollTo(0,0);
     },
 
     goToBreadCrumb(page, index) {
       this.set('activePage', page);
       this.set('breadCrumbs', this.get('breadCrumbs').slice(0, index + 1));
+      window.scrollTo(0,0);
     },
 
     setAsFirstPage() {
