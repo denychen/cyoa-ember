@@ -16,7 +16,7 @@
         {{input classNames='horizontally-align' 
           classNameBindings='emailError:u__error-borders' 
           autofocus=true 
-          value=email 
+          value=signUpEmail 
           enter='signup' 
           placeholder=(if emailError 'Required')
         }}
@@ -63,7 +63,7 @@
       Sign Up
     </span>
     <span>
-      {{link-to 'or sign in to your account' 'signin' (query-params email=email)}}
+      {{link-to 'or sign in to your account' 'signin' (query-params email=(or signUpEmail email))}}
     </span>
   </div>
 

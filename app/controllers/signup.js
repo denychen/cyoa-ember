@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
     signup() {
       this.set('errorMessage', null);
 
-      let email = this.get('email');
+      let email = this.get('signUpEmail') ? this.get('signUpEmail') : this.get('email');
       let password = this.get('password');
       let username = this.get('username');
 
