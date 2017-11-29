@@ -37,14 +37,14 @@
       Sign In
     </span>
     <span>
-      {{link-to 'or create an account' 'signup' (query-params email=(or signInEmail email))}}
+      {{link-to 'or create an account' 'signup' (query-params email=(or signInEmail enteredEmail))}}
     </span>
   </div>
 
   <div class='u__sp__3'></div>
   
   <div class='horizontally-align'>
-    {{link-to 'Forgot your password?' 'forgot-password' (query-params email=(or signInEmail email))}}
+    {{link-to 'Forgot your password?' 'forgot-password' (query-params email=(or signInEmail enteredEmail))}}
   </div>
 
   {{#if loginError}}
