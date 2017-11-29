@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
 
   actions: {
     resetPassword() {      
-      let email = this.get('email');
+      let email = this.get('forgotPasswordEmail') ? this.get('forgotPasswordEmail') : this.get('email');
 
       if (email) {
         this.set('missingEmail', false);
