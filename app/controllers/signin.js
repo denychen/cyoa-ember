@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
     signin() {
       this.set('loginError', false);
       
-      let email = this.get('email');
+      let email = this.get('signInEmail') ? this.get('signInEmail') : this.get('email');
       let password = this.get('password');
 
       if (email) {
