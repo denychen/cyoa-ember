@@ -7,12 +7,13 @@ export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   hasErrors: Ember.computed.or('missingEmail', 'missingPassword'),
   hasNoErrors: Ember.computed.not('hasErrors'),
+  enteredEmail: Ember.computed.or('signInEmail', 'email'),
 
   actions: {
     signin() {
       this.set('loginError', false);
       
-      let email = this.get('signInEmail') ? this.get('signInEmail') : this.get('email');
+      let email = this.get('enteredEmail');
       let password = this.get('password');
 
       if (email) {

@@ -5,9 +5,11 @@ export default Ember.Controller.extend({
   queryParams: ['email'],
   email: null,
 
+  enteredEmail: Ember.computed.or('forgotPasswordEmail', 'email'),
+
   actions: {
     resetPassword() {      
-      let email = this.get('forgotPasswordEmail') ? this.get('forgotPasswordEmail') : this.get('email');
+      let email = this.get('enteredEmail');
 
       if (email) {
         this.set('missingEmail', false);

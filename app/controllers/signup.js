@@ -7,6 +7,7 @@ export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   anyError: Ember.computed.or('emailError', 'passwordError', 'usernameError'),
   noError: Ember.computed.not('anyError'),
+  enteredEmail: Ember.computed.or('signUpEmail', 'email'),
 
   minimumPasswordLength: 8,
   
@@ -14,7 +15,7 @@ export default Ember.Controller.extend({
     signup() {
       this.set('errorMessage', null);
 
-      let email = this.get('signUpEmail') ? this.get('signUpEmail') : this.get('email');
+      let email = this.get('enteredEmail');
       let password = this.get('password');
       let username = this.get('username');
 
